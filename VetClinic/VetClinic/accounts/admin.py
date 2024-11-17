@@ -46,9 +46,16 @@ class CustomUserAdmin(UserAdmin):
 
         if not request.user.is_superuser:
             return (
-                (None, {'fields': ('username', 'email', 'password')}),
+                (None, {'fields': ('username', 'email',)}),
                 ('Permissions', {'fields': ('is_vet',)}),
                 ('Important dates', {'fields': ('last_login',)}),
             )
 
         return fieldsets
+
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        if not request.user.is_superuser:
+            return queryset.filter(is_superuser=False)
+        return queryset
