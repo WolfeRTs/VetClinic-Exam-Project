@@ -8,7 +8,9 @@
             <h2>{{ object.profile.get_name }}</h2>
         </div>
         <a class='button-link' href="{% url 'profile-edit' object.pk %}">{% trans 'Редактиране' %}</a>
-        <a class='button-link' href="{% url 'profile-delete' object.pk %}">{% trans 'Изтриване' %}</a>
+        {% if object.pk == request.user.pk %}
+            <a class='button-link' href="{% url 'profile-delete' object.pk %}">{% trans 'Изтриване' %}</a>
+        {% endif %}
     </div>
     
 {% endblock %}

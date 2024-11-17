@@ -114,4 +114,4 @@ class Profile(models.Model):
             return self.first_name
         elif self.last_name:
             return self.last_name
-        return None
+        return self.user.username
