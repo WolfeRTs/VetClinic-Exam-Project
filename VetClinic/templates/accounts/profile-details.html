@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div class="site-container profile-container">
+        <div class="profile-card">
+            <h2>{{ object.profile.get_name }}</h2>
+        </div>
+        <a class='button-link' href="{% url 'profile-edit' object.pk %}">{% trans 'Редактиране' %}</a>
+        <a class='button-link' href="{% url 'profile-delete' object.pk %}">{% trans 'Изтриване' %}</a>
+    </div>
+    
+{% endblock %}

@@ -9,11 +9,12 @@
 @import url('site-footer.css');
 
 @import url('elements/buttons.css');
-/*@import url('elements/forms.css');*/
+@import url('elements/forms.css');
 /*@import url('elements/tables.css');*/
 
 @import url('components/navigation.css');
 @import url('components/carousel.css');
 @import url('components/mini-gallery.css');
+@import url('components/profile-card.css');
 
 @import url('responsive.css');

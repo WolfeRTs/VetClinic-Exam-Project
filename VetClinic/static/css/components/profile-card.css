@@ -1,0 +1,10 @@
+.profile-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 30rem;
+    border-radius: 0.7rem;
+    border: 2px solid var(--green-dark);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+    background-color: whitesmoke;
+    padding: 2rem 2.5rem;
+}

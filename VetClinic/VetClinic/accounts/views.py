@@ -1,12 +1,14 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView
+from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django.utils.translation import gettext_lazy as _
 
-from VetClinic.accounts.forms import CustomUserCreationForm, CustomUserLoginForm
+from VetClinic.accounts.forms import CustomUserCreationForm, CustomUserLoginForm, ProfileEditForm
+from VetClinic.accounts.models import Profile
 
 UserModel = get_user_model()
 
@@ -22,14 +24,14 @@ class CustomUserLoginView(LoginView):
     template_name = 'accounts/login.html'
 
 
-class CustomUserLogoutView(LogoutView):
+class CustomUserLogoutView(LoginRequiredMixin, LogoutView):
     pass
 
 
-class CustomUserDeleteView(DeleteView):
+class CustomUserDeleteView(LoginRequiredMixin, DeleteView):
     model = UserModel
     template_name = 'accounts/profile-delete.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('register')
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -37,5 +39,25 @@ class CustomUserDeleteView(DeleteView):
     def delete(self, request, *args, **kwargs):
         account = self.get_object()
         account.delete()
-        messages.success(self.request, _('Your account has been deleted'))
         return redirect(self.success_url)
+
+
+class ProfileDetailsView(LoginRequiredMixin, DetailView):
+    model = UserModel
+    template_name = 'accounts/profile-details.html'
+
+
+class ProfileEditView(LoginRequiredMixin, UpdateView):
+    model = Profile
+    form_class = ProfileEditForm
+    template_name = 'accounts/profile-edit.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user.profile
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'profile-details',
+            kwargs={'pk': self.object.pk}
+        )
+

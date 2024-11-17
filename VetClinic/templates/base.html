@@ -21,7 +21,7 @@
         <header>
             <div class="header-container">
                 <div class="logo-container header-container-element">
-                    <a href="#" class="logo">
+                    <a href="{% url 'index' %}" class="logo">
                         <img class="logo" src="/static/images/vet_logo.png" alt="Logo">
                         <!-- <p>VetClinic</p> -->
                     </a>
@@ -40,11 +40,14 @@
                 </div>
                 <div class="header-buttons-container header-container-element">
                     {% if not request.user.is_authenticated %}
-                        <a href="#">{% trans 'Регистрация' %}</a>
-                        <a href="#">{% trans 'Влизане' %}</a>
+                        <a href="{% url 'register' %}">{% trans 'Регистрация' %}</a>
+                        <a href="{% url 'login' %}">{% trans 'Влизане' %}</a>
                     {% else %}
-                        <a href="#">{% trans 'Профил' %}</a>
-                        <a href="#">{% trans 'Изход' %}</a>
+                        <a href="{% url 'profile-details' request.user.pk %}">{% trans 'Профил' %}</a>
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">{% trans 'Изход' %}</button>
+                        </form>
                     {% endif %}
                     
                 </div>

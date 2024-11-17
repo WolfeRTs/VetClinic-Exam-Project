@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load i18n %}
 
-</body>
-</html>
+{% block content %}
+    
+    <div>
+        {% trans 'Сигурни ли сте, че искате да изтриете своя профил?' %}
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button>{% trans 'Да' %}</button>
+    </form>
+    
+{% endblock %}
