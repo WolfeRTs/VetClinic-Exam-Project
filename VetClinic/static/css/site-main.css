@@ -1,0 +1,87 @@
+.site-main {
+    flex-grow: 1;
+    /* padding: 2em; */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.main-element-light {
+    background-color: var(--green-light);
+    color: var(--green-dark);
+}
+
+.main-element-dark {
+    background-color: var(--green-medium);
+    color: var(--green-light)
+}
+
+.main-container h2 {
+    text-align: center;
+}
+
+.main-container p {
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 2rem;
+    margin-top: 1.5rem;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    max-width: 30rem;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+    padding: 2rem 1rem;
+    margin-top: 1.5rem;
+}
+
+.services-container .services-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 30%;
+    padding: 1em;
+    flex-grow: 1;
+}
+
+.services-container .services-card > i {
+    font-size: 3em;
+}
+
+.services-container .services-card > p {
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.mini-gallery-link {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contacts-container {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts-container a i {
+    font-size: 3em;
+    text-decoration: none;
+    color: var(--green-dark);
+}

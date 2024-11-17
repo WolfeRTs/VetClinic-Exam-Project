@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Flickity v2 Carousel - Open Source License under GPLv3 -->
+    <div class="carousel js-flickity"
+    data-flickity-options='{ "wrapAround": true, "freeScroll": true, "autoPlay": true }'>
+        <div class="carousel-cell">
+            <img src="/static/images/slide1.jpg" alt="">
+        </div>
+        <div class="carousel-cell">
+            <img src="/static/images/slide2.jpg" alt="">
+        </div>
+        <div class="carousel-cell">
+            <img src="/static/images/slide3.jpg" alt="">
+        </div>
+    </div>
+    <div class="main-element-light">
+        <div class="site-container main-container main-container-light">
+            <h2>
+                Добре дошли в нашата ветеринарна клиника!
+            </h2>
+            <p>
+                Тук се грижим за здравето и щастието на вашите домашни любимци с внимание и професионализъм. 
+                Нашият екип от опитни ветеринарни лекари е посветен на предоставянето на висококачествени грижи, независимо дали става въпрос за редовни прегледи, 
+                ваксинации, спешни случаи или специализирани услуги. Разгледайте сайта ни, за да научите повече за нашите услуги, екип и полезни съвети за отглеждането на вашите четириноги приятели. 
+                Нека заедно се погрижим за здравето и комфорта на вашите любимци!
+            </p>
+            <a class="button-link button-dark" href="#">Повече за нас</a>
+        </div>
+    </div>
+    <div class="main-element-dark">
+        <div class="site-container main-container">
+            <p>
+                За Вас ще се погрижат специализирани ветеринарни лекари с богат опит в различни области на ветеринарната медицина. 
+                От диагностика и вътрешни болести до хирургия, стоматология и дерматология – всеки от нашите специалисти е посветен на предоставянето на най-висококачествена и индивидуализирана грижа. 
+                С актуални знания и модерна апаратура, нашите лекари са тук, за да осигурят комплексна помощ и специализирано лечение, съобразено с уникалните нужди на вашите любимци
+            </p>
+            <a class="button-link button-light" href="#">Лекари</a>
+        </div> 
+    </div>
+    <div class="main-element-light">
+        <div class="site-container main-container">
+            <h2>Предлагаме широка гама от услуги</h2>
+            <div class="services-container">
+                <div class="services-card">
+                    <i class="fa-solid fa-stethoscope"></i>
+                    <p>Общи прегледи</p>
+                </div>
+                <div class="services-card">
+                    <i class="fa-solid fa-syringe"></i>
+                    <p>Превантивна медицина</p>
+                </div>
+                <div class="services-card">
+                    <i class="fa-solid fa-mask-face"></i>
+                    <p>Хирургия</p>
+                </div>
+                <div class="services-card">
+                    <i class="fa-solid fa-eye"></i>
+                    <p>Офталмология</p>
+                </div>
+                <div class="services-card">
+                    <i class="fa-solid fa-microscope"></i>
+                    <p>Микробиология</p>
+                </div>
+                <div class="services-card">
+                    <i class="fa fa-scissors"></i>
+                    <p>Груминг</p>
+                </div>
+            </div>
+            <a class="button-link button-dark" href="#">Услуги</a>
+        </div>
+    </div>
+    <div class="main-element-dark">
+        <div class="site-container main-container">
+            <h2>Нашите четириноги приятели в акция!</h2>
+            <p>
+                Разгледайте нашата галерия, за да видите щастливите моменти на нашите пациенти и резултатите от грижите, 
+                които предоставяме. От игриви кучета до доволни котки – всеки любимец е част от нашето семейство. 
+                Вдъхновете се от техните истории!
+            </p>
+            <a class="mini-gallery-link" href="#">
+                <!-- Latest 7 images preview -->
+                <!-- Copyright (c) 2023 Alvaro Montoro (https://codepen.io/alvaromontoro/pen/ZERmQYd) MIT License -->
+                <div class="mini-gallery">
+                    <img src="/static/images/mini1.jpg" alt="">
+                    <img src="/static/images/mini2.jpg" alt="">
+                    <img src="/static/images/mini3.jpg" alt="">
+                    <img src="/static/images/mini4.jpg" alt="">
+                    <img src="/static/images/mini5.jpg" alt="">
+                    <img src="/static/images/mini6.jpg" alt="">
+                    <img src="/static/images/mini7.jpg" alt="">
+                </div>
+            </a>         
+        </div>
+    </div>
+    <div class="main-element-light">
+        <div class="site-container main-container">
+            <h2>Контакти</h2>
+            <div class="contacts-container">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-viber"></i></a>
+                <a href="#" class="button-link button-dark">Виж повече...</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

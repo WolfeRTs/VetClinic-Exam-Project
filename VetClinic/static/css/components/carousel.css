@@ -1,0 +1,14 @@
+.carousel {
+    margin-bottom: 1em;
+}
+
+.carousel-cell {
+    width: 50%;
+    counter-increment: gallery-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+    display: block;
+}
+
