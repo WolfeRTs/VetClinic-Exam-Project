@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div class="site-container form-container">
+        <div class="form-card">
+            <h2>{% trans 'Изтриване на любимец' %}</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button>{% trans 'Изтрий' %}</button>
+                <a href="javascript:history.back()">{% trans 'Назад' %}</a>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}

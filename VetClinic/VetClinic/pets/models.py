@@ -129,6 +129,13 @@ class MedicalReport(models.Model):
         blank=True,
     )
 
+    doctor_name = models.CharField(
+        _('doctor name'),
+        max_length=100,
+        null=True,
+        blank=True,
+    )
+
     pet = models.ForeignKey(
         verbose_name=_('pet'),
         to=Pet,

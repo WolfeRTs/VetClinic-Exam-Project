@@ -11,6 +11,17 @@
         {% if object.pk == request.user.pk %}
             <a class='button-link' href="{% url 'profile-delete' object.pk %}">{% trans 'Изтриване' %}</a>
         {% endif %}
+        <div class="pets-list">
+            {% for pet in object.owner_pets.all %}
+                <div class="pet-card">
+                    <h3>{{ pet.name }}</h3>
+                    <a href="{% url 'pet-details' pet.pk %}" class="button-link">{% trans 'Детайли' %}</a>
+                </div>
+            {% endfor %}
+            <div class="pet-card">
+                <a href="{% url 'pet_add' %}" class="button-link">{% trans 'Добави нов любимец' %}</a>
+            </div>
+        </div>
     </div>
     
 {% endblock %}

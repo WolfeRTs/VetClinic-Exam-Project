@@ -17,7 +17,7 @@ def create_profile(sender, instance, created, **kwargs):
 def add_vet_groups(sender, instance, created, **kwargs):
     vet_group = Group.objects.get(name='Veterinarian')
 
-    # TODO: Set up vet permissions
+    #TODO: Set up vet permissions
     vet_permissions = ['add_profile', 'change_profile']
     permissions = Permission.objects.filter(codename__in=vet_permissions)
 
@@ -28,3 +28,6 @@ def add_vet_groups(sender, instance, created, **kwargs):
     else:
         instance.groups.remove(vet_group)
         instance.user_permissions.remove(*permissions)
+
+
+#TODO: Add a signal that populates all med records with the name of the deleted doctor pre_delete
