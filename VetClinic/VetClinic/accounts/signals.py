@@ -18,7 +18,7 @@ def add_vet_groups(sender, instance, created, **kwargs):
     vet_group = Group.objects.get(name='Veterinarian')
 
     #TODO: Set up vet permissions
-    vet_permissions = ['add_profile', 'change_profile']
+    vet_permissions = ['add_medicalreport', 'change_medicalreport', 'delete_medicalreport']
     permissions = Permission.objects.filter(codename__in=vet_permissions)
 
     if instance.is_vet:

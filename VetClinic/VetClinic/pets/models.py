@@ -64,6 +64,7 @@ class PetStatus(models.Model):
         to=Pet,
         on_delete=models.CASCADE,
         related_name='status',
+        primary_key=True,
     )
 
     is_neutered = models.BooleanField(
@@ -110,12 +111,12 @@ class MedicalReport(models.Model):
         _('instructions'),
     )
 
-    date_added = models.DateField(
+    date_added = models.DateTimeField(
         _('date added'),
         auto_now_add=True,
     )
 
-    date_updated = models.DateField(
+    date_updated = models.DateTimeField(
         _('date updated'),
         auto_now=True,
     )

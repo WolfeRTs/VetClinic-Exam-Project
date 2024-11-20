@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div class="site-container profile-container">
+        <div class="profile-card">
+            <h2>{{ pet.name }}</h2>
+        </div>
+        <a href="{% url 'pet-edit' pet.pk %}" class="button-link">{% trans 'Промени' %}</a>
+        <a href="{% url 'pet-delete' pet.pk %}" class="button-link">{% trans 'Изтрий' %}</a>
+    </div>
+    {% if last_report %}
+        <div>
+        <h2>Last Med Report</h2>
+        <p>{{ last_report.title }}</p>
+        <p>{{ last_report.description }}</p>
+        <p>{{ last_report.instructions }}</p>
+        <a href="{% url 'report-details' pet.pk last_report.pk %}" class="">Details</a>
+        <a href="{% url 'report-dashboard' pet.pk %}" class="">More Reports</a>
+    </div>
+    {% else %}
+        <a href="{% url 'report-add' pet.pk %}">Add report</a>
+    {% endif %}
+    
+    
+{% endblock %}
