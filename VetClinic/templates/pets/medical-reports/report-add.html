@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
     
     <h2>Add Medical Report</h2>
-    <form action="" method="post">
+    <form id="medical-report-form" action="" method="post">
         {% csrf_token %}
         {{ form }}
+        <label for="services-add-input">Services:</label>
+        <input id='services-add-input' name='services' class='tagify--custom-dropdown'>
+        <label for="medicines-add-input">Medicines:</label>
+        <input id='medicines-add-input' name='medicines' class='tagify--custom-dropdown'>
+            
+        </input>
         <button>Add</button>
     </form>
+
+    <script src="{% static 'js/tagify-add-report.js' %}"></script>
     
 {% endblock %}

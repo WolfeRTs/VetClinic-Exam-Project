@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block content %}
@@ -7,7 +8,62 @@
     <form action="" method="post">
         {% csrf_token %}
         {{ form }}
+        <label for="services-edit-input">Services:</label>
+        <input id='services-edit-input' name='services' class='tagify--custom-dropdown'>
+        <label for="medicines-edit-input">Medicines:</label>
+        <input id='medicines-edit-input' name='medicines' class='tagify--custom-dropdown'>
         <button>Edit</button>
     </form>
+    
+    <script>
+        // Services prepopulation
+        var servicesInput = document.querySelector('#services-edit-input');
+        var servicesData = {{ services|safe }};  // JSON data from the context
+        var servicesTagify = new Tagify(servicesInput, {
+            whitelist: [], // Optional if you have autocomplete
+            enforceWhitelist: true, // Allow adding custom tags
+            editTags: false,
+            dropdown: {
+                enabled: 0,
+            }
+
+        });
+        
+        fetch('/services/api/services/')
+            .then(response => response.json())
+            .then(data => {
+                servicesTagify.settings.whitelist = data.map(service => ({
+                    value: service.name,
+                    id: service.id
+                     
+                }))
+                servicesTagify.addTags(servicesData.map(service => ({ value: service.name, id: service.id })));
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        
+        // Medicines prepopulation
+        var medicinesInput = document.querySelector('#medicines-edit-input');
+        var medicinesData = {{ medicines|safe }};  // JSON data from the context
+        var medicinesTagify = new Tagify(medicinesInput, {
+            whitelist: [], // Optional if you have autocomplete
+            enforceWhitelist: true,
+            editTags: false,
+            dropdown: {
+                enabled: 0,
+            }
+        });
+        
+        fetch('/services/api/medicines/')
+            .then(response => response.json())
+            .then(data => {
+                medicinesTagify.settings.whitelist = data.map(medicine => ({
+                    value: medicine.name,
+                    id: medicine.id
+                }))
+                medicinesTagify.addTags(medicinesData.map(medicine => ({ value: medicine.name, id: medicine.id })));
+            })
+            .catch(error => console.error('Error fetching data:', error));
+            
+    </script>
     
 {% endblock %}

@@ -7,6 +7,16 @@
     <form action="" method="post">
         {% csrf_token %}
         {{ form }}
+        <div>
+            <p>Services:</p>
+            {% for service in services %}
+                <li>{{ service }}</li>
+            {% endfor %}
+            <p>Medicines:</p>
+            {% for medicine in medicines %}
+                <li>{{ medicine }}</li>
+            {% endfor %}
+        </div>
         <button>Delete</button>
     </form>
     

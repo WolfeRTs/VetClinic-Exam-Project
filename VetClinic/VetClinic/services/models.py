@@ -14,6 +14,9 @@ class BaseService(models.Model):
         _('description'),
     )
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         abstract = True
 

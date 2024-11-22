@@ -1,6 +1,7 @@
 from django import forms
 
 from VetClinic.pets.models import Pet, MedicalReport
+from VetClinic.services.models import Service, Medicine
 
 
 class BasePetForm(forms.ModelForm):
@@ -32,6 +33,19 @@ class PetDeleteForm(BasePetForm):
 
 
 class MedicalReportBaseForm(forms.ModelForm):
+
+
+    # def save(self, commit=True):
+    #     instance = super().save(commit=False)
+    #     if commit:
+    #         instance.save()
+    #         services = self.cleaned_data.get('services', [])
+    #         medicines = self.cleaned_data.get('medicines', [])
+    #         instance.services.set(services)
+    #         instance.medicines.set(medicines)
+    #     return instance
+
+
     class Meta:
         model = MedicalReport
         fields = ['title', 'description', 'instructions']
