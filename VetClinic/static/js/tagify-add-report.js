@@ -32,7 +32,8 @@ fetch('/services/api/services/')
      .then(data => {
          servicesTagify.settings.whitelist = data.map(service => ({
              value: service.name,
-             id: service.id
+             id: service.id,
+             description: service.description
          }));
      })
      .catch(error => console.error('Error fetching data:', error));
@@ -42,7 +43,9 @@ fetch('/services/api/medicines/')
      .then(data => {
          medicinesTagify.settings.whitelist = data.map(medicine => ({
              value: medicine.name,
-             id: medicine.id
+             id: medicine.id,
+             description: medicine.description,
+             dosages: medicine.dosages
          }));
      })
      .catch(error => console.error('Error fetching data:', error));

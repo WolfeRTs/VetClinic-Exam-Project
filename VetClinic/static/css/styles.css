@@ -17,5 +17,7 @@
 @import url('components/mini-gallery.css');
 @import url('components/profile-card.css');
 @import url('components/tagify.css');
+@import url('components/modal.css');
+@import url('components/article-fragment.css');
 
 @import url('responsive.css');

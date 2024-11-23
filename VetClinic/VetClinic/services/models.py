@@ -21,7 +21,24 @@ class BaseService(models.Model):
         abstract = True
 
 
+class ServiceCategory(models.Model):
+    name = models.CharField(
+        _('name'),
+        max_length=100,
+        unique=True,
+    )
+
+
 class Service(BaseService):
+    category = models.ForeignKey(
+        verbose_name=_('category'),
+        to=ServiceCategory,
+        related_name='category_services',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
+
     reports = models.ManyToManyField(
         verbose_name=_('reports'),
         to='pets.MedicalReport',

@@ -1,11 +1,17 @@
-from django.urls import path
+from django.urls import path, include
 
 from VetClinic.services.views import ServiceListCreateView, ServiceDetailView, MedicineListCreateView, \
-    MedicineDetailView
+    MedicineDetailView, ServiceCategoriesDashboardView, ServicesByCategoryAPIView
 
 urlpatterns = [
-    path('api/services/', ServiceListCreateView.as_view(), name='service-list'),
-    path('api/services/<int:pk>/', ServiceDetailView.as_view(), name='service-detail'),
-    path('api/medicines/', MedicineListCreateView.as_view(), name='medication-list'),
-    path('api/medicines/<int:pk>/', MedicineDetailView.as_view(), name='medication-detail'),
+    path('', ServiceCategoriesDashboardView.as_view(), name='services-dashboard'),
+    path('api/services/', include([
+        path('', ServiceListCreateView.as_view(), name='services-list'),
+        path('<int:pk>/', ServiceDetailView.as_view(), name='service-details'),
+        path('fragment/<int:category_id>/', ServicesByCategoryAPIView.as_view(), name='services-fragment'),
+    ])),
+    path('api/medicines/', include([
+        path('', MedicineListCreateView.as_view(), name='medicines-list'),
+        path('<int:pk>/', MedicineDetailView.as_view(), name='medicine-details'),
+    ])),
 ]
