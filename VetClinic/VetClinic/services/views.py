@@ -1,11 +1,13 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, UpdateView
 from rest_framework.decorators import api_view
 
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.reverse import reverse_lazy
 from rest_framework.views import APIView
 
+from VetClinic.services.forms import ServiceAddForm, ServiceEditForm, MedicineAddForm, MedicineEditForm
 from VetClinic.services.models import Service, Medicine, ServiceCategory
 from VetClinic.services.serializers import ServiceSerializer, MedicineSerializer
 
@@ -51,3 +53,33 @@ class ServicesByCategoryAPIView(APIView):
 
         serializer = ServiceSerializer(services, many=True)
         return Response(serializer.data)
+
+
+class ServiceCreateView(CreateView):
+    model = Service
+    form_class = ServiceAddForm
+    template_name = 'services/service/service-add.html'
+    success_url = reverse_lazy('vet-dashboard')
+
+
+class ServiceEditView(UpdateView):
+    model = Service
+    form_class = ServiceEditForm
+    template_name = 'services/service/service-edit.html'
+    success_url = reverse_lazy('vet-dashboard')
+    pk_url_kwarg = 'service_id'
+
+
+class MedicineCreateView(CreateView):
+    model = Medicine
+    form_class = MedicineAddForm
+    template_name = 'services/medicine/medicine-add.html'
+    success_url = reverse_lazy('vet-dashboard')
+
+
+class MedicineEditView(UpdateView):
+    model = Medicine
+    form_class = MedicineEditForm
+    template_name = 'services/medicine/medicine-edit.html'
+    success_url = reverse_lazy('vet-dashboard')
+    pk_url_kwarg = 'medicine_id'

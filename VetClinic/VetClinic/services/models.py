@@ -28,6 +28,9 @@ class ServiceCategory(models.Model):
         unique=True,
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Service(BaseService):
     category = models.ForeignKey(

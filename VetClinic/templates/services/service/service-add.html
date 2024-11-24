@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div class="site-container form-container">
+        <div class="form-card">
+            <h2>{% trans 'Добави нова услуга' %}</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button>{% trans 'Добави' %}</button>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -85,3 +85,107 @@
     text-decoration: none;
     color: var(--green-dark);
 }
+
+/* Dashboard container */
+#dashboard {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Search container */
+#search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#search-container select,
+#search-container input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+#search-container select:focus,
+#search-container input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* Dropdown */
+#search-category {
+    width: 150px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+#search-category option {
+    padding: 10px;
+}
+
+/* Search bar */
+#search-bar {
+    flex-grow: 1;
+    background-color: #fff;
+}
+
+/* Results container */
+#search-results {
+    margin-top: 20px;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h2 {
+    font-size: 18px;
+    color: #007bff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category li {
+    display: flex;
+    background: #f8f9fa;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.category li:hover {
+    background: #e9ecef;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category a {
+    flex: 1;
+    display: block;
+    padding: 0.7rem;
+    text-decoration: none;
+    color: black;
+}
+
+#pets,
+#profiles,
+#services,
+#medicines {
+    display: none;
+}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div id="dashboard">
+        <div id="search-container">
+            <select id="search-category">
+                <option value="all">All</option>
+                <option value="pets">Pets</option>
+                <option value="profiles">Profiles</option>
+                <option value="services">Services</option>
+                <option value="medicines">Medicines</option>
+            </select>
+            <input type="text" id="search-bar" placeholder="Search...">
+        </div>
+        <div id="search-results">
+            <div class="category" id="pets">
+                <h2>Pets</h2>
+                <ul></ul>
+            </div>
+            <div class="category" id="profiles">
+                <h2>Profiles</h2>
+                <ul></ul>
+            </div>
+            <div class="category" id="services">
+                <h2>Services</h2>
+                <ul></ul>
+            </div>
+            <div class="category" id="medicines">
+                <h2>Medicines</h2>
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlPatterns = {
+            profile: "{% url 'profile-details' 0 %}".replace('0', '{id}'),
+            pet: "{% url 'pet-details' 0 %}".replace('0', '{id}'),
+            service: "{% url 'service-edit' 0 %}".replace('0', '{id}'),
+            medicine: "{% url 'medicine-edit' 0 %}".replace('0', '{id}'),
+            serviceAdd: "{% url 'service-add' %}",
+            medicineAdd: "{% url 'medicine-add' %}"
+        };
+    </script>
+    <script src="{% static 'js/vet-dashboard.js' %}"></script>
+{% endblock %}
