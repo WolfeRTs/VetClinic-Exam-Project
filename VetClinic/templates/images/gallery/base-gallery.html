@@ -1,0 +1,14 @@
+
+
+    <div class="gallery">
+        {% for image in images %}
+            <div class="gallery-img-container">
+                <a href="{% url 'image-details' image.pk %}">
+                    <img src="{{ image.image.url }}" alt="Image {{ image.id }}">
+                </a>
+            </div>
+        {% empty %}
+            <p>No images in gallery</p>
+        {% endfor %}
+    </div>
+

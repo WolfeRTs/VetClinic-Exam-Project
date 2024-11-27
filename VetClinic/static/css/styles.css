@@ -10,6 +10,7 @@
 
 @import url('elements/buttons.css');
 @import url('elements/forms.css');
+@import url('elements/hint-box.css');
 /*@import url('elements/tables.css');*/
 
 @import url('components/navigation.css');
@@ -19,5 +20,6 @@
 @import url('components/tagify.css');
 @import url('components/modal.css');
 @import url('components/article-fragment.css');
+@import url('components/gallery.css');
 
 @import url('responsive.css');

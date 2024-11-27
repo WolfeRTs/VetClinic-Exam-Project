@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="site-container gallery-container">
+        <form method="get" action="{% url 'gallery' %}">
+            <label for="category-select">Choose a category:</label>
+            <select id="category-select" name="category">
+                <option value="all" {% if selected_category == 'all' %}selected{% endif %}>All Categories</option>
+                {% for category in categories %}
+                    <option value="{{ category.1 }}" {% if selected_category == category.1 %}selected{% endif %}>
+                        {{ category.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Filter</button>
+        </form>
+        <a href="{% url 'image-add' %}">Добави ново изображение</a>
+        
+        <h2>{% if selected_category == 'all' %}All images{% else %}{{ selected_category }}{% endif %}</h2>
+        
+        
+            {% include 'images/gallery/base-gallery.html' %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page=1">&laquo; first</a>
+                        <a href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.next_page_number }}">next</a>
+                        <a href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+    </div>
+    
+{% endblock %}

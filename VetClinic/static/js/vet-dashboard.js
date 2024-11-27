@@ -10,15 +10,15 @@ document.getElementById('search-bar').addEventListener('input', function (e) {
     if (query.length < 2) {
         clearSearchResults();
         return;
-}
+    }
 
-fetch(`/api/search/?q=${query}&category=${category}`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
+    fetch(`/api/search/?q=${query}&category=${category}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             populateSearchResults(data, category);
         })

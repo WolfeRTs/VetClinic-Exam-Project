@@ -108,6 +108,12 @@ class MedicalReportDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailVi
     context_object_name = 'report'
     pk_url_kwarg = 'report_id'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services'] = self.object.services.all()
+        context['medicines'] = self.object.medicines.all()
+        return context
+
     def test_func(self):
         report = get_object_or_404(MedicalReport, pk=self.kwargs['report_id'])
         return self.request.user.groups.filter(name='Veterinarian').exists() or self.request.user == report.pet.owner

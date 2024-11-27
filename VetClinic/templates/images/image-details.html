@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div class="site-container">
+        <div class="image-container">
+            <img src="{{ image.image.url }}" alt="">
+            <div class="buttons-container">
+                <a href="{% url 'image-edit' image.pk %}">Edit</a>
+                <a href="{% url 'image-delete' image.pk %}">Delete</a>
+            </div>
+        </div>
+        <div class="navigation-buttons">
+            {% if previous_image %}
+                <a href="{% url 'image-details' previous_image.pk %}" class="btn">Previous</a>
+            {% else %}
+                <button class="btn" disabled>Previous</button>
+            {% endif %}
+        
+            {% if next_image %}
+                <a href="{% url 'image-details' next_image.pk %}" class="btn">Next</a>
+            {% else %}
+                <button class="btn" disabled>Next</button>
+            {% endif %}
+        </div>
+    </div>
+    
+    
+{% endblock %}

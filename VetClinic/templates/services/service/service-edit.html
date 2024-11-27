@@ -10,8 +10,53 @@
                 {% csrf_token %}
                 {{ form }}
                 <button>{% trans 'Редактирай' %}</button>
+                <button id="delete-service-button">{% trans 'Изтрий' %}</button>
             </form>
         </div>
     </div>
+    
+    <div class="modal">
+        <div class="modal-content">
+            <p>Сигурни ли сте, че искате да изтриете тази услуга?</p>
+            <button id="delete-service-confirm">Да</button>
+            <button id="delete-service-cancel">Не</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modalElement = document.querySelector('.modal');
+        const deleteBtn = document.getElementById('delete-service-button');
+        const deleteConfirm = document.getElementById('delete-service-confirm');
+        const deleteCancel = document.getElementById('delete-service-cancel');
+
+        deleteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalElement.style.display = 'block';
+        })
+        
+        deleteCancel.addEventListener('click', () => {
+            modalElement.style.display = 'none';
+        })
+        
+        deleteConfirm.addEventListener('click', () => {
+            const serviceId = {{ service.pk }};
+            
+            fetch(`/services/api/services/${serviceId}/`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '{% url 'vet-dashboard' %}';
+                } else {
+                    alert('Error deleting the service.')
+                }
+            })
+            .catch(error => console.log('Error:', error));
+        })
+    </script>
     
 {% endblock %}

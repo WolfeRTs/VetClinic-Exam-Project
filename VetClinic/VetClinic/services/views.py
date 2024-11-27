@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from rest_framework.decorators import api_view
 
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
@@ -7,7 +7,8 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse_lazy
 from rest_framework.views import APIView
 
-from VetClinic.services.forms import ServiceAddForm, ServiceEditForm, MedicineAddForm, MedicineEditForm
+from VetClinic.services.forms import ServiceAddForm, ServiceEditForm, MedicineAddForm, MedicineEditForm, \
+    ServiceDeleteForm
 from VetClinic.services.models import Service, Medicine, ServiceCategory
 from VetClinic.services.serializers import ServiceSerializer, MedicineSerializer
 
@@ -42,7 +43,7 @@ class ServiceCategoriesDashboardView(ListView):
     context_object_name = 'categories'
 
     def get_queryset(self):
-        return ServiceCategory.objects.all()
+        return ServiceCategory.objects.filter(category_services__isnull=False).distinct()
 
 
 class ServicesByCategoryAPIView(APIView):

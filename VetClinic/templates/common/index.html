@@ -5,15 +5,11 @@
     <!-- Flickity v2 Carousel - Open Source License under GPLv3 -->
     <div class="carousel js-flickity"
     data-flickity-options='{ "wrapAround": true, "freeScroll": true, "autoPlay": true }'>
-        <div class="carousel-cell">
-            <img src="/static/images/slide1.jpg" alt="">
-        </div>
-        <div class="carousel-cell">
-            <img src="/static/images/slide2.jpg" alt="">
-        </div>
-        <div class="carousel-cell">
-            <img src="/static/images/slide3.jpg" alt="">
-        </div>
+        {% for image in carousel_images %}
+            <div class="carousel-cell">
+                <img src="{{ image.image.url }}" alt="Image {{ image.id }}">
+            </div>
+        {% endfor %}
     </div>
     <div class="main-element-light">
         <div class="site-container main-container main-container-light">
@@ -79,17 +75,13 @@
                 които предоставяме. От игриви кучета до доволни котки – всеки любимец е част от нашето семейство. 
                 Вдъхновете се от техните истории!
             </p>
-            <a class="mini-gallery-link" href="#">
+            <a class="mini-gallery-link" href="{% url 'gallery' %}">
                 <!-- Latest 7 images preview -->
                 <!-- Copyright (c) 2023 Alvaro Montoro (https://codepen.io/alvaromontoro/pen/ZERmQYd) MIT License -->
                 <div class="mini-gallery">
-                    <img src="/static/images/mini1.jpg" alt="">
-                    <img src="/static/images/mini2.jpg" alt="">
-                    <img src="/static/images/mini3.jpg" alt="">
-                    <img src="/static/images/mini4.jpg" alt="">
-                    <img src="/static/images/mini5.jpg" alt="">
-                    <img src="/static/images/mini6.jpg" alt="">
-                    <img src="/static/images/mini7.jpg" alt="">
+                    {% for image in minigallery_images %}
+                        <img src="{{ image.image.url }}" alt="">
+                    {% endfor %}
                 </div>
             </a>         
         </div>
@@ -105,4 +97,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}

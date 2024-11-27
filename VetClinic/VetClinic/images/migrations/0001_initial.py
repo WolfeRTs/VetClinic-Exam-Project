@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             name='Image',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='images', validators=[django.core.validators.FileExtensionValidator(['jpg', 'jpeg', 'png']), VetClinic.images.validators.FileSizeValidator(3)], verbose_name='image')),
+                ('image', models.ImageField(upload_to='photos', validators=[django.core.validators.FileExtensionValidator(['jpg', 'jpeg', 'png']), VetClinic.images.validators.FileSizeValidator(3)], verbose_name='image')),
                 ('date_uploaded', models.DateTimeField(auto_now_add=True, verbose_name='date uploaded')),
                 ('category', models.CharField(choices=[('Carousel', 'Carousel'), ('Gallery', 'Gallery'), ('Other', 'Other')], default='Other', max_length=50, verbose_name='category')),
             ],

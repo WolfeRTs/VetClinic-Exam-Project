@@ -10,8 +10,53 @@
                 {% csrf_token %}
                 {{ form }}
                 <button>{% trans 'Редактирай' %}</button>
+                <button id="delete-medicine-button">{% trans 'Изтрий' %}</button>
             </form>
         </div>
     </div>
+    
+    <div class="modal">
+        <div class="modal-content">
+            <p>{% trans 'Сигурни ли сте, че искате да изтриете това лекарство?' %}</p>
+            <button id="delete-medicine-confirm">{% trans 'Да' %}</button>
+            <button id="delete-medicine-cancel">{% trans 'Не' %}</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modalElement = document.querySelector('.modal');
+        const deleteBtn = document.getElementById('delete-medicine-button');
+        const deleteConfirm = document.getElementById('delete-medicine-confirm');
+        const deleteCancel = document.getElementById('delete-medicine-cancel');
+
+        deleteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalElement.style.display = 'block';
+        })
+        
+        deleteCancel.addEventListener('click', () => {
+            modalElement.style.display = 'none';
+        })
+        
+        deleteConfirm.addEventListener('click', () => {
+            const medicineId = {{ medicine.pk }};
+            
+            fetch(`/services/api/medicines/${medicineId}/`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '{% url 'vet-dashboard' %}';
+                } else {
+                    alert('Error deleting the medicine.')
+                }
+            })
+            .catch(error => console.log('Error:', error));
+        })
+    </script>
     
 {% endblock %}

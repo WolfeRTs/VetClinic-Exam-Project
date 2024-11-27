@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block content %}
@@ -7,8 +8,26 @@
     <p>{{ report.title }}</p>
     <p>{{ report.description }}</p>
     <p>{{ report.instructions }}</p>
+    <p>Services:</p>
+    <div class='service-tags'>
+        {% for service in services %}
+            <li class='item-tag' data-tag-item="{{ service.description }}">{{ service.name }}</li>
+        {% endfor %}
+    </div>
+    <p>Medicines:</p>
+    <div class='medicine-tags'>
+        {% for medicine in medicines %}
+            <li class='item-tag' data-tag-item="{{ medicine.description }}">{{ medicine.name }}</li>
+        {% endfor %}
+    </div>
 
     <a href="{% url 'report-edit' report.pet.pk report.pk %}" class="">Edit</a>
     <a href="{% url 'report-delete' report.pet.pk report.pk %}" class="">Delete</a>
+    
+    <div id="hint-box" class="hint-box hidden">
+        <p class="hint-content"></p>
+    </div>
+
+    <script src={% static 'js/hint-box.js' %}></script>
     
 {% endblock %}

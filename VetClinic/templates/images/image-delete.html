@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div class="site-container form-container">
+        <div class="form-card">
+            <h2>{% trans 'Желаете ли да изтриете това изображение?' %}</h2>
+            <form action="{% url 'image-delete' image.pk %}" method="post">
+                {% csrf_token %}
+                <button>{% trans 'Да' %}</button>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}

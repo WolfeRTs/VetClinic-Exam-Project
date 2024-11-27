@@ -3,12 +3,19 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView
 
 from VetClinic.accounts.models import Profile, CustomUser
+from VetClinic.images.models import Image
 from VetClinic.pets.models import Pet
 from VetClinic.services.models import Service, Medicine
 
 
 class HomePageView(TemplateView):
     template_name = 'common/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['carousel_images'] = Image.objects.filter(category='Carousel').order_by('?')[:5]
+        context['minigallery_images'] = Image.objects.filter(category='Gallery').order_by('-date_uploaded')[:7]
+        return context
 
 
 class VetDashboardView(TemplateView):
