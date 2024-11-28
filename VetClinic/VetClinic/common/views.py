@@ -22,6 +22,18 @@ class VetDashboardView(TemplateView):
     template_name = 'common/vet-dashboard.html'
 
 
+class ContactsView(TemplateView):
+    template_name = 'common/contacts.html'
+
+
+class AboutUsView(TemplateView):
+    template_name = 'common/about-us.html'
+
+
+class DoctorsView(TemplateView):
+    template_name = 'common/doctors.html'
+
+
 def search_view(request):
     query = request.GET.get('q', '')
     category = request.GET.get('category', 'all')
