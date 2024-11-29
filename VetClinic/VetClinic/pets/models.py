@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from VetClinic.pets.choices import PetSexChoices
-from VetClinic.pets.validators import CapitalFirstLetterValidator
+from VetClinic.validators import CapitalFirstLetterValidator
 
 UserModel = get_user_model()
 

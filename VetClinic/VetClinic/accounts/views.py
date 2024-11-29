@@ -54,6 +54,7 @@ class ProfileDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         user = get_object_or_404(UserModel, pk=self.kwargs['pk'])
         return self.request.user.groups.filter(name='Veterinarian').exists() or self.request.user == user
 
+
 class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile
     form_class = ProfileEditForm

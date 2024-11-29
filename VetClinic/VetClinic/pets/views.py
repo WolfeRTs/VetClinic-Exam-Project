@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 
+from VetClinic.permissions import is_vet
 from VetClinic.pets.forms import PetAddForm, PetEditForm, PetDeleteForm, MedicalReportAddForm, MedicalReportEditForm, \
     MedicalReportDeleteForm
 from VetClinic.pets.models import Pet, MedicalReport
@@ -23,7 +24,7 @@ class PetDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
     def test_func(self):
         pet = get_object_or_404(Pet, pk=self.kwargs['pet_id'])
-        return self.request.user.groups.filter(name='Veterinarian').exists() or self.request.user == pet.owner
+        return is_vet(self.request.user) or self.request.user == pet.owner
 
 
 class PetAddView(LoginRequiredMixin, CreateView):
@@ -58,7 +59,7 @@ class PetEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         pet = get_object_or_404(Pet, pk=self.kwargs['pet_id'])
-        return self.request.user.groups.filter(name='Veterinarian').exists() or self.request.user == pet.owner
+        return is_vet(self.request.user) or self.request.user == pet.owner
 
 
 class PetDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -81,7 +82,7 @@ class PetDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         pet = get_object_or_404(Pet, pk=self.kwargs['pet_id'])
-        return self.request.user.groups.filter(name='Veterinarian').exists() or self.request.user == pet.owner
+        return is_vet(self.request.user) or self.request.user == pet.owner
 
 
 class MedicalReportDashboard(LoginRequiredMixin, UserPassesTestMixin, ListView):
@@ -99,7 +100,7 @@ class MedicalReportDashboard(LoginRequiredMixin, UserPassesTestMixin, ListView):
 
     def test_func(self):
         pet = get_object_or_404(Pet, pk=self.kwargs['pet_id'])
-        return self.request.user.groups.filter(name='Veterinarian').exists() or self.request.user == pet.owner
+        return is_vet(self.request.user) or self.request.user == pet.owner
 
 
 class MedicalReportDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
@@ -116,7 +117,8 @@ class MedicalReportDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailVi
 
     def test_func(self):
         report = get_object_or_404(MedicalReport, pk=self.kwargs['report_id'])
-        return self.request.user.groups.filter(name='Veterinarian').exists() or self.request.user == report.pet.owner
+        print(self.request.user.get_user_permissions())
+        return self.request.user.has_perm('pets.view_medicalreport') or self.request.user == report.pet.owner
 
 
 class MedicalReportAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
@@ -162,7 +164,7 @@ class MedicalReportAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return super().form_valid(form)
 
     def test_func(self):
-        return self.request.user.groups.filter(name='Veterinarian').exists()
+        return self.request.user.has_perm('pets.add_medicalreport')
 
 
 class MedicalReportEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -227,7 +229,7 @@ class MedicalReportEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
         return context
 
     def test_func(self):
-        return self.request.user.groups.filter(name='Veterinarian').exists()
+        return self.request.user.has_perm('pets.change_medicalreport')
 
 
 class MedicalReportDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -255,4 +257,4 @@ class MedicalReportDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteVie
         return self.form_valid(form)
 
     def test_func(self):
-        return self.request.user.groups.filter(name='Veterinarian').exists()
+        return self.request.user.has_perm('pets.delete_medicalreport')

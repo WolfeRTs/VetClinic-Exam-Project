@@ -1,5 +1,7 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from django.views.generic import TemplateView
 
 from VetClinic.accounts.models import Profile, CustomUser
@@ -18,8 +20,11 @@ class HomePageView(TemplateView):
         return context
 
 
-class VetDashboardView(TemplateView):
+class VetDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'common/vet-dashboard.html'
+
+    def test_func(self):
+        return self.request.user.groups.filter(name='Veterinarian').exists() or self.request.user.is_staff
 
 
 class ContactsView(TemplateView):
@@ -34,7 +39,13 @@ class DoctorsView(TemplateView):
     template_name = 'common/doctors.html'
 
 
+@login_required
 def search_view(request):
+    if (not request.user.is_authenticated
+        or not (request.user.is_staff or request.user.groups.filter(name='Veterinarian').exists())
+    ):
+        return HttpResponseForbidden("You do not have permission to access this view.")
+
     query = request.GET.get('q', '')
     category = request.GET.get('category', 'all')
 

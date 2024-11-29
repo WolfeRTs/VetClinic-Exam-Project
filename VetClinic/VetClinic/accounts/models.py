@@ -1,12 +1,13 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, RegexValidator
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 
 from VetClinic.accounts.managers import CustomUserManager
 from VetClinic.accounts.validators import UsernameValidator
+from VetClinic.validators import CapitalFirstLetterValidator
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -72,12 +73,20 @@ class Profile(models.Model):
     first_name = models.CharField(
         _('first name'),
         max_length=50,
+        validators=[
+            MinLengthValidator(2, _("First name should be at least 2 characters long")),
+            CapitalFirstLetterValidator(),
+        ],
         blank=True,
         null=True,
     )
 
     last_name = models.CharField(
         _('last name'),
+        validators=[
+            MinLengthValidator(2, _("Last name should be at least 2 characters long")),
+            CapitalFirstLetterValidator(),
+        ],
         max_length=50,
         blank=True,
         null=True,
@@ -86,6 +95,10 @@ class Profile(models.Model):
     country = models.CharField(
         _('country'),
         max_length=50,
+        validators=[
+            MinLengthValidator(3, _("Country should be at least 3 characters long")),
+            CapitalFirstLetterValidator(),
+        ],
         blank=True,
         null=True,
     )
@@ -93,6 +106,10 @@ class Profile(models.Model):
     city = models.CharField(
         _('city'),
         max_length=50,
+        validators=[
+            MinLengthValidator(3, _("City should be at least 3 characters long")),
+            CapitalFirstLetterValidator(),
+        ],
         blank=True,
         null=True,
     )
@@ -100,6 +117,10 @@ class Profile(models.Model):
     phone_number = models.CharField(
         _('phone number'),
         max_length=10,
+        validators=[
+            MinLengthValidator(10, _("Phone number should be exactly 10 characters long")),
+            RegexValidator(r'^[\d]*$', _("Phone number should consist of digits only")),
+        ],
         blank=True,
         null=True,
     )

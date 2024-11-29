@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
 from rest_framework.reverse import reverse_lazy
@@ -6,25 +7,30 @@ from rest_framework.reverse import reverse_lazy
 from VetClinic.images.choices import ImageCategoryChoices
 from VetClinic.images.forms import ImageAddForm, ImageEditForm
 from VetClinic.images.models import Image
+from VetClinic.permissions import is_vet
 
 UserModel = get_user_model()
 
 
-class ImageAddView(CreateView):
+class ImageAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Image
     template_name = 'images/image-add.html'
     form_class = ImageAddForm
     success_url = reverse_lazy('gallery')
 
+    def test_func(self):
+        return self.request.user.is_superuser or self.request.user.is_staff or is_vet(self.request.user)
 
-class ImageEditView(UpdateView):
+class ImageEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Image
     template_name = 'images/image-edit.html'
     form_class = ImageEditForm
     success_url = reverse_lazy('gallery')
 
+    def test_func(self):
+        return self.request.user.is_superuser or self.request.user.is_staff or is_vet(self.request.user)
 
-class ImageDeleteView(DeleteView):
+class ImageDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Image
     template_name = 'images/image-delete.html'
     success_url = reverse_lazy('gallery')
@@ -37,6 +43,8 @@ class ImageDeleteView(DeleteView):
         image.delete()
         return redirect(self.get_success_url())
 
+    def test_func(self):
+        return self.request.user.is_superuser or self.request.user.is_staff or is_vet(self.request.user)
 
 class ImageDetailsView(DetailView):
     model = Image

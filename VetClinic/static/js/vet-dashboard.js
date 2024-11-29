@@ -12,7 +12,7 @@ document.getElementById('search-bar').addEventListener('input', function (e) {
         return;
     }
 
-    fetch(`/api/search/?q=${query}&category=${category}`)
+    fetch(`/api/search/?q=${query}&category=${category}/`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
