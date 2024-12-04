@@ -1,13 +1,70 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
+{% load custom_placeholder %}
 
 {% block content %}
     <div class="form-container site-container">
         <div class="form-card">
-            <form action="" method="post">
+            <h2>{% trans 'Редактиране на профил' %}</h2>
+            <form class="custom-form" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <button type="submit">{% trans 'Запази' %}</button>
+                <div class="input-container">
+                    <label for="first_name_profile_edit" class="custom-label">{% trans 'Собствено име' %}</label>
+                    {{ form.first_name|add_class:"custom-input"|placeholder:'Въведете собствено име' }}
+                    {% if form.first_name.errors %}
+                        {% for error in form.first_name.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="last_name_profile_edit" class="custom-label">{% trans 'Фамилно име' %}</label>
+                    {{ form.last_name|add_class:"custom-input"|placeholder:'Въведете фамилно име' }}
+                    {% if form.last_name.errors %}
+                        {% for error in form.last_name.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="country_profile_edit" class="custom-label">{% trans 'Държава' %}</label>
+                    {{ form.country|add_class:"custom-input"|placeholder:'Въведете държава' }}
+                    {% if form.country.errors %}
+                        {% for error in form.country.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="city_profile_edit" class="custom-label">{% trans 'Град' %}</label>
+                    {{ form.city|add_class:"custom-input"|placeholder:'Въведете град' }}
+                    {% if form.city.errors %}
+                        {% for error in form.city.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="phone_number_profile_edit" class="custom-label">{% trans 'Телефонен номер' %}</label>
+                    {{ form.phone_number|add_class:"custom-input"|placeholder:'Въведете телефонен номер' }}
+                    {% if form.phone_number.errors %}
+                        {% for error in form.phone_number.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-buttons-container">
+                    <button class="form-button">{% trans 'Редактиране' %}</button>
+                    <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
+                </div>
             </form>
         </div>
     </div>

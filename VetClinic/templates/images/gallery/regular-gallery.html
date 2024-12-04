@@ -4,25 +4,25 @@
 
 {% block content %}
     
-    <div class="site-container">
+    <div class="site-container gallery-container">
         {% include 'images/gallery/base-gallery.html' %}
         <div class="pagination">
             <span class="step-links">
                 {% if page_obj.has_previous %}
-                    <a href="?page=1">&laquo; first</a>
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    <a class="gallery-button" href="?page=1">&laquo; {% trans 'първа' %}</a>
+                    <a class="gallery-button" href="?page={{ page_obj.previous_page_number }}">{% trans 'предишна' %}</a>
                 {% endif %}
         
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                <span class="pagination-current">
+                    {% trans 'Страница' %} {{ page_obj.number }} {% trans 'от' %} {{ page_obj.paginator.num_pages }}
                 </span>
         
                 {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    <a class="gallery-button" href="?page={{ page_obj.next_page_number }}">{% trans 'следваща' %}</a>
+                    <a class="gallery-button" href="?page={{ page_obj.paginator.num_pages }}">{% trans 'последна' %} &raquo;</a>
                 {% endif %}
             </span>
         </div>
-        </div>
+    </div>
     
 {% endblock %}

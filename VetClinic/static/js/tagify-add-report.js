@@ -57,7 +57,7 @@ form.addEventListener('submit', (e) => {
     // Extract selected service IDs
     const selectedServiceTags = servicesTagify.value;
     const serviceIds = selectedServiceTags.map(tag => tag.id);
-    const selectedMedicineTags = servicesTagify.value;
+    const selectedMedicineTags = medicinesTagify.value;
     const medicineIds = selectedMedicineTags.map(tag => tag.id);
 
     servicesInput.value = JSON.stringify(serviceIds);

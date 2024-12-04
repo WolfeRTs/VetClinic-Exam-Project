@@ -1,23 +1,61 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
+{% load custom_placeholder %}
 {% load static %}
 
 {% block content %}
     
-    <h2>Add Medical Report</h2>
-    <form id="medical-report-form" action="" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <label for="services-add-input">Services:</label>
-        <input id='services-add-input' name='services' class='tagify--custom-dropdown'>
-        <label for="medicines-add-input">Medicines:</label>
-        <input id='medicines-add-input' name='medicines' class='tagify--custom-dropdown'>
+    <div class="form-container site-container">
+        <div class="form-card">
+            <h2>{% trans 'Добавяне на нов преглед' %}</h2>
+            <form class="custom-form" id="medical-report-form" action="" method="post">
+                {% csrf_token %}
+                <div class="input-container">
+                    <label for="title_report_add" class="custom-label">{% trans 'Заглавие' %}</label>
+                    {{ form.title|add_class:"custom-input"|placeholder:"Въведете заглавие" }}
+                    {% if form.title.errors %}
+                        {% for error in form.title.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="description_report_add" class="custom-label">{% trans 'Описание' %}</label>
+                    {{ form.description|add_class:"custom-input"|placeholder:"Анамнеза и диагноза" }}
+                    {% if form.description.errors %}
+                        {% for error in form.description.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="instructions_report_add" class="custom-label">{% trans 'Инструкции' %}</label>
+                    {{ form.instructions|add_class:"custom-input"|placeholder:"Въведете инструкции за приемане на лекарства" }}
+                    {% if form.instructions.errors %}
+                        {% for error in form.instructions.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
         
-        <button>Add</button>
-    </form>
-
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <label for="services-add-input" class="custom-label">Services:</label>
+                <input id='services-add-input' name='services' class='tagify--custom-dropdown'>
+                <label for="medicines-add-input" class="custom-label">Medicines:</label>
+                <input id='medicines-add-input' name='medicines' class='tagify--custom-dropdown'>
+                
+                <button class="form-button">
+                    {% trans 'Добави' %}
+                </button>
+            </form>
+        </div>
+    </div>
     
     <script src="{% static 'js/tagify-add-report.js' %}"></script>
-    <script src="{% static 'js/tagify-modal.js' %}"></script>
     
 {% endblock %}

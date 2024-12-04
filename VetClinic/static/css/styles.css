@@ -11,12 +11,15 @@
 @import url('elements/buttons.css');
 @import url('elements/forms.css');
 @import url('elements/hint-box.css');
-/*@import url('elements/tables.css');*/
+@import url('elements/effects.css');
+@import url('elements/pagination.css');
+
 
 @import url('components/navigation.css');
 @import url('components/carousel.css');
 @import url('components/mini-gallery.css');
 @import url('components/profile-card.css');
+@import url('components/report-card.css');
 @import url('components/tagify.css');
 @import url('components/modal.css');
 @import url('components/article-fragment.css');

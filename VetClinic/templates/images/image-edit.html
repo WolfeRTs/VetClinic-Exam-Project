@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
 
 {% block content %}
     
     <div class="site-container form-container">
         <div class="form-card">
-            <h2>{% trans 'Редактирай изображение' %}</h2>
-            <form action="" method="post">
+            <h2>{% trans 'Редактиране на изображение' %}</h2>
+            <form class="custom-form" action="" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <button>{% trans 'Редактирай' %}</button>
+                <div class="input-container">
+                    <label for="category_image_edit" class="custom-label">{% trans 'Категория' %}</label>
+                    {{ form.category|add_class:"custom-input" }}
+                    {% if form.category.errors %}
+                        {% for error in form.category.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            
+                <div class="form-buttons-container">
+                    <button class="form-button">{% trans 'Редактиране' %}</button>
+                    <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
+                </div>
             </form>
         </div>
     </div>

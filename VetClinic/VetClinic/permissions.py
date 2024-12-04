@@ -1,11 +1,11 @@
 from rest_framework import permissions
 
 
-class IsVetUser(permissions.BasePermission):
+class IsVetUserOrStaff(permissions.BasePermission):
     def has_permission(self, request, view):
         return (request.user
                 and request.user.is_authenticated
-                and request.user.groups.filter(name='Veterinarian').exists()
+                and (request.user.groups.filter(name='Veterinarian').exists() or request.user.is_staff)
                 )
 
 

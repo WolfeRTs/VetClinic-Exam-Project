@@ -1,13 +1,65 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
+{% load custom_placeholder %}
 
 {% block content %}
     <div class="form-container site-container">
         <div class="form-card">
-            <form action="" method="post">
+            <h2>Регистрация на потребител</h2>
+            <form class="custom-form" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <button type="submit">{% trans 'Регистрация' %}</button>
+                <div class="input-container">
+                    {% if form.username.help_text %}
+                        <p class="form-help-text">{{ form.username.help_text }}</p>
+                    {% endif %}
+                    <label for="username_register" class="custom-label">{% trans 'Потребителско име' %}</label>
+                    {{ form.username|add_class:"custom-input"|placeholder:'Потребителско име' }}
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="email_register" class="custom-label">{% trans 'Имейл' %}</label>
+                    {{ form.email|add_class:"custom-input"|placeholder:'Имейл' }}
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    {% if form.password1.help_text %}
+                        <div class="form-help-text">{{ form.password1.help_text }}</div>
+                    {% endif %}
+                    <label for="password1_register" class="custom-label">{% trans 'Парола' %}</label>
+                    {{ form.password1|add_class:"custom-input"|placeholder:'Парола' }}
+                    {% if form.password1.errors %}
+                        {% for error in form.password1.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="password2_register" class="custom-label">{% trans 'Повторете паролата' %}</label>
+                    {{ form.password2|add_class:"custom-input"|placeholder:'Повторете парола' }}
+                    {% if form.password2.errors %}
+                        {% for error in form.password2.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                
+                <button type="submit" class="form-button">
+                    {% trans 'Регистрация' %}
+                </button>
             </form>
         </div>
     </div>

@@ -58,7 +58,7 @@ def search_view(request):
 
     if category == 'all' or category == 'profiles':
         profiles = CustomUser.objects.filter(
-            Q(username__icontains=query) | Q(profile__first_name__icontains=query) | Q(profile__last_name__icontains=query) | Q(email__icontains=query)
+            Q(profile__first_name__icontains=query) | Q(profile__last_name__icontains=query) | Q(username__icontains=query) | Q(email__icontains=query)
         ).values('id', 'profile__first_name', 'profile__last_name', 'username', 'email')
 
     if category == 'all' or category == 'services':

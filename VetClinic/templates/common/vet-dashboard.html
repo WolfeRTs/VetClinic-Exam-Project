@@ -7,29 +7,29 @@
     <div id="dashboard">
         <div id="search-container">
             <select id="search-category">
-                <option value="all">All</option>
-                <option value="pets">Pets</option>
-                <option value="profiles">Profiles</option>
-                <option value="services">Services</option>
-                <option value="medicines">Medicines</option>
+                <option value="all">{% trans 'Всички' %}</option>
+                <option value="pets">{% trans 'Любимци' %}</option>
+                <option value="profiles">{% trans 'Профили' %}</option>
+                <option value="services">{% trans 'Услуги' %}</option>
+                <option value="medicines">{% trans 'Лекарства' %}</option>
             </select>
-            <input type="text" id="search-bar" placeholder="Search...">
+            <input type="text" id="search-bar" placeholder={% trans 'Търсене...' %}>
         </div>
         <div id="search-results">
             <div class="category" id="pets">
-                <h2>Pets</h2>
+                <h2>{% trans 'Любимци' %}</h2>
                 <ul></ul>
             </div>
             <div class="category" id="profiles">
-                <h2>Profiles</h2>
+                <h2>{% trans 'Профили' %}</h2>
                 <ul></ul>
             </div>
             <div class="category" id="services">
-                <h2>Services</h2>
+                <h2>{% trans 'Услуги' %}</h2>
                 <ul></ul>
             </div>
             <div class="category" id="medicines">
-                <h2>Medicines</h2>
+                <h2>{% trans 'Лекарства' %}</h2>
                 <ul></ul>
             </div>
         </div>

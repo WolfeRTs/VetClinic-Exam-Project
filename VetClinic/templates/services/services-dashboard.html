@@ -9,7 +9,21 @@
         <li>
             <article class="article-fragment">
                 <div class="article-header" data-id="{{ category.id }}">
-                    <h2>{{ category.name }}</h2>
+                    <div class="article-title">
+                        <h2>{{ category.name }}</h2>
+                    </div>
+                    <div class="article-dropdown-container">
+                        <button class="article-dropdown-btn">
+                            <svg id="article-icon1-{{ category.id }}" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path d="m12 17.586-7.293-7.293-1.414 1.414L12 20.414l8.707-8.707-1.414-1.414L12 17.586z"/>
+                                <path d="m20.707 5.707-1.414-1.414L12 11.586 4.707 4.293 3.293 5.707 12 14.414l8.707-8.707z"/>
+                            </svg>
+                            <svg id="article-icon2-{{ category.id }}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="article-hidden">
+                                <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z"/>
+                                <path d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </article>
         </li>

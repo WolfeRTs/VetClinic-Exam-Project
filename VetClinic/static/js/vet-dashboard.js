@@ -12,7 +12,7 @@ document.getElementById('search-bar').addEventListener('input', function (e) {
         return;
     }
 
-    fetch(`/api/search/?q=${query}&category=${category}/`)
+    fetch(`/api/search/?q=${query}&category=${category}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -56,13 +56,25 @@ function populateSearchResults(data, category) {
 
             let displayText = '';
             if (categoryName === 'pets') {
-                displayText = `${item.name} (Owner: ${item['owner__profile__first_name']})`;
+                const firstName = item['owner__profile__first_name'] || '';
+                const lastName = item['owner__profile__last_name'] || '';
+                displayText = `${item.name} (${item['owner__username']})`;
+
+                if (firstName || lastName) {
+                    displayText += ` - ${firstName} ${lastName}`;
+                }
             } else if (categoryName === 'profiles') {
-                displayText = `${item['profile__first_name']} (${item['email']})`;
+                const firstName = item['profile__first_name'] || '';
+                const lastName = item['profile__last_name'] || '';
+                displayText = `${item['username']} (${item['email']})`;
+
+                if (firstName || lastName) {
+                    displayText += ` - ${firstName} ${lastName}`;
+                }
             } else if (categoryName === 'services') {
                 displayText = `${item.name} - ${item.description}`;
             } else if (categoryName === 'medicines') {
-                displayText = `${item.name} (Dosages: ${item.dosages})`;
+                displayText = `${item.name} (${item.dosages})`;
             }
 
             link.textContent = displayText;

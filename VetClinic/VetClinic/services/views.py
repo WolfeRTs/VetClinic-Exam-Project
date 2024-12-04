@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse_lazy
 from rest_framework.views import APIView
 
-from VetClinic.permissions import IsVetUser, IsStaff
+from VetClinic.permissions import IsVetUserOrStaff, IsStaff
 from VetClinic.services.forms import ServiceAddForm, ServiceEditForm, MedicineAddForm, MedicineEditForm, \
     ServiceDeleteForm
 from VetClinic.services.models import Service, Medicine, ServiceCategory
@@ -18,25 +18,25 @@ from VetClinic.services.serializers import ServiceSerializer, MedicineSerializer
 class ServiceListCreateView(ListCreateAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
-    permission_classes = [IsAuthenticated, IsVetUser, IsStaff]
+    permission_classes = [IsAuthenticated, IsVetUserOrStaff]
 
 
 class ServiceDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
-    permission_classes = [IsAuthenticated, IsVetUser, IsStaff]
+    permission_classes = [IsAuthenticated, IsVetUserOrStaff]
 
 
 class MedicineListCreateView(ListCreateAPIView):
     queryset = Medicine.objects.all()
     serializer_class = MedicineSerializer
-    permission_classes = [IsAuthenticated, IsVetUser, IsStaff]
+    permission_classes = [IsAuthenticated, IsVetUserOrStaff]
 
 
 class MedicineDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Medicine.objects.all()
     serializer_class = MedicineSerializer
-    permission_classes = [IsAuthenticated, IsVetUser, IsStaff]
+    permission_classes = [IsAuthenticated, IsVetUserOrStaff]
 
 
 class ServiceCategoriesDashboardView(ListView):

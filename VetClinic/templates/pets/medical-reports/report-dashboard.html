@@ -3,20 +3,78 @@
 
 {% block content %}
     
-    <h2>Medical Reports</h2>
-    {% for report in reports %}
-        
-        <div>
-            <h3>{{ report.title }}</h3>
-            <p>{{ report.description }}</p>
-            <p>{{ report.instructions }}</p>
-{#            <a href="{% url 'report-edit' report.pet.pk report.pk %}" class="">Edit</a>#}
-{#            <a href="{% url 'report-delete' report.pet.pk report.pk %}" class="">Delete</a>#}
-            <a href="{% url 'report-details' report.pet.pk report.pk %}" class="">Details</a>
+    <div class="site-container reports-container">
+        <h2>{% trans 'Прегледи' %}</h2>
+        <div class="reports-add-report">
+            {% if request.user.is_vet %}
+                <a href="{% url 'report-add' pet_id %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="50" height="50">
+                        <defs><style>.cls-1{fill:#231f20}</style></defs>
+                        <g id="calendar_add" data-name="calendar add">
+                            <path class="cls-1" d="M22.5 3H21V2a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v1h-4V2a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v1H7V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v1H2.5A1.5 1.5 0 0 0 1 4.5v18A1.5 1.5 0 0 0 2.5 24h20a1.5 1.5 0 0 0 1.5-1.5v-18A1.5 1.5 0 0 0 22.5 3zM19 2h1v3h-1zm-7 0h1v3h-1zM5 2h1v3H5zM2.5 4H4v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V4h4v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V4h4v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V4h1.5a.5.5 0 0 1 .5.5V8H2V4.5a.5.5 0 0 1 .5-.5zm20 19h-20a.5.5 0 0 1-.5-.5V9h21v13.5a.5.5 0 0 1-.5.5z"/>
+                            <path class="cls-1" d="M16 15.5h-3v-3a.5.5 0 0 0-1 0v3H9a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1z"/>
+                        </g>
+                    </svg>
+                    <span class="static-hint-box">{% trans 'Добави преглед' %}</span>
+                </a>
+            {% endif %}
         </div>
+        <div class="report-cards">
+            {% for report in reports %}
+                
+                <div class="report-note">
+                        <h3>{{ report.title }}</h3>
+                        <div class="report-content">
+                            <h4>{% trans 'Описание:' %}</h4>
+                            <p>{{ report.description }}</p>
+                            <h4>{% trans 'Инструкции:' %}</h4>
+                            <p>{{ report.instructions }}</p>
+                        </div>
+                        <div class="report-buttons">
+                            <a href="{% url 'report-details' report.pet.pk report.pk %}" class="card-button">{% trans 'Детайли' %}</a>
+                        </div>
+                    </div>
+                
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            <span class="pagination-step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="pagination-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#9EC853">
+                            <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
+                            <path d="M15.293 7.293 10.586 12l4.707 4.707 1.414-1.414L13.414 12l3.293-3.293-1.414-1.414z"/>
+                            <path d="m12.707 8.707-1.414-1.414L6.586 12l4.707 4.707 1.414-1.414L9.414 12l3.293-3.293z"/>
+                        </svg>
+                    </a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="pagination-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#9EC853">
+                            <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
+                            <path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/>
+                        </svg>
+                    </a>
+                {% endif %}
         
-    {% endfor %}
-
-    <a href="{% url 'report-add' pet_id %}">Add report</a>
-    
+                <span class="pagination-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="pagination-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#9EC853">
+                            <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
+                            <path d="M9.293 8.707 12.586 12l-3.293 3.293 1.414 1.414L15.414 12l-4.707-4.707-1.414 1.414z"/>
+                        </svg>
+                    </a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#9EC853">
+                            <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
+                            <path d="M8.707 7.293 7.293 8.707 10.586 12l-3.293 3.293 1.414 1.414L13.414 12 8.707 7.293z"/>
+                            <path d="M11.293 8.707 14.586 12l-3.293 3.293 1.414 1.414L17.414 12l-4.707-4.707-1.414 1.414z"/>
+                        </svg>
+                    </a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
 {% endblock %}

@@ -34,6 +34,11 @@
     background-color: white;
 }
 
-.tagify__tag:hover {
-    background-color: aliceblue;
+.tagify__tag:hover,
+.tagify__tag:focus {
+    background-color: #D3E2E2;
+}
+
+.tagify__tag-text {
+    font-weight: 600;
 }

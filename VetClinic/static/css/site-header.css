@@ -6,7 +6,6 @@ header {
     box-shadow: 0 8px 5px rgba(0, 0, 0, 0.5);
     border-top: 5px solid var(--green-dark);
     border-bottom: 5px solid var(--green-dark);
-    /* border: 2px solid var(--green-dark); */
 }
 
 .header-container {
@@ -41,5 +40,44 @@ header {
 
 .header-buttons-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 0.5em;
 }
+
+.header-buttons-container button {
+    all: unset;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+.header-buttons-container svg {
+    width: 4rem;
+    height: 4rem;
+    fill: var(--green-dark);
+    transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.header-buttons-container svg:hover {
+    transform: scale(1.2);
+    opacity: 80%;
+}
+
+.icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+.icon-container:hover .static-hint-box {
+    opacity: 1;
+    visibility: visible;
+}
+
+

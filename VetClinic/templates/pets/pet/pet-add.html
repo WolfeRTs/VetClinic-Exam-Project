@@ -1,15 +1,125 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
+{% load custom_placeholder %}
 
 {% block content %}
     
-    <div class="site-container form-container">
+    <div class="form-container site-container">
         <div class="form-card">
-            <h2>{% trans 'Добави нов любимец' %}</h2>
-            <form action="" method="post">
+            <h2>{% trans 'Добавяне на любимец' %}</h2>
+            <form class="custom-form" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <button>{% trans 'Добави' %}</button>
+                <div class="input-container">
+                    <label for="name_pet_add" class="custom-label">{% trans 'Име на любимец' %}</label>
+                    {{ form.name|add_class:"custom-input"|placeholder:'Въведете име' }}
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="species_pet_add" class="custom-label">{% trans 'Вид' %}</label>
+                    {{ form.species|add_class:"custom-input"|placeholder:'Въведете вид на животното' }}
+                    {% if form.species.errors %}
+                        {% for error in form.species.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="breed_pet_add" class="custom-label">{% trans 'Порода' %}</label>
+                    {{ form.breed|add_class:"custom-input"|placeholder:'Въведете порода на животното' }}
+                    {% if form.breed.errors %}
+                        {% for error in form.breed.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="sex_pet_add" class="custom-label">{% trans 'Пол' %}</label>
+                    {{ form.sex|add_class:"custom-input" }}
+                    {% if form.sex.errors %}
+                        {% for error in form.sex.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="date_of_birth_pet_add" class="custom-label">{% trans 'Дата на раждане' %}</label>
+                    {{ form.date_of_birth|add_class:"custom-input" }}
+                    {% if form.date_of_birth.errors %}
+                        {% for error in form.date_of_birth.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            
+                {% if request.user.is_vet %}
+                    <div class="pet-status-form">
+                        <div class="input-container">
+                            <div class="custom-checkbox">
+                                <label for="is_neutered_pet_add">{% trans 'Кастрация:' %}</label>
+                                {{ form.is_neutered }}
+                            </div>
+                            {% if form.is_neutered.errors %}
+                                {% for error in form.status.is_neutered.errors %}
+                                    <p class="error-text">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="input-container">
+                            <div class="custom-checkbox">
+                                <label for="is_vaccinated_pet_add">{% trans 'Ваксинация:' %}</label>
+                                {{ form.is_vaccinated }}
+                            </div>
+                            {% if form.is_vaccinated.errors %}
+                                {% for error in form.status.is_vaccinated.errors %}
+                                    <p class="error-text">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="input-container">
+                            <label for="last_vaccinated_at_pet_add" class="custom-label">{% trans 'Последна ваксинация' %}</label>
+                            {{ form.last_vaccinated_at|add_class:"custom-input" }}
+                            {% if form.last_vaccinated_at.errors %}
+                                {% for error in form.last_vaccinated_at.errors %}
+                                    <p class="error-text">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="input-container">
+                            <label for="last_external_deworming_pet_add" class="custom-label">{% trans 'Последно външно обезпаразитяване' %}</label>
+                            {{ form.last_external_deworming|add_class:"custom-input" }}
+                            {% if form.last_external_deworming.errors %}
+                                {% for error in form.last_external_deworming.errors %}
+                                    <p class="error-text">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="input-container">
+                            <label for="last_internal_deworming_pet_add" class="custom-label">{% trans 'Последно вътрешно обезпаразитяване' %}</label>
+                            {{ form.last_internal_deworming|add_class:"custom-input" }}
+                            {% if form.last_internal_deworming.errors %}
+                                {% for error in form.last_internal_deworming.errors %}
+                                    <p class="error-text">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                {% endif %}
+ 
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                
+                <button type="submit" class="form-button">
+                    {% trans 'Добавяне' %}
+                </button>
             </form>
         </div>
     </div>

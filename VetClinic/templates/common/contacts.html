@@ -3,22 +3,40 @@
 {% load i18n %}
 
 {% block content %}
-    <div class="site-container">
+    <div id='contacts' class="site-container contacts-page-container">
         <div class="work-time">
-            <h3>Работно време</h3>
-            <p>Пон-Петък: 09:00-21:00 часа</p>
-            <p>Събота: 10:00-20:00 часа</p>
-            <p>Неделя: 10:00-16:00 часа</p>
+            <h3>{% trans 'Работно време' %}</h3>
+            <p>{% trans 'Пон-Петък: 09:00-21:00 часа' %}</p>
+            <p>{% trans 'Събота: 10:00-20:00 часа' %}</p>
+            <p>{% trans 'Неделя: 10:00-16:00 часа' %}</p>
         </div>
-        <div>
-            <h3>Телефони за контакти</h3>
-            <p>0888 123 456 / 0888 654 321</p>
-            <h3>Имейл</h3>
-            <p>vetclinic@gmail.com</p>
-            <h3>Facebook</h3>
-            <a href="">Линк</a>
+        <div class="contacts-content">
+            <div class="phones">
+                <h3>{% trans 'Телефони за контакти' %}</h3>
+                <p>0888 123 456 / 0888 654 321</p>
+            </div>
+            <div class="email">
+                <h3>{% trans 'Имейл' %}</h3>
+                <p>vetclinic@gmail.com</p>
+            </div>
+            <div class="socials">
+                <div class="facebook-embed">
+                    <h3>Facebook</h3>
+                    <iframe 
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Ffacebook.com%2FPetfinder&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+                        style="border:none;overflow:hidden" 
+                        scrolling="no" frameborder="0" allowfullscreen="false" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                </div>
+                <div class="instagram-embed">
+                    <h3>Instagram</h3>
+                    <iframe src="https://www.instagram.com/p/Cw5Sn1js_jE/embed" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
         </div>
-        <div>
+        <div class="location-container">
+            <p>{% trans 'Адрес: ' %}<span>{% trans 'град София, ж.к Манастирски ливади, ул. Васил Стефанов 13' %}</span></p>
             <div id="map" style="height: 500px; width: 700px"></div>
         </div>
         
@@ -26,14 +44,14 @@
 
     <script>
         
-        const map = L.map('map').setView([42.6977, 23.3219], 17);
+        const map = L.map('map').setView([42.6536, 23.2943], 17);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         
         {#TODO: Add styling to the popup#}
-        L.marker([42.6977, 23.3219]).addTo(map).bindPopup('<b>VetClinic локация</b>').openPopup();
+        L.marker([42.6536, 23.2943]).addTo(map).bindPopup('<b>VetClinic локация</b>').openPopup();
         
     </script>
 

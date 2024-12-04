@@ -1,19 +1,60 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load widget_tweaks %}
 
 {% block content %}
     
-    <h2>Edit Medical Report</h2>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <label for="services-edit-input">Services:</label>
-        <input id='services-edit-input' name='services' class='tagify--custom-dropdown'>
-        <label for="medicines-edit-input">Medicines:</label>
-        <input id='medicines-edit-input' name='medicines' class='tagify--custom-dropdown'>
-        <button>Edit</button>
-    </form>
+    <div class="form-container site-container">
+        <div class="form-card">
+            <h2>{% trans 'Редактиране на преглед' %}</h2>
+            <form class="custom-form" action="" method="post">
+                {% csrf_token %}
+                <div class="input-container">
+                    <label for="title_report_add" class="custom-label">{% trans 'Заглавие' %}</label>
+                    {{ form.title|add_class:"custom-input" }}
+                    {% if form.title.errors %}
+                        {% for error in form.title.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="description_report_add" class="custom-label">{% trans 'Описание' %}</label>
+                    {{ form.description|add_class:"custom-input" }}
+                    {% if form.description.errors %}
+                        {% for error in form.description.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="instructions_report_add" class="custom-label">{% trans 'Инструкции' %}</label>
+                    {{ form.instructions|add_class:"custom-input" }}
+                    {% if form.instructions.errors %}
+                        {% for error in form.instructions.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+        
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <label for="services-edit-input">Services:</label>
+                <input id='services-edit-input' name='services' class='tagify--custom-dropdown'>
+                <label for="medicines-edit-input">Medicines:</label>
+                <input id='medicines-edit-input' name='medicines' class='tagify--custom-dropdown'>
+                
+                <div class="form-buttons-container">
+                    <button class="form-button">{% trans 'Редактиране' %}</button>
+                    <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
     
     <script>
         // Services prepopulation

@@ -1,5 +1,6 @@
 from django import forms
 
+from VetClinic.mixins import FormFieldsUpdateMixin
 from VetClinic.services.models import Service, Medicine
 
 
@@ -9,12 +10,12 @@ class ServicesBaseForm(forms.ModelForm):
         exclude = ['reports']
 
 
-class ServiceAddForm(ServicesBaseForm):
-    pass
+class ServiceAddForm(ServicesBaseForm, FormFieldsUpdateMixin):
+    custom_keyword = 'service_add'
 
 
-class ServiceEditForm(ServicesBaseForm):
-    pass
+class ServiceEditForm(ServicesBaseForm, FormFieldsUpdateMixin):
+    custom_keyword = 'service_edit'
 
 
 class ServiceDeleteForm(ServicesBaseForm):
@@ -27,12 +28,12 @@ class MedicineBaseForm(ServicesBaseForm):
         exclude = ['reports']
 
 
-class MedicineAddForm(MedicineBaseForm):
-    pass
+class MedicineAddForm(MedicineBaseForm, FormFieldsUpdateMixin):
+    custom_keyword = 'medicine_add'
 
 
-class MedicineEditForm(MedicineBaseForm):
-    pass
+class MedicineEditForm(MedicineBaseForm, FormFieldsUpdateMixin):
+    custom_keyword = 'medicine_edit'
 
 
 class MedicineDeleteForm(MedicineBaseForm):

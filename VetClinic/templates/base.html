@@ -36,23 +36,58 @@
                 <div class="nav-container header-container-element">
                     <nav>
                         <ul>
-                            <li><a href="{% url 'about-us' %}">{% trans 'За Нас' %}</a></li>
-                            <li><a href="{% url 'doctors' %}">{% trans 'Лекари' %}</a></li>
-                            <li><a href="{% url 'services-dashboard' %}">{% trans 'Услуги' %}</a></li>
-                            <li><a href="{% url 'gallery' %}">{% trans 'Галерия' %}</a></li>
-                            <li><a href="{% url 'contacts' %}">{% trans 'Контакти' %}</a></li>
+                            <li><a href="{% url 'about-us' %}" class="{% if request.path == '/about-us/' %}active{% endif %}">{% trans 'За Нас' %}</a></li>
+                            <li><a href="{% url 'doctors' %}" class="{% if request.path == '/doctors/' %}active{% endif %}">{% trans 'Лекари' %}</a></li>
+                            <li><a href="{% url 'services-dashboard' %}" class="{% if request.path == '/services/' %}active{% endif %}">{% trans 'Услуги' %}</a></li>
+                            <li><a href="{% url 'gallery' %}" class="{% if request.path == '/images/gallery/' %}active{% endif %}">{% trans 'Галерия' %}</a></li>
+                            <li><a href="{% url 'contacts' %}" class="{% if request.path == '/contacts/' %}active{% endif %}">{% trans 'Контакти' %}</a></li>
+                            {% if request.user.is_vet or request.user.is_staff %}
+                                <li><a href="{% url 'vet-dashboard' %}" class="{% if request.path == '/vet-dashboard/' %}active{% endif %}">{% trans 'ВетКонтрол' %}</a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
                 <div class="header-buttons-container header-container-element">
                     {% if not request.user.is_authenticated %}
-                        <a href="{% url 'register' %}">{% trans 'Регистрация' %}</a>
-                        <a href="{% url 'login' %}">{% trans 'Влизане' %}</a>
+                        <div class="icon-container">
+                            <a href="{% url 'register' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32" xml:space="preserve">
+                                    <path d="M16 31C7.729 31 1 24.271 1 16S7.729 1 16 1s15 6.729 15 15-6.729 15-15 15zm0-28C8.832 3 3 8.832 3 16s5.832 13 13 13 13-5.832 13-13S23.168 3 16 3z"/><path d="M16 20.2a4.605 4.605 0 0 1-4.6-4.6c0-2.537 2.064-4.6 4.6-4.6s4.6 2.063 4.6 4.6c0 2.537-2.064 4.6-4.6 4.6zm0-7.2c-1.434 0-2.6 1.166-2.6 2.6s1.166 2.6 2.6 2.6 2.6-1.167 2.6-2.6S17.434 13 16 13zM16 31c-2.462 0-4.907-.613-7.072-1.772a1.003 1.003 0 0 1-.528-.882V26.33a5.772 5.772 0 0 1 5.765-5.766h3.67a5.772 5.772 0 0 1 5.765 5.766v2.015c0 .368-.204.707-.528.882A15.033 15.033 0 0 1 16 31zm-5.6-3.269c3.48 1.663 7.72 1.663 11.2 0v-1.4a3.77 3.77 0 0 0-3.765-3.766h-3.67a3.77 3.77 0 0 0-3.765 3.766v1.4zm12.2.615h.01-.01z"/>
+                                </svg>
+                                <span class="static-hint-box">{% trans 'Регистрация' %}</span>
+                            </a>
+                        </div>
+                        <div class="icon-container">
+                            <a href="{% url 'login' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                    <g data-name="check in">
+                                        <path d="M27.9 2.58a.86.86 0 0 0-.07-.1.71.71 0 0 0-.19-.23h-.09a1.12 1.12 0 0 0-.25-.11.86.86 0 0 0-.17 0L27 2H12a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0V4h7.19l-3.48 1A1 1 0 0 0 16 6v19h-3v-3a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1h4v2a1 1 0 0 0 .4.8 1 1 0 0 0 .6.2 1 1 0 0 0 .29 0l10-3a1 1 0 0 0 .71-1V3a1 1 0 0 0-.1-.42zM26 25.26l-8 2.4V6.74l8-2.4z"/><path d="m11.71 19.71 3-3a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76 1 1 0 0 0-.21-.33l-3-3a1 1 0 0 0-1.42 1.42l1.3 1.29H5a1 1 0 0 0 0 2h6.59l-1.3 1.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0zM20 17a1 1 0 0 0 0-2 1 1 0 0 0 0 2z"/>
+                                    </g>
+                                </svg>
+                                <span class="static-hint-box">{% trans 'Влизане' %}</span>
+                            </a>
+                        </div>
                     {% else %}
-                        <a href="{% url 'profile-details' request.user.pk %}">{% trans 'Профил' %}</a>
+                        <div class="icon-container">
+                            <a href="{% url 'profile-details' request.user.pk %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32" xml:space="preserve">
+                                    <path d="M16 31C7.729 31 1 24.271 1 16S7.729 1 16 1s15 6.729 15 15-6.729 15-15 15zm0-28C8.832 3 3 8.832 3 16s5.832 13 13 13 13-5.832 13-13S23.168 3 16 3z"/><circle cx="16" cy="15.133" r="4.267"/><path d="M16 30c2.401 0 4.66-.606 6.635-1.671-.425-3.229-3.18-5.82-6.635-5.82s-6.21 2.591-6.635 5.82A13.935 13.935 0 0 0 16 30z"/>
+                                </svg>
+                                <span class="static-hint-box">{% trans 'Профил' %}</span>
+                            </a>
+                        </div>
                         <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
-                            <button type="submit">{% trans 'Изход' %}</button>
+                            <div class="icon-container">
+                                <button type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                        <g data-name="check out">
+                                            <path d="M27.9 2.58a.86.86 0 0 0-.07-.1.71.71 0 0 0-.19-.23h-.09a1.12 1.12 0 0 0-.25-.11L27.1 2H12a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0V4h7.19l-3.48 1A1 1 0 0 0 16 6v19h-3v-3a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1h4v2a1 1 0 0 0 .4.8 1 1 0 0 0 .6.2 1 1 0 0 0 .29 0l10-3a1 1 0 0 0 .71-1V3a1 1 0 0 0-.1-.42zM26 25.26l-8 2.4V6.74l8-2.4z"/><path d="M7.41 17H14a1 1 0 0 0 0-2H7.41l1.3-1.29a1 1 0 0 0-1.42-1.42l-3 3a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l3 3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM20 17a1 1 0 0 0 0-2 1 1 0 1 0 0 2z"/>
+                                        </g>
+                                    </svg>
+                                    <span class="static-hint-box">{% trans 'Излизане' %}</span>
+                                </button>
+                            </div>
                         </form>
                     {% endif %}
                     
@@ -68,18 +103,17 @@
         <footer class="site-footer">
             <div class="footer-container site-container">
                 <p class="copyright">&copy; <span>2024 VetClinic</span></p>
-                <a href="#" class="footer-contacts">
+                <a href="{% url 'contacts' %}#contacts" class="footer-contacts">
                     <i class="fa-solid fa-phone"></i>
                     <span>0888 123 456 / 0888 654 321</span>
                 </a>
                 <a href="{% url 'contacts' %}#map" class="footer-location">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span>бул. Мария Луиза 13</span>
+                    <span>{% trans 'ул. Васил Стефанов 13' %}</span>
                 </a>
             </div>
         </footer>
     </div>
-
     
 </body>
 </html>

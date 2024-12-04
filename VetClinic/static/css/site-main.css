@@ -86,30 +86,29 @@
     color: var(--green-dark);
 }
 
-/* Dashboard container */
 #dashboard {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
+    max-width: 50rem;
+    border: 2px solid var(--green-dark);
+    margin: 3rem auto;
+    padding: 1.25rem;
     background: #ffffff;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Search container */
 #search-container {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
 }
 
 #search-container select,
 #search-container input {
-    padding: 10px;
+    padding: 0.6rem;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 0.3rem;
     outline: none;
 }
 
@@ -119,39 +118,36 @@
     box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
 }
 
-/* Dropdown */
 #search-category {
-    width: 150px;
+    width: 9rem;
     background-color: #f9f9f9;
     cursor: pointer;
 }
 
 #search-category option {
-    padding: 10px;
+    padding: 0.6rem;
 }
 
-/* Search bar */
 #search-bar {
     flex-grow: 1;
     background-color: #fff;
 }
 
-/* Results container */
 #search-results {
     margin-top: 20px;
 }
 
 .category {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .category h2 {
     font-size: 18px;
-    color: #007bff;
-    margin-bottom: 10px;
+    color: var(--green-dark);
+    margin-bottom: 0.6rem;
     text-transform: uppercase;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
+    padding-bottom: 0.3rem;
 }
 
 .category ul {
@@ -163,8 +159,8 @@
 .category li {
     display: flex;
     background: #f8f9fa;
-    margin-bottom: 8px;
-    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
     border: 1px solid #ddd;
     cursor: pointer;
     transition: background 0.3s, box-shadow 0.3s;
@@ -188,4 +184,131 @@
 #services,
 #medicines {
     display: none;
+}
+
+.about-us-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--green-dark);
+}
+
+.about-us-container h2 {
+    margin-top: 2rem;
+}
+
+.about-us-container p {
+    text-align: center;
+    padding: 0 1rem;
+    max-width: 70%;
+}
+
+.about-us-container img {
+    margin: 2rem 0;
+    max-width: 70%;
+    border: 2px solid var(--green-dark);
+}
+
+.doctors-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem 0;
+}
+
+.doctors-page-container .doctor-card {
+    background-color: var(--green-medium);
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 0.7rem;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.6);
+}
+
+.doctors-page-container .doctor-card .doctor-card-img-container img {
+    border: 2px solid var(--green-dark);
+}
+
+.doctors-page-container .doctor-card .doctor-card-content {
+    color: #324017;
+    padding: 0 2rem;
+}
+
+.doctors-page-container .doctor-card .doctor-card-content p,
+.doctors-page-container .doctor-card .doctor-card-content h3,
+.doctors-page-container .doctor-card .doctor-card-content h2 {
+    margin-top: 1rem;
+}
+
+.doctors-page-container .doctor-card .doctor-card-content span {
+    font-style: italic;
+}
+
+.contacts-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+    color: var(--green-dark);
+}
+
+.contacts-page-container .work-time h3 {
+    margin-bottom: 1rem;
+}
+
+.contacts-page-container .contacts-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.contacts-page-container .contacts-content .email,
+.contacts-page-container .contacts-content .phones {
+    text-align: center;
+}
+
+.contacts-page-container .contacts-content .email p,
+.contacts-page-container .contacts-content .phones p {
+    font-style: italic;
+}
+
+.contacts-page-container .contacts-content .socials {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.contacts-page-container .contacts-content .socials .facebook-embed iframe,
+.contacts-page-container .contacts-content .socials .instagram-embed iframe {
+    outline: 2px solid var(--green-dark);
+    margin-top: 2rem;
+    width: 21rem;
+    height: 30rem;
+    background-color: whitesmoke;
+}
+
+.contacts-page-container .location-container p {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.contacts-page-container .location-container span {
+    font-weight: 500;
+    font-style: italic;
+}
+
+#map {
+    border: 2px solid var(--green-dark);
 }

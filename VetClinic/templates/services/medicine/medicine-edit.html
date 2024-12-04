@@ -1,16 +1,58 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
+{% load custom_placeholder %}
 
 {% block content %}
     
-    <div class="site-container form-container">
+    <div class="form-container site-container">
         <div class="form-card">
-            <h2>{% trans 'Редактирай лекарство' %}</h2>
-            <form action="" method="post">
+            <h2>{% trans 'Редактиране на медицински продукт' %}</h2>
+            <form class="custom-form" action="" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <button>{% trans 'Редактирай' %}</button>
-                <button id="delete-medicine-button">{% trans 'Изтрий' %}</button>
+                <div class="input-container">
+                    <label for="name_medicine_edit" class="custom-label">{% trans 'Име на продукт' %}</label>
+                    {{ form.name|add_class:"custom-input"|placeholder:"Въведете име на продукт" }}
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="description_medicine_edit" class="custom-label">{% trans 'Описание' %}</label>
+                    {{ form.description|add_class:"custom-input"|placeholder:"Въведете описание" }}
+                    {% if form.description.errors %}
+                        {% for error in form.description.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="dosages_medicine_edit" class="custom-label">{% trans 'Дози на използване' %}</label>
+                    {{ form.dosages|add_class:"custom-input"|placeholder:"Въведете дози на използване" }}
+                    {% if form.dosages.errors %}
+                        {% for error in form.dosages.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+        
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            
+                <div class="form-buttons-container">
+                    <button class="form-button">
+                        {% trans 'Редактиране' %}
+                    </button>
+                    <button id="delete-medicine-button" class="form-button">
+                        {% trans 'Изтриване' %}
+                    </button>
+                </div>
+            
             </form>
         </div>
     </div>
@@ -18,9 +60,10 @@
     <div class="modal">
         <div class="modal-content">
             <p>{% trans 'Сигурни ли сте, че искате да изтриете това лекарство?' %}</p>
-            <button id="delete-medicine-confirm">{% trans 'Да' %}</button>
-            <button id="delete-medicine-cancel">{% trans 'Не' %}</button>
-            </form>
+            <div class="form-buttons-container">
+                <button id="delete-medicine-confirm" class="form-button">{% trans 'Да' %}</button>
+                <button id="delete-medicine-cancel" class="form-button">{% trans 'Не' %}</button>
+            </div>
         </div>
     </div>
 

@@ -1,10 +1,13 @@
-from django.db.models.signals import post_save
+from django.contrib.auth import get_user_model
+from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 
-from VetClinic.pets.models import Pet, PetStatus
 
+UserModel = get_user_model()
 
-@receiver(post_save, sender=Pet)
-def create_pet_status(sender, instance, created, **kwargs):
-    if created:
-        PetStatus.objects.create(pet=instance)
+@receiver(pre_delete, sender=UserModel)
+def update_medical_report_doctor_name(sender, instance, **kwargs):
+    if instance.medical_reports.exists():
+        for report in instance.medical_reports.all():
+            report.doctor_name = instance.profile.get_name() or None
+            report.save()

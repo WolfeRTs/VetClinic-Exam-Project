@@ -1,15 +1,52 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
+{% load custom_placeholder %}
 
 {% block content %}
     
-    <div class="site-container form-container">
+    <div class="form-container site-container">
         <div class="form-card">
-            <h2>{% trans 'Добави нова услуга' %}</h2>
-            <form action="" method="post">
+            <h2>{% trans 'Добавяне на нова услуга' %}</h2>
+            <form class="custom-form" action="" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <button>{% trans 'Добави' %}</button>
+                <div class="input-container">
+                    <label for="name_service_add" class="custom-label">{% trans 'Име на услуга' %}</label>
+                    {{ form.name|add_class:"custom-input"|placeholder:"Въведете име на услуга" }}
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="description_service_add" class="custom-label">{% trans 'Описание' %}</label>
+                    {{ form.description|add_class:"custom-input"|placeholder:"Въведете описание" }}
+                    {% if form.description.errors %}
+                        {% for error in form.description.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="category_service_add" class="custom-label">{% trans 'Категория' %}</label>
+                    {{ form.category|add_class:"custom-input" }}
+                    {% if form.category.errors %}
+                        {% for error in form.category.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+        
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                
+                <button class="form-button">
+                    {% trans 'Добавяне' %}
+                </button>
             </form>
         </div>
     </div>

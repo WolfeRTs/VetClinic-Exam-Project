@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'widget_tweaks',
 ] + MY_APPS
 
 MIDDLEWARE = [
@@ -91,8 +92,8 @@ DATABASES = {
         "NAME": config('DATABASE_NAME'),
         "USER": config('DATABASE_USER'),
         "PASSWORD": config('DATABASE_PASSWORD'),
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "HOST": config('DATABASE_HOST'),
+        "PORT": config('DATABASE_PORT', default='5432', cast=int),
     }
 }
 

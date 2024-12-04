@@ -22,7 +22,7 @@
                 ваксинации, спешни случаи или специализирани услуги. Разгледайте сайта ни, за да научите повече за нашите услуги, екип и полезни съвети за отглеждането на вашите четириноги приятели. 
                 Нека заедно се погрижим за здравето и комфорта на вашите любимци!
             </p>
-            <a class="button-link button-dark" href="#">Повече за нас</a>
+            <a class="button-link button-dark" href="{% url 'about-us' %}">Повече за нас</a>
         </div>
     </div>
     <div class="main-element-dark">
@@ -32,7 +32,7 @@
                 От диагностика и вътрешни болести до хирургия, стоматология и дерматология – всеки от нашите специалисти е посветен на предоставянето на най-висококачествена и индивидуализирана грижа. 
                 С актуални знания и модерна апаратура, нашите лекари са тук, за да осигурят комплексна помощ и специализирано лечение, съобразено с уникалните нужди на вашите любимци
             </p>
-            <a class="button-link button-light" href="#">Лекари</a>
+            <a class="button-link button-light" href="{% url 'doctors' %}">Лекари</a>
         </div> 
     </div>
     <div class="main-element-light">
@@ -64,7 +64,7 @@
                     <p>Груминг</p>
                 </div>
             </div>
-            <a class="button-link button-dark" href="#">Услуги</a>
+            <a class="button-link button-dark" href="{% url 'services-dashboard' %}">Услуги</a>
         </div>
     </div>
     <div class="main-element-dark">
@@ -93,7 +93,7 @@
                 <a href="#"><i class="fa-brands fa-facebook"></i></a>
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#"><i class="fa-brands fa-viber"></i></a>
-                <a href="#" class="button-link button-dark">Виж повече...</a>
+                <a href="{% url 'contacts' %}" class="button-link button-dark">Виж повече...</a>
             </div>
         </div>
     </div>

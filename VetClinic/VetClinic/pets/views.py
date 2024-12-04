@@ -5,10 +5,11 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 
+from VetClinic.accounts.models import CustomUser
 from VetClinic.permissions import is_vet
 from VetClinic.pets.forms import PetAddForm, PetEditForm, PetDeleteForm, MedicalReportAddForm, MedicalReportEditForm, \
     MedicalReportDeleteForm
-from VetClinic.pets.models import Pet, MedicalReport
+from VetClinic.pets.models import Pet, MedicalReport, PetStatus
 from VetClinic.services.models import Service, Medicine
 
 
@@ -39,11 +40,18 @@ class PetAddView(LoginRequiredMixin, CreateView):
         )
 
     def form_valid(self, form):
-        form = form.save(commit=False)
-        form.owner = self.request.user
-        form.save()
-        return super().form_valid(form)
+        pet = form.save(commit=False)
+        if self.request.user.is_vet:
+            owner_id = self.request.GET.get('owner_id')
+            pet.owner = CustomUser.objects.get(pk=owner_id)
+        else:
+            pet.owner = self.request.user
+        pet.save()
 
+        status_data = form.get_pet_status_data()
+        PetStatus.objects.create(pet=pet, **status_data)
+
+        return super().form_valid(form)
 
 class PetEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Pet
@@ -60,6 +68,16 @@ class PetEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         pet = get_object_or_404(Pet, pk=self.kwargs['pet_id'])
         return is_vet(self.request.user) or self.request.user == pet.owner
+
+    def form_valid(self, form):
+        pet = form.save(commit=False)
+
+        status_data = form.get_pet_status_data()
+        for key, value in status_data.items():
+            setattr(pet.status, key, value)
+            pet.status.save()
+
+        return super().form_valid(form)
 
 
 class PetDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -89,6 +107,7 @@ class MedicalReportDashboard(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = MedicalReport
     template_name = 'pets/medical-reports/report-dashboard.html'
     context_object_name = 'reports'
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -117,7 +136,6 @@ class MedicalReportDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailVi
 
     def test_func(self):
         report = get_object_or_404(MedicalReport, pk=self.kwargs['report_id'])
-        print(self.request.user.get_user_permissions())
         return self.request.user.has_perm('pets.view_medicalreport') or self.request.user == report.pet.owner
 
 
@@ -144,11 +162,14 @@ class MedicalReportAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         medicines_data = self.request.POST.get('medicines', '[]')  # Optional
 
         # Parse the JSON strings into Python lists
-        try:
+        if services_data:
             service_ids = json.loads(services_data)
+        else:
+            service_ids = []
+        if medicines_data:
             medicine_ids = json.loads(medicines_data)
-        except json.JSONDecodeError:
-            return super().form_invalid(form)
+        else:
+            medicine_ids = []
 
         # Link the services and medicines to the medical report
         services = Service.objects.filter(id__in=service_ids)

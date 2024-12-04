@@ -1,15 +1,47 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
+{% load custom_placeholder %}
 
 {% block content %}
+    
     <div class="form-container site-container">
         <div class="form-card">
-            <form action="" method="post">
+            <h2>{% trans 'Добре дошли!' %}</h2>
+            <p class="subtitle">{% trans 'Въведете потребителско име и парола' %}</p>
+            <form class="custom-form" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <button type="submit">{% trans 'Влизане' %}</button>
+                <div class="input-container">
+                    <label for="username_login" class="custom-label">{% trans 'Потребителско име' %}</label>
+                    {{ form.username|add_class:"custom-input"|placeholder:'Въведете потребителско име' }}
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <label for="password_login" class="custom-label">{% trans 'Парола' %}</label>
+                    {{ form.password|add_class:"custom-input"|placeholder:'Въведете парола' }}
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <p class="error-text">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    {% for error in form.non_field_errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                
+                <button type="submit" class="form-button">
+                    {% trans 'Влизане' %}
+                </button>
             </form>
         </div>
     </div>
+    
+    
     
 {% endblock %}

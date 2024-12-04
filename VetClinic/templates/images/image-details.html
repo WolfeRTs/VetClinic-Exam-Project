@@ -5,24 +5,67 @@
     
     <div class="site-container">
         <div class="image-container">
-            <img src="{{ image.image.url }}" alt="">
-            <div class="buttons-container">
-                <a href="{% url 'image-edit' image.pk %}">Edit</a>
-                <a href="{% url 'image-delete' image.pk %}">Delete</a>
+            <div class="prev-next-container">
+                {% if previous_image %}
+                    <a href="{% url 'image-details' previous_image.pk %}" class="btn">
+                        <svg version="1.1" id="icons_1_" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128" xml:space="preserve" height="50" width="50">
+                            <style>.st0{display:none}.st1{display:inline}.st2{fill:var(--green-medium)}</style>
+                            <g id="row2_1_">
+                                <g id="_x31__4_">
+                                    <path class="st2" d="M64 .3C28.7.3 0 28.8 0 64s28.7 63.7 64 63.7 64-28.5 64-63.7S99.3.3 64 .3zm0 121C32.2 121.3 6.4 95.7 6.4 64 6.4 32.3 32.2 6.7 64 6.7s57.6 25.7 57.6 57.3c0 31.7-25.8 57.3-57.6 57.3zm1.3-82.8L41.6 64l23.6 25.5h13.5L54.4 64l24.4-25.5H65.3z" id="left_3_"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                {% endif %}
+                <img src="{{ image.image.url }}" alt="">
+                {% if next_image %}
+                    <a href="{% url 'image-details' next_image.pk %}" class="btn">
+                        <svg version="1.1" id="icons_1_" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128" xml:space="preserve" height="50" width="50">
+                            <style>.st0{display:none}.st1{display:inline}.st2{fill:var(--green-medium)}</style>
+                            <g id="row1_1_">
+                                <g id="_x31__3_">
+                                    <path class="st2" d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm0 121.6C32.2 121.6 6.4 95.8 6.4 64S32.2 6.4 64 6.4s57.6 25.8 57.6 57.6-25.8 57.6-57.6 57.6zM49.2 38.4 73.6 64 49.2 89.6h13.5L86.4 64 62.7 38.4H49.2z" id="_x32__2_"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                {% endif %}
             </div>
-        </div>
-        <div class="navigation-buttons">
-            {% if previous_image %}
-                <a href="{% url 'image-details' previous_image.pk %}" class="btn">Previous</a>
-            {% else %}
-                <button class="btn" disabled>Previous</button>
+        
+            {% if request.user.is_vet %}
+                <div class="image-buttons-container">
+                    <a href="{% url 'image-edit' image.pk %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:space="preserve" width="50" height="50">
+                            <path fill="#EDEFF1" d="M436 502H76V10h266l94 94z"/>
+                            <path fill="#D3D3D3" d="M101 192h200v30H101zM101 132h240v30H101zM101 252h160v30H101z"/>
+                            <path fill="#466089" d="M101 452h100v30H101z"/>
+                            <path fill="#D3D3D3" d="m342 10 94 94h-94z"/>
+                            <g>
+                                <path fill="#6E83B7" d="m486 220-58-58-240 240v43.857l-19.071 19.072 14.142 14.142L202.143 460H246z"/>
+                                <path fill="#FFE352" d="m357.496 232.501 27-27 58 58-27 27z"/>
+                            </g>
+                        </svg>
+                        <span class="static-hint-box">{% trans 'Редактиране' %}</span>
+                    </a>
+                    <a href="{% url 'image-delete' image.pk %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="50" height="50" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd" viewBox="0 0 6.827 6.827">
+                            <defs><style>.fil0{fill:none}</style></defs>
+                            <g id="Layer_x0020_1"><g id="_486850792">
+                                <path id="_486850144" class="fil0" d="M0 0h6.827v6.827H0z"/>
+                                <path id="_486850552" class="fil0" d="M.853.853h5.12v5.12H.853z"/>
+                            </g>
+                            <g id="_486849568">
+                                <path id="_486849592" d="M3.467 3.063 5.554.92a.244.244 0 0 1 .35.341L3.808 3.413l-.341.35-2.088 2.144a.244.244 0 0 1-.35-.34l2.097-2.154.34-.35z" style="fill:#A4393B"/>
+                                <path id="_486850024" d="m1.38.92 2.087 2.143.34.35 2.097 2.154a.244.244 0 0 1-.35.34L3.467 3.763l-.341-.35L1.029 1.26a.244.244 0 0 1 .35-.34z" style="fill:#85353B"/>
+                            </g>
+                            </g>
+                        </svg>
+                        <span class="static-hint-box">{% trans 'Изтриване' %}</span>
+                    </a>
+                </div>
             {% endif %}
         
-            {% if next_image %}
-                <a href="{% url 'image-details' next_image.pk %}" class="btn">Next</a>
-            {% else %}
-                <button class="btn" disabled>Next</button>
-            {% endif %}
         </div>
     </div>
     

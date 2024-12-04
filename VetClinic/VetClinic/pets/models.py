@@ -46,12 +46,6 @@ class Pet(models.Model):
         related_name='owner_pets',
     )
 
-    doctors = models.ManyToManyField(
-        verbose_name=_('doctors'),
-        to=UserModel,
-        related_name='doctor_pets',
-    )
-
     date_added = models.DateField(
         _('date added'),
         auto_now_add=True,

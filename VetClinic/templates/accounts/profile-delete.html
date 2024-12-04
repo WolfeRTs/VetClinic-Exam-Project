@@ -3,12 +3,17 @@
 
 {% block content %}
     
-    <div>
-        {% trans 'Сигурни ли сте, че искате да изтриете своя профил?' %}
+    <div class="site-container form-container">
+        <div class="form-card">
+            <h2>{% trans 'Сигурни ли сте, че искате да изтриете своя профил?' %}</h2>
+            <form class="custom-form" action="{% url 'profile-delete' object.pk %}" method="post">
+                {% csrf_token %}
+                <div class="form-buttons-container">
+                    <button class="form-button">{% trans 'Да' %}</button>
+                    <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <form action="" method="post">
-        {% csrf_token %}
-        <button>{% trans 'Да' %}</button>
-    </form>
     
 {% endblock %}

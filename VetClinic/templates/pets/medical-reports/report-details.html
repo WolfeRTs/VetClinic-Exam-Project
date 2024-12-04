@@ -3,30 +3,85 @@
 {% load i18n %}
 
 {% block content %}
+    <div class="site-container report-container">
+        <div class="report-card">
+            <h2>{% trans 'Информация за преглед' %}</h2>
+            <h3>{{ report.title }}</h3>
+            <div class="report-tags">
+                <div class='service-tags'>
+                    {% for service in services %}
+                        <div class="service-color item-tag" data-tag-item="{{ service.description }}">
+                            <span>{{ service.name }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class='medicine-tags'>
+                    {% for medicine in medicines %}
+                        <div class="item-tag medicine-color" data-tag-item="{{ medicine.description }}">
+                            <span>{{ medicine.name }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="report-doctor">
+                {% if report.doctor %}
+                    <p>{% trans 'Лекар: ' %}<span>{% trans 'д-р ' %}{{ report.doctor.profile.get_name }}</span></p>
+                {% else %}
+                    {% if report.doctor_name %}
+                        <p>{% trans 'Лекар: ' %}<span>{% trans 'д-р ' %}{{ report.doctor_name }}</span></p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="report-description">
+                <h4>{% trans 'Описание' %}</h4>
+                <p>{{ report.description }}</p>
+            </div>
+            <div class="report-instructions">
+                <h4>{% trans 'Инструкции' %}</h4>
+                <p>{{ report.instructions }}</p>
+            </div>
+            <div class="report-dates">
+                <p><span>{% trans 'Добавен: ' %}</span>{{ report.date_added|date:'d-m-Y H:i' }}</p>
+                <p><span>{% trans 'Редактиран: ' %}</span>{{ report.date_updated|date:'d-m-Y H:i' }}</p>
+            </div>
+            {% if request.user.is_vet %}
+                <div class="report-buttons">
+                    <a href="{% url 'report-edit' report.pet.pk report.pk %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:space="preserve" width="50" height="50">
+                                <path fill="#EDEFF1" d="M436 502H76V10h266l94 94z"/><path fill="#D3D3D3" d="M101 192h200v30H101zM101 132h240v30H101zM101 252h160v30H101z"/>
+                            <path fill="#466089" d="M101 452h100v30H101z"/>
+                            <path fill="#D3D3D3" d="m342 10 94 94h-94z"/>
+                            <g>
+                                <path fill="#6E83B7" d="m486 220-58-58-240 240v43.857l-19.071 19.072 14.142 14.142L202.143 460H246z"/>
+                                <path fill="#FFE352" d="m357.496 232.501 27-27 58 58-27 27z"/>
+                            </g>
+                        </svg>
+                        <span class="static-hint-box">{% trans 'Редактирай' %}</span>
+                    </a>
+                    <a href="{% url 'report-delete' report.pet.pk report.pk %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="50" height="50" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd" viewBox="0 0 6.827 6.827">
+                            <defs><style>.fil0{fill:none}</style></defs>
+                            <g id="Layer_x0020_1"><g id="_486850792">
+                                <path id="_486850144" class="fil0" d="M0 0h6.827v6.827H0z"/>
+                                <path id="_486850552" class="fil0" d="M.853.853h5.12v5.12H.853z"/>
+                            </g><g id="_486849568">
+                                <path id="_486849592" d="M3.467 3.063 5.554.92a.244.244 0 0 1 .35.341L3.808 3.413l-.341.35-2.088 2.144a.244.244 0 0 1-.35-.34l2.097-2.154.34-.35z" style="fill:#A4393B"/>
+                                <path id="_486850024" d="m1.38.92 2.087 2.143.34.35 2.097 2.154a.244.244 0 0 1-.35.34L3.467 3.763l-.341-.35L1.029 1.26a.244.244 0 0 1 .35-.34z" style="fill:#85353B"/>
+                            </g>
+                            </g>
+                        </svg>
+                        <span class="static-hint-box">{% trans 'Изтрий' %}</span>
+                    </a>
+                </div>
+            {% endif %}
+        
+            <div id="hint-box" class="hint-box hidden">
+                <p class="hint-content"></p>
+            </div>
+        </div>
+        
+    </div>
     
-    <h2>Medical Report</h2>
-    <p>{{ report.title }}</p>
-    <p>{{ report.description }}</p>
-    <p>{{ report.instructions }}</p>
-    <p>Services:</p>
-    <div class='service-tags'>
-        {% for service in services %}
-            <li class='item-tag' data-tag-item="{{ service.description }}">{{ service.name }}</li>
-        {% endfor %}
-    </div>
-    <p>Medicines:</p>
-    <div class='medicine-tags'>
-        {% for medicine in medicines %}
-            <li class='item-tag' data-tag-item="{{ medicine.description }}">{{ medicine.name }}</li>
-        {% endfor %}
-    </div>
-
-    <a href="{% url 'report-edit' report.pet.pk report.pk %}" class="">Edit</a>
-    <a href="{% url 'report-delete' report.pet.pk report.pk %}" class="">Delete</a>
-    
-    <div id="hint-box" class="hint-box hidden">
-        <p class="hint-content"></p>
-    </div>
 
     <script src={% static 'js/hint-box.js' %}></script>
     
