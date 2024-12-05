@@ -51,6 +51,9 @@ class Pet(models.Model):
         auto_now_add=True,
     )
 
+    def __str__(self):
+        return self.name
+
 
 class PetStatus(models.Model):
     pet = models.OneToOneField(
@@ -138,3 +141,5 @@ class MedicalReport(models.Model):
         related_name='medical_reports',
     )
 
+    def __str__(self):
+        return self.title

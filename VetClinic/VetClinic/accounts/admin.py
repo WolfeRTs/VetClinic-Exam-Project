@@ -21,8 +21,8 @@ class CustomUserAdmin(UserAdmin):
 
     list_display = ("username", "email", "is_staff", "is_vet",
                     "profile__first_name", "profile__last_name", "profile__phone_number")
-    list_filter = ("is_staff", "is_superuser", "is_active", "groups")
-    search_fields = ("username", "email")
+    list_filter = ("is_staff", "is_superuser", "is_active", "is_vet", "groups",)
+    search_fields = ("username", "email", "profile__first_name", "profile__last_name",)
     ordering = ("username",)
 
     fieldsets = (
