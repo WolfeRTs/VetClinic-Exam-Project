@@ -22,7 +22,7 @@
                 </div>
                 <div class="input-container">
                     <label for="description_report_add" class="custom-label">{% trans 'Описание' %}</label>
-                    {{ form.description|add_class:"custom-input"|placeholder:"Анамнеза и диагноза" }}
+                    {{ form.description|add_class:"custom-input"|placeholder:"Въведете описание" }}
                     {% if form.description.errors %}
                         {% for error in form.description.errors %}
                             <p class="error-text">{{ error }}</p>
@@ -44,14 +44,15 @@
                         <p class="error-text">{{ error }}</p>
                     {% endfor %}
                 </div>
-                <label for="services-add-input" class="custom-label">Services:</label>
+                <label for="services-add-input" class="custom-label">{% trans 'Услуги:' %}</label>
                 <input id='services-add-input' name='services' class='tagify--custom-dropdown'>
-                <label for="medicines-add-input" class="custom-label">Medicines:</label>
+                <label for="medicines-add-input" class="custom-label">{% trans 'Лекарствени продукти:' %}</label>
                 <input id='medicines-add-input' name='medicines' class='tagify--custom-dropdown'>
                 
-                <button class="form-button">
-                    {% trans 'Добави' %}
-                </button>
+                <div class="form-buttons-container">
+                    <button class="form-button">{% trans 'Добави' %}</button>
+                    <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
+                </div>
             </form>
         </div>
     </div>

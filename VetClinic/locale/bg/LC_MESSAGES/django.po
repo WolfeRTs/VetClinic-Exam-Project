@@ -1,0 +1,1079 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-07 17:32+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\VetClinic\accounts\models.py:15
+msgid "username"
+msgstr "потребителско име"
+
+#: .\VetClinic\accounts\models.py:19
+msgid "Username should be at least 3 characters long"
+msgstr "Потребителското име трябва да съдържа поне 3 символа"
+
+#: .\VetClinic\accounts\models.py:23
+msgid ""
+"The username should consist of uppercase and lowercase letters, numbers, "
+"and ./-/_ characters only"
+msgstr ""
+"Потребителското име трябва да съдържа само малки и главни букви, цифри и/"
+"или ./-/_"
+
+#: .\VetClinic\accounts\models.py:27
+msgid "A user with that username already exists!"
+msgstr "Потребител, с това потребителско име, вече съществува!"
+
+#: .\VetClinic\accounts\models.py:32
+msgid "email"
+msgstr "имейл"
+
+#: .\VetClinic\accounts\models.py:37
+msgid "staff status"
+msgstr "статус на персонал"
+
+#: .\VetClinic\accounts\models.py:42
+msgid "active"
+msgstr "активен"
+
+#: .\VetClinic\accounts\models.py:47
+msgid "veterinarian"
+msgstr "ветеринарен лекар"
+
+#: .\VetClinic\accounts\models.py:66
+msgid "user"
+msgstr "потребител"
+
+#: .\VetClinic\accounts\models.py:74
+msgid "first name"
+msgstr "собствено име"
+
+#: .\VetClinic\accounts\models.py:77
+msgid "First name should be at least 2 characters long"
+msgstr "Собственото име трябва да съдържа поне 2 символа"
+
+#: .\VetClinic\accounts\models.py:85
+msgid "last name"
+msgstr "последно име"
+
+#: .\VetClinic\accounts\models.py:87
+msgid "Last name should be at least 2 characters long"
+msgstr "Последното име трябва да съдържа поне 2 символа"
+
+#: .\VetClinic\accounts\models.py:96
+msgid "country"
+msgstr "държава"
+
+#: .\VetClinic\accounts\models.py:99
+msgid "Country should be at least 3 characters long"
+msgstr "Името на държавата трябва да съдържа поне 2 символа"
+
+#: .\VetClinic\accounts\models.py:107
+msgid "city"
+msgstr "град"
+
+#: .\VetClinic\accounts\models.py:110
+msgid "City should be at least 3 characters long"
+msgstr "Името на града трябва да съдържа поне 3 символа"
+
+#: .\VetClinic\accounts\models.py:118
+msgid "phone number"
+msgstr "телефонен номер"
+
+#: .\VetClinic\accounts\models.py:121
+msgid "Phone number should be exactly 10 characters long"
+msgstr "Телефонният номер трябва да съдържа точно 10 цифри"
+
+#: .\VetClinic\accounts\models.py:122
+msgid "Phone number should consist of digits only"
+msgstr "Телефонният номер трябва да съдържа само цифри"
+
+#: .\VetClinic\accounts\validators.py:10
+msgid ""
+"Enter a valid username using only uppercase and lowercase letters, numbers, "
+"and ./-/_ characters!"
+msgstr ""
+"Въведете валидно потребителско име, използвайки само малки и главни букви, "
+"цифри и/или ./-/_"
+
+#: .\VetClinic\images\choices.py:6
+msgid "Carousel"
+msgstr "Каросел"
+
+#: .\VetClinic\images\choices.py:7
+msgid "Gallery"
+msgstr "Галерия"
+
+#: .\VetClinic\images\choices.py:8
+msgid "Other"
+msgstr "Други"
+
+#: .\VetClinic\images\models.py:11
+msgid "image"
+msgstr "изображение"
+
+#: .\VetClinic\images\models.py:20
+msgid "date uploaded"
+msgstr "дата на добавяне"
+
+#: .\VetClinic\images\models.py:25 .\VetClinic\services\models.py:39
+msgid "category"
+msgstr "категория"
+
+#: .\VetClinic\images\validators.py:21
+#, python-brace-format
+msgid "Max file size is {self.max_size} MB!"
+msgstr "Максималният допустим размер на файла е {self.max_size} MB!"
+
+#: .\VetClinic\pets\choices.py:6
+msgid "Male"
+msgstr "Мъжки"
+
+#: .\VetClinic\pets\choices.py:7
+msgid "Female"
+msgstr "Женски"
+
+#: .\VetClinic\pets\models.py:13 .\VetClinic\services\models.py:7
+#: .\VetClinic\services\models.py:25
+msgid "name"
+msgstr "име"
+
+#: .\VetClinic\pets\models.py:21
+msgid "species"
+msgstr "вид"
+
+#: .\VetClinic\pets\models.py:26
+msgid "breed"
+msgstr "порода"
+
+#: .\VetClinic\pets\models.py:33
+msgid "sex"
+msgstr "пол"
+
+#: .\VetClinic\pets\models.py:39
+msgid "date of birth"
+msgstr "дата на раждане"
+
+#: .\VetClinic\pets\models.py:43
+msgid "owner"
+msgstr "собственик"
+
+#: .\VetClinic\pets\models.py:50 .\VetClinic\pets\models.py:112
+msgid "date added"
+msgstr "дата на добавяне"
+
+#: .\VetClinic\pets\models.py:60 .\VetClinic\pets\models.py:138
+msgid "pet"
+msgstr "любимец"
+
+#: .\VetClinic\pets\models.py:68
+msgid "neutered"
+msgstr "кастрация"
+
+#: .\VetClinic\pets\models.py:73
+msgid "vaccinated"
+msgstr "ваксинация"
+
+#: .\VetClinic\pets\models.py:78
+msgid "last vaccination date"
+msgstr "дата на последна ваксинация"
+
+#: .\VetClinic\pets\models.py:84
+msgid "last external deworming"
+msgstr "последно вътрешно обезпаразитяване"
+
+#: .\VetClinic\pets\models.py:90
+msgid "last internal deworming"
+msgstr "последно външно обезпаразитяване"
+
+#: .\VetClinic\pets\models.py:99
+msgid "title"
+msgstr "заглавие"
+
+#: .\VetClinic\pets\models.py:104 .\VetClinic\services\models.py:13
+msgid "description"
+msgstr "описание"
+
+#: .\VetClinic\pets\models.py:108
+msgid "instructions"
+msgstr "инструкции"
+
+#: .\VetClinic\pets\models.py:117
+msgid "date updated"
+msgstr "дата на добавяне"
+
+#: .\VetClinic\pets\models.py:122
+msgid "doctor"
+msgstr "лекар"
+
+#: .\VetClinic\pets\models.py:131
+msgid "doctor name"
+msgstr "име на лекар"
+
+#: .\VetClinic\services\models.py:34
+msgid "Service categories"
+msgstr ""
+
+#: .\VetClinic\services\models.py:48 .\VetClinic\services\models.py:60
+msgid "reports"
+msgstr "прегледи"
+
+#: .\VetClinic\services\models.py:56
+msgid "dosages"
+msgstr "дози"
+
+#: .\VetClinic\settings.py:127
+msgid "Bulgarian"
+msgstr "Български"
+
+#: .\VetClinic\settings.py:128
+msgid "English"
+msgstr "Английски"
+
+#: .\VetClinic\validators.py:18
+msgid "Name should start with a capital letter!"
+msgstr "Името трябва да започва с главна буква!"
+
+#: .\templates\accounts\login.html:10
+msgid "Добре дошли!"
+msgstr ""
+
+#: .\templates\accounts\login.html:11
+msgid "Въведете потребителско име и парола"
+msgstr ""
+
+#: .\templates\accounts\login.html:15 .\templates\accounts\register.html:16
+msgid "Потребителско име"
+msgstr ""
+
+#: .\templates\accounts\login.html:24 .\templates\accounts\register.html:37
+msgid "Парола"
+msgstr ""
+
+#: .\templates\accounts\login.html:39 .\templates\base.html:100
+msgid "Влизане"
+msgstr ""
+
+#: .\templates\accounts\login.html:41
+msgid "Нямате регистрация? Направете я "
+msgstr ""
+
+#: .\templates\accounts\login.html:43
+msgid "тук"
+msgstr ""
+
+#: .\templates\accounts\profile-delete.html:8
+msgid "Сигурни ли сте, че искате да изтриете своя профил?"
+msgstr ""
+
+#: .\templates\accounts\profile-delete.html:12
+#: .\templates\images\image-delete.html:12
+#: .\templates\pets\medical-reports\report-delete.html:44
+#: .\templates\pets\pet\pet-details.html:47
+#: .\templates\services\medicine\medicine-edit.html:65
+#: .\templates\services\service\service-edit.html:125
+msgid "Да"
+msgstr ""
+
+#: .\templates\accounts\profile-delete.html:13
+#: .\templates\accounts\profile-edit.html:66
+#: .\templates\images\image-add.html:38 .\templates\images\image-delete.html:13
+#: .\templates\images\image-edit.html:29
+#: .\templates\pets\medical-reports\report-add.html:54
+#: .\templates\pets\medical-reports\report-delete.html:45
+#: .\templates\pets\medical-reports\report-edit.html:54
+#: .\templates\pets\pet\pet-add.html:122
+#: .\templates\pets\pet\pet-delete.html:35
+#: .\templates\pets\pet\pet-edit.html:122
+#: .\templates\services\medicine\medicine-add.html:49
+#: .\templates\services\medicine\medicine-edit.html:55
+#: .\templates\services\service\service-add.html:108
+#: .\templates\services\service\service-edit.html:115
+msgid "Назад"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:66
+msgid "Телефонен номер:"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:67
+#: .\templates\accounts\profile-details.html:71
+#: .\templates\accounts\profile-details.html:75
+#: .\templates\pets\pet\pet-details.html:39
+#: .\templates\pets\pet\pet-details.html:51
+#: .\templates\pets\pet\pet-details.html:55
+#: .\templates\pets\pet\pet-details.html:59
+msgid "(непопълнено)"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:70
+msgid "Държава:"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:74
+msgid "Град:"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:89
+#: .\templates\accounts\profile-edit.html:65
+#: .\templates\images\image-details.html:49
+#: .\templates\images\image-edit.html:28
+#: .\templates\pets\medical-reports\report-details.html:59
+#: .\templates\pets\medical-reports\report-edit.html:53
+#: .\templates\pets\pet\pet-details.html:73
+#: .\templates\pets\pet\pet-edit.html:121
+#: .\templates\services\medicine\medicine-edit.html:49
+#: .\templates\services\service\service-edit.html:109
+msgid "Редактирай"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:104
+#: .\templates\images\image-details.html:64
+#: .\templates\pets\medical-reports\report-details.html:73
+#: .\templates\pets\pet\pet-delete.html:34
+#: .\templates\pets\pet\pet-details.html:88
+#: .\templates\services\medicine\medicine-edit.html:52
+#: .\templates\services\service\service-edit.html:112
+msgid "Изтрий"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:110
+#: .\templates\common\vet-dashboard.html:11
+#: .\templates\common\vet-dashboard.html:20
+msgid "Любимци"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:132
+#: .\templates\pets\medical-reports\report-dashboard.html:34
+#: .\templates\pets\pet\pet-details.html:105
+msgid "Детайли"
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:137
+msgid "Няма записани любимци."
+msgstr ""
+
+#: .\templates\accounts\profile-details.html:156
+msgid "Добави нов любимец"
+msgstr ""
+
+#: .\templates\accounts\profile-edit.html:9
+msgid "Редактиране на профил"
+msgstr ""
+
+#: .\templates\accounts\profile-edit.html:13
+msgid "Собствено име"
+msgstr ""
+
+#: .\templates\accounts\profile-edit.html:22
+msgid "Фамилно име"
+msgstr ""
+
+#: .\templates\accounts\profile-edit.html:31
+msgid "Държава"
+msgstr ""
+
+#: .\templates\accounts\profile-edit.html:40
+msgid "Град"
+msgstr ""
+
+#: .\templates\accounts\profile-edit.html:49
+msgid "Телефонен номер"
+msgstr ""
+
+#: .\templates\accounts\register.html:9
+msgid "Регистрация на потребител"
+msgstr ""
+
+#: .\templates\accounts\register.html:25 .\templates\common\contacts.html:19
+msgid "Имейл"
+msgstr ""
+
+#: .\templates\accounts\register.html:46
+msgid "Повторете паролата"
+msgstr ""
+
+#: .\templates\accounts\register.html:61 .\templates\base.html:90
+msgid "Регистрация"
+msgstr ""
+
+#: .\templates\base.html:39 .\templates\common\about-us.html:7
+msgid "За Нас"
+msgstr ""
+
+#: .\templates\base.html:40 .\templates\common\index.html:50
+msgid "Лекари"
+msgstr ""
+
+#: .\templates\base.html:41 .\templates\common\index.html:82
+#: .\templates\common\vet-dashboard.html:13
+#: .\templates\common\vet-dashboard.html:28
+msgid "Услуги"
+msgstr ""
+
+#: .\templates\base.html:42
+msgid "Галерия"
+msgstr ""
+
+#: .\templates\base.html:43 .\templates\common\index.html:119
+msgid "Контакти"
+msgstr ""
+
+#: .\templates\base.html:45
+msgid "ВетКонтрол"
+msgstr ""
+
+#: .\templates\base.html:61
+msgid "Български"
+msgstr ""
+
+#: .\templates\base.html:65
+msgid "Английски"
+msgstr ""
+
+#: .\templates\base.html:109
+msgid "Профил"
+msgstr ""
+
+#: .\templates\base.html:121
+msgid "Изход"
+msgstr ""
+
+#: .\templates\base.html:145
+msgid "ул. Васил Стефанов 13"
+msgstr ""
+
+#: .\templates\common\about-us.html:9
+msgid ""
+"\n"
+"                Нашата клиника е повече от просто място за ветеринарна грижа "
+"– тя е дом, където вашите домашни любимци \n"
+"                са винаги добре дошли. Ние вярваме, че здравето и "
+"благополучието на животните са неразделна част от \n"
+"                щастливия живот на техните стопани. С дългогодишен опит в "
+"грижата за животни и страст към нашата \n"
+"                професия, ние създадохме клиника, която съчетава най-"
+"съвременни технологии, индивидуален подход към \n"
+"                всяко животно и уютна атмосфера. Независимо дали става "
+"въпрос за рутинна профилактика или \n"
+"                сложна медицинска интервенция, нашият екип е тук, за да "
+"гарантира най-доброто за вашия любимец. \n"
+"                Ние не просто лекуваме – ние създаваме връзки на доверие и "
+"приятелство с нашите пациенти \n"
+"                и техните семейства.\n"
+"            "
+msgstr ""
+
+#: .\templates\common\about-us.html:20
+msgid "Защо да изберете нас"
+msgstr ""
+
+#: .\templates\common\about-us.html:22
+msgid ""
+"\n"
+"                Изборът на ветеринарна клиника е важно решение за всяко "
+"семейство с домашен любимец, и ние разбираме \n"
+"                отговорността, която идва с вашето доверие. Нашият екип е "
+"съставен от висококвалифицирани специалисти, \n"
+"                които не само разполагат с богат опит, но и непрекъснато се "
+"обучават в най-новите методи на диагностика и \n"
+"                лечение. Клиниката ни е оборудвана с модерна апаратура, "
+"която ни позволява да предоставяме точни и \n"
+"                навременни резултати. Но това, което ни отличава, е нашето "
+"отношение – ние знаем, че всеки любимец е \n"
+"                уникален, и подхождаме с внимание и грижа към всяка "
+"ситуация. От първия контакт до последващите грижи, ние \n"
+"                се стремим да бъдем партньори, които винаги са до вас, "
+"когато имате нужда.\n"
+"            "
+msgstr ""
+
+#: .\templates\common\about-us.html:32
+msgid "Нашата история"
+msgstr ""
+
+#: .\templates\common\about-us.html:34
+msgid ""
+"\n"
+"                Нашата история започна с една проста, но значима мечта: да "
+"създадем място, където животните да \n"
+"                получават грижа, любов и защита, а техните стопани – "
+"спокойствие и увереност. Още от откриването на \n"
+"                клиниката ние се посветихме на това да изграждаме връзки с "
+"нашите пациенти и техните семейства. \n"
+"                Водени от желание за непрекъснато усъвършенстване, успяхме "
+"да превърнем тази мечта в реалност. Годините ни \n"
+"                научиха, че доверието не се печели само с професионализъм, а "
+"и с лично отношение, човечност и отдаденост. \n"
+"                Днес, когато погледнем назад, се гордеем, че сме били част "
+"от живота на хиляди животни – от първите им \n"
+"                стъпки до зрелостта им, през всички моменти на радост и "
+"предизвикателства. Нашата история е историята на \n"
+"                всяко семейство, което сме докоснали с нашата грижа.\n"
+"            "
+msgstr ""
+
+#: .\templates\common\contacts.html:8
+msgid "Работно време"
+msgstr ""
+
+#: .\templates\common\contacts.html:9
+msgid "Пон-Петък: 09:00-21:00 часа"
+msgstr ""
+
+#: .\templates\common\contacts.html:10
+msgid "Събота: 10:00-20:00 часа"
+msgstr ""
+
+#: .\templates\common\contacts.html:11
+msgid "Неделя: 10:00-16:00 часа"
+msgstr ""
+
+#: .\templates\common\contacts.html:15
+msgid "Телефони за контакти"
+msgstr ""
+
+#: .\templates\common\contacts.html:39
+msgid "Адрес: "
+msgstr ""
+
+#: .\templates\common\contacts.html:39
+msgid "град София, ж.к Манастирски ливади, ул. Васил Стефанов 13"
+msgstr ""
+
+#: .\templates\common\contacts.html:53
+msgid "локация"
+msgstr ""
+
+#: .\templates\common\doctors.html:13
+msgid "Д-р Елена Димитрова"
+msgstr ""
+
+#: .\templates\common\doctors.html:14 .\templates\common\doctors.html:31
+#: .\templates\common\doctors.html:54 .\templates\common\doctors.html:72
+msgid "Специализация:"
+msgstr ""
+
+#: .\templates\common\doctors.html:15
+msgid "Вътрешни болести и обща грижа за малки животни"
+msgstr ""
+
+#: .\templates\common\doctors.html:16 .\templates\common\doctors.html:33
+#: .\templates\common\doctors.html:56 .\templates\common\doctors.html:74
+msgid "Биография:"
+msgstr ""
+
+#: .\templates\common\doctors.html:18
+msgid ""
+"\n"
+"                        Д-р Елена Димитрова има над 15 години опит в "
+"лечението на кучета, котки и други малки животни. \n"
+"                        Завършила е в Лесотехническия университет в София и "
+"се фокусира върху осигуряването на качествена \n"
+"                        диагностика и профилактична грижа за своите "
+"пациенти. Тя вярва, че всяко животно заслужава \n"
+"                        индивидуално внимание и се стреми да създава "
+"спокойна и комфортна среда за своите четириноги \n"
+"                        пациенти. В свободното си време обича да чете и да "
+"се грижи за своите две котки, Лола и Пух.\n"
+"                    "
+msgstr ""
+
+#: .\templates\common\doctors.html:30
+msgid "Д-р Иван Стоянов"
+msgstr ""
+
+#: .\templates\common\doctors.html:32
+msgid "Хирургия и стоматология за малки животни"
+msgstr ""
+
+#: .\templates\common\doctors.html:35
+msgid ""
+"\n"
+"                        Д-р Иван Стоянов е специалист по хирургия и "
+"стоматология за малки животни. Той има повече от \n"
+"                        десетилетие опит в извършването на сложни операции и "
+"осигуряването на висококачествена дентална \n"
+"                        грижа за домашни любимци. След като завършва с "
+"отличие, д-р Стоянов преминава допълнителни \n"
+"                        обучения в Европа, за да се специализира в минимално "
+"инвазивна хирургия. Извън клиниката обича да \n"
+"                        участва в семинари за ветеринарни лекари и да "
+"прекарва време със своето куче Макс.\n"
+"                    "
+msgstr ""
+
+#: .\templates\common\doctors.html:53
+msgid "Д-р Мария Петрова"
+msgstr ""
+
+#: .\templates\common\doctors.html:55
+msgid "Дерматология и алергии при домашни любимци"
+msgstr ""
+
+#: .\templates\common\doctors.html:58
+msgid ""
+"\n"
+"                        Д-р Мария Петрова е експерт в лечението на кожни "
+"заболявания и алергии при кучета и котки. \n"
+"                        Тя работи с търпение и внимание, за да помогне на "
+"животните с хронични кожни проблеми да водят \n"
+"                        по-здравословен и комфортен живот. След като "
+"завършва ветеринарна медицина, тя специализира в \n"
+"                        областта на дерматологията и непрекъснато участва в "
+"обучения и конференции, посветени на \n"
+"                        иновациите в грижата за кожата. В свободното си "
+"време обича да се разхожда сред природата и \n"
+"                        да снима своето коте Белла.\n"
+"                    "
+msgstr ""
+
+#: .\templates\common\doctors.html:71
+msgid "Д-р Георги Николов"
+msgstr ""
+
+#: .\templates\common\doctors.html:73
+msgid "Кардиология и профилактична медицина за малки животни"
+msgstr ""
+
+#: .\templates\common\doctors.html:76
+msgid ""
+"\n"
+"                        Д-р Георги Николов е експерт в диагностиката и "
+"лечението на сърдечно-съдови заболявания при малки \n"
+"                        животни. Той вярва в значението на профилактиката и "
+"помага на собствениците да осигуряват на своите \n"
+"                        домашни любимци дълъг и здравословен живот. С опит "
+"от повече от 10 години, д-р Николов се е \n"
+"                        утвърдил като доверен специалист за пациенти със "
+"сърдечни проблеми. Когато не е в клиниката, \n"
+"                        той обича да готви и да играе с двете си кучета, "
+"Бобо и Рей.\n"
+"                    "
+msgstr ""
+
+#: .\templates\common\index.html:29
+msgid "Добре дошли в нашата ветеринарна клиника!"
+msgstr ""
+
+#: .\templates\common\index.html:31
+msgid ""
+"\n"
+"                    Тук се грижим за здравето и щастието на вашите домашни "
+"любимци с внимание и професионализъм. \n"
+"                    Нашият екип от опитни ветеринарни лекари е посветен на "
+"предоставянето на висококачествени грижи, независимо дали става въпрос за "
+"редовни прегледи, \n"
+"                    ваксинации, спешни случаи или специализирани услуги. "
+"Разгледайте сайта ни, за да научите повече за нашите услуги, екип и полезни "
+"съвети за отглеждането на вашите четириноги приятели. \n"
+"                    Нека заедно се погрижим за здравето и комфорта на вашите "
+"любимци!\n"
+"                "
+msgstr ""
+
+#: .\templates\common\index.html:38
+msgid "Повече за нас"
+msgstr ""
+
+#: .\templates\common\index.html:44
+msgid ""
+"\n"
+"                    За Вас ще се погрижат специализирани ветеринарни лекари "
+"с богат опит в различни области на ветеринарната медицина. \n"
+"                    От диагностика и вътрешни болести до хирургия, "
+"стоматология и дерматология – всеки от нашите специалисти е посветен на "
+"предоставянето на най-висококачествена и индивидуализирана грижа. \n"
+"                    С актуални знания и модерна апаратура, нашите лекари са "
+"тук, за да осигурят комплексна помощ и специализирано лечение, съобразено с "
+"уникалните нужди на вашите любимци\n"
+"                "
+msgstr ""
+
+#: .\templates\common\index.html:55
+msgid "Предлагаме широка гама от услуги"
+msgstr ""
+
+#: .\templates\common\index.html:59
+msgid "Общи прегледи"
+msgstr ""
+
+#: .\templates\common\index.html:63
+msgid "Превантивна медицина"
+msgstr ""
+
+#: .\templates\common\index.html:67
+msgid "Хирургия"
+msgstr ""
+
+#: .\templates\common\index.html:71
+msgid "Офталмология"
+msgstr ""
+
+#: .\templates\common\index.html:75
+msgid "Микробиология"
+msgstr ""
+
+#: .\templates\common\index.html:79
+msgid "Груминг"
+msgstr ""
+
+#: .\templates\common\index.html:87
+msgid "Нашите четириноги приятели в акция!"
+msgstr ""
+
+#: .\templates\common\index.html:89
+msgid ""
+"\n"
+"                    Разгледайте нашата галерия, за да видите щастливите "
+"моменти на нашите пациенти и резултатите от грижите, \n"
+"                    които предоставяме. От игриви кучета до доволни котки – "
+"всеки любимец е част от нашето семейство. \n"
+"                    Вдъхновете се от техните истории!\n"
+"                "
+msgstr ""
+
+#: .\templates\common\index.html:124
+msgid "Виж повече..."
+msgstr ""
+
+#: .\templates\common\vet-dashboard.html:10
+#: .\templates\images\gallery\vet-gallery.html:11
+msgid "Всички"
+msgstr ""
+
+#: .\templates\common\vet-dashboard.html:12
+#: .\templates\common\vet-dashboard.html:24
+msgid "Профили"
+msgstr ""
+
+#: .\templates\common\vet-dashboard.html:14
+#: .\templates\common\vet-dashboard.html:32
+msgid "Лекарства"
+msgstr ""
+
+#: .\templates\common\vet-dashboard.html:16
+msgid "Търсене..."
+msgstr ""
+
+#: .\templates\images\gallery\base-gallery.html:11
+msgid "Няма намерени изображения"
+msgstr ""
+
+#: .\templates\images\gallery\regular-gallery.html:28
+#: .\templates\images\gallery\vet-gallery.html:63
+msgid "Страница"
+msgstr ""
+
+#: .\templates\images\gallery\regular-gallery.html:28
+#: .\templates\images\gallery\vet-gallery.html:63
+msgid "от"
+msgstr ""
+
+#: .\templates\images\gallery\vet-gallery.html:9
+msgid "Изберете категория:"
+msgstr ""
+
+#: .\templates\images\gallery\vet-gallery.html:18
+msgid "Филтрирай"
+msgstr ""
+
+#: .\templates\images\gallery\vet-gallery.html:27
+msgid "Добавяне на изображение"
+msgstr ""
+
+#: .\templates\images\gallery\vet-gallery.html:33
+msgid "Всички изображения"
+msgstr ""
+
+#: .\templates\images\image-add.html:9
+msgid "Добави ново изображение"
+msgstr ""
+
+#: .\templates\images\image-add.html:13
+msgid "Изображение"
+msgstr ""
+
+#: .\templates\images\image-add.html:22 .\templates\images\image-edit.html:13
+#: .\templates\services\service\service-add.html:91
+#: .\templates\services\service\service-edit.html:92
+msgid "Категория"
+msgstr ""
+
+#: .\templates\images\image-add.html:37
+#: .\templates\pets\medical-reports\report-add.html:53
+#: .\templates\pets\pet\pet-add.html:121
+#: .\templates\services\medicine\medicine-add.html:48
+#: .\templates\services\service\service-add.html:107
+msgid "Добави"
+msgstr ""
+
+#: .\templates\images\image-delete.html:8
+msgid "Желаете ли да изтриете това изображение?"
+msgstr ""
+
+#: .\templates\images\image-edit.html:9
+msgid "Редактиране на изображение"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-add.html:11
+msgid "Добавяне на нов преглед"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-add.html:15
+#: .\templates\pets\medical-reports\report-delete.html:13
+#: .\templates\pets\medical-reports\report-edit.html:15
+msgid "Заглавие"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-add.html:24
+#: .\templates\pets\medical-reports\report-delete.html:17
+#: .\templates\pets\medical-reports\report-details.html:36
+#: .\templates\pets\medical-reports\report-edit.html:24
+#: .\templates\services\medicine\medicine-add.html:23
+#: .\templates\services\medicine\medicine-edit.html:23
+msgid "Описание"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-add.html:33
+#: .\templates\pets\medical-reports\report-delete.html:21
+#: .\templates\pets\medical-reports\report-details.html:40
+#: .\templates\pets\medical-reports\report-edit.html:33
+msgid "Инструкции"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-dashboard.html:7
+msgid "Прегледи"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-dashboard.html:18
+#: .\templates\pets\pet\pet-details.html:120
+msgid "Добави преглед"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-dashboard.html:28
+#: .\templates\pets\pet\pet-details.html:99
+msgid "Описание:"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-dashboard.html:30
+#: .\templates\pets\pet\pet-details.html:101
+msgid "Инструкции:"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-delete.html:9
+msgid "Изтриване на преглед"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-details.html:8
+msgid "Информация за преглед"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-details.html:28
+#: .\templates\pets\medical-reports\report-details.html:31
+msgid "Лекар: "
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-details.html:28
+#: .\templates\pets\medical-reports\report-details.html:31
+msgid "д-р "
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-details.html:44
+msgid "Добавен: "
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-details.html:45
+msgid "Редактиран: "
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-edit.html:11
+msgid "Редактиране на преглед"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-edit.html:47
+msgid "Услуги:"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-edit.html:49
+msgid "Лекарства:"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:10
+msgid "Добавяне на любимец"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:14 .\templates\pets\pet\pet-delete.html:13
+#: .\templates\pets\pet\pet-edit.html:14
+msgid "Име на любимец"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:23 .\templates\pets\pet\pet-delete.html:17
+#: .\templates\pets\pet\pet-edit.html:23
+msgid "Вид"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:32 .\templates\pets\pet\pet-delete.html:21
+#: .\templates\pets\pet\pet-edit.html:32
+msgid "Порода"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:41 .\templates\pets\pet\pet-delete.html:25
+#: .\templates\pets\pet\pet-edit.html:41
+msgid "Пол"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:50 .\templates\pets\pet\pet-delete.html:29
+#: .\templates\pets\pet\pet-edit.html:50
+msgid "Дата на раждане"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:63
+#: .\templates\pets\pet\pet-details.html:46
+#: .\templates\pets\pet\pet-edit.html:63
+msgid "Кастрация:"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:74
+#: .\templates\pets\pet\pet-details.html:50
+#: .\templates\pets\pet\pet-edit.html:74
+msgid "Ваксинация:"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:84 .\templates\pets\pet\pet-edit.html:84
+msgid "Последна ваксинация"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:93 .\templates\pets\pet\pet-edit.html:93
+msgid "Последно външно обезпаразитяване"
+msgstr ""
+
+#: .\templates\pets\pet\pet-add.html:102 .\templates\pets\pet\pet-edit.html:102
+msgid "Последно вътрешно обезпаразитяване"
+msgstr ""
+
+#: .\templates\pets\pet\pet-delete.html:9
+msgid "Изтриване на любимец"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:34
+msgid "Пол:"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:35
+msgid "Мъжки"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:35
+msgid "Женски"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:38
+msgid "Порода:"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:42
+msgid "Собственик:"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:47
+#: .\templates\services\medicine\medicine-edit.html:66
+#: .\templates\services\service\service-edit.html:126
+msgid "Не"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:54
+msgid "Вътрешно обезпаразитяване:"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:58
+msgid "Външно обезпаразитяване:"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:96
+msgid "Последен преглед"
+msgstr ""
+
+#: .\templates\pets\pet\pet-details.html:106
+msgid "Още..."
+msgstr ""
+
+#: .\templates\pets\pet\pet-edit.html:10
+msgid "Редактиране на любимец"
+msgstr ""
+
+#: .\templates\services\medicine\medicine-add.html:10
+msgid "Добавяне на нов медицински продукт"
+msgstr ""
+
+#: .\templates\services\medicine\medicine-add.html:14
+#: .\templates\services\medicine\medicine-edit.html:14
+msgid "Име на продукт"
+msgstr ""
+
+#: .\templates\services\medicine\medicine-add.html:32
+#: .\templates\services\medicine\medicine-edit.html:32
+msgid "Дози на използване"
+msgstr ""
+
+#: .\templates\services\medicine\medicine-edit.html:10
+msgid "Редактиране на медицински продукт"
+msgstr ""
+
+#: .\templates\services\medicine\medicine-edit.html:63
+msgid "Сигурни ли сте, че искате да изтриете това лекарство?"
+msgstr ""
+
+#: .\templates\services\service\service-add.html:10
+msgid "Добавяне на нова услуга"
+msgstr ""
+
+#: .\templates\services\service\service-add.html:16
+#: .\templates\services\service\service-add.html:62
+#: .\templates\services\service\service-edit.html:16
+#: .\templates\services\service\service-edit.html:62
+msgid "Име на услуга на български"
+msgstr ""
+
+#: .\templates\services\service\service-add.html:25
+#: .\templates\services\service\service-add.html:53
+#: .\templates\services\service\service-edit.html:25
+#: .\templates\services\service\service-edit.html:53
+msgid "Име на услуга на английски"
+msgstr ""
+
+#: .\templates\services\service\service-add.html:34
+#: .\templates\services\service\service-add.html:80
+#: .\templates\services\service\service-edit.html:34
+#: .\templates\services\service\service-edit.html:80
+msgid "Описание на български"
+msgstr ""
+
+#: .\templates\services\service\service-add.html:43
+#: .\templates\services\service\service-add.html:71
+#: .\templates\services\service\service-edit.html:43
+#: .\templates\services\service\service-edit.html:71
+msgid "Описание на английски"
+msgstr ""
+
+#: .\templates\services\service\service-edit.html:10
+msgid "Редактиране на услуга"
+msgstr ""
+
+#: .\templates\services\service\service-edit.html:123
+msgid "Сигурни ли сте, че искате да изтриете тази услуга?"
+msgstr ""

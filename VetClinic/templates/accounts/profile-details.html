@@ -64,15 +64,15 @@
                 <div class="card-content">
                     <div class="info-item">
                         <h3>{% trans 'Телефонен номер:' %}</h3>
-                        <p>{% if object.profile.phone_number %}{{ object.profile.phone_number }}{% else %}n/a{% endif %}</p>
+                        <p>{% if object.profile.phone_number %}{{ object.profile.phone_number }}{% else %}<i>{% trans '(непопълнено)' %}</i>{% endif %}</p>
                     </div>
                     <div class="info-item">
                         <h3>{% trans 'Държава:' %}</h3>
-                        <p>{% if object.profile.country %}{{ object.profile.country }}{% else %}n/a{% endif %}</p>
+                        <p>{% if object.profile.country %}{{ object.profile.country }}{% else %}<i>{% trans '(непопълнено)' %}</i>{% endif %}</p>
                     </div>
                     <div class="info-item">
                         <h3>{% trans 'Град:' %}</h3>
-                        <p>{% if object.profile.city %}{{ object.profile.city }}{% else %}n/a{% endif %}</p>
+                        <p>{% if object.profile.city %}{{ object.profile.city }}{% else %}<i>{% trans '(непопълнено)' %}</i>{% endif %}</p>
                     </div>
                 </div>
                 <div class="card-buttons">

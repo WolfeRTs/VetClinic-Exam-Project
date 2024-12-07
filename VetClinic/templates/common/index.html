@@ -1,99 +1,127 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
     <!-- Flickity v2 Carousel - Open Source License under GPLv3 -->
     <div class="carousel js-flickity"
     data-flickity-options='{ "wrapAround": true, "freeScroll": true, "autoPlay": true }'>
-        {% for image in carousel_images %}
+        {% if carousel_images.count < 3 %}
             <div class="carousel-cell">
-                <img src="{{ image.image.url }}" alt="Image {{ image.id }}">
+                <img src="{% static 'images/slide1.jpg' %}" alt="Image 1">
             </div>
-        {% endfor %}
+            <div class="carousel-cell">
+                <img src="{% static 'images/slide2.jpg' %}" alt="Image 2">
+            </div>
+            <div class="carousel-cell">
+                <img src="{% static 'images/slide3.jpg' %}" alt="Image 3">
+            </div>
+        {% else %}
+            {% for image in carousel_images %}
+                <div class="carousel-cell">
+                    <img src="{{ image.image.url }}" alt="Image {{ image.id }}">
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
     <div class="main-element-light">
         <div class="site-container main-container main-container-light">
-            <h2>
-                Добре дошли в нашата ветеринарна клиника!
-            </h2>
+            <h2>{% trans 'Добре дошли в нашата ветеринарна клиника!' %}</h2>
             <p>
-                Тук се грижим за здравето и щастието на вашите домашни любимци с внимание и професионализъм. 
-                Нашият екип от опитни ветеринарни лекари е посветен на предоставянето на висококачествени грижи, независимо дали става въпрос за редовни прегледи, 
-                ваксинации, спешни случаи или специализирани услуги. Разгледайте сайта ни, за да научите повече за нашите услуги, екип и полезни съвети за отглеждането на вашите четириноги приятели. 
-                Нека заедно се погрижим за здравето и комфорта на вашите любимци!
+                {% blocktrans %}
+                    Тук се грижим за здравето и щастието на вашите домашни любимци с внимание и професионализъм. 
+                    Нашият екип от опитни ветеринарни лекари е посветен на предоставянето на висококачествени грижи, независимо дали става въпрос за редовни прегледи, 
+                    ваксинации, спешни случаи или специализирани услуги. Разгледайте сайта ни, за да научите повече за нашите услуги, екип и полезни съвети за отглеждането на вашите четириноги приятели. 
+                    Нека заедно се погрижим за здравето и комфорта на вашите любимци!
+                {% endblocktrans %}
             </p>
-            <a class="button-link button-dark" href="{% url 'about-us' %}">Повече за нас</a>
+            <a class="button-link button-dark" href="{% url 'about-us' %}">{% trans 'Повече за нас' %}</a>
         </div>
     </div>
     <div class="main-element-dark">
         <div class="site-container main-container">
             <p>
-                За Вас ще се погрижат специализирани ветеринарни лекари с богат опит в различни области на ветеринарната медицина. 
-                От диагностика и вътрешни болести до хирургия, стоматология и дерматология – всеки от нашите специалисти е посветен на предоставянето на най-висококачествена и индивидуализирана грижа. 
-                С актуални знания и модерна апаратура, нашите лекари са тук, за да осигурят комплексна помощ и специализирано лечение, съобразено с уникалните нужди на вашите любимци
+                {% blocktrans %}
+                    За Вас ще се погрижат специализирани ветеринарни лекари с богат опит в различни области на ветеринарната медицина. 
+                    От диагностика и вътрешни болести до хирургия, стоматология и дерматология – всеки от нашите специалисти е посветен на предоставянето на най-висококачествена и индивидуализирана грижа. 
+                    С актуални знания и модерна апаратура, нашите лекари са тук, за да осигурят комплексна помощ и специализирано лечение, съобразено с уникалните нужди на вашите любимци
+                {% endblocktrans %}
             </p>
-            <a class="button-link button-light" href="{% url 'doctors' %}">Лекари</a>
+            <a class="button-link button-light" href="{% url 'doctors' %}">{% trans 'Лекари' %}</a>
         </div> 
     </div>
     <div class="main-element-light">
         <div class="site-container main-container">
-            <h2>Предлагаме широка гама от услуги</h2>
+            <h2>{% trans 'Предлагаме широка гама от услуги' %}</h2>
             <div class="services-container">
                 <div class="services-card">
                     <i class="fa-solid fa-stethoscope"></i>
-                    <p>Общи прегледи</p>
+                    <p>{% trans 'Общи прегледи' %}</p>
                 </div>
                 <div class="services-card">
                     <i class="fa-solid fa-syringe"></i>
-                    <p>Превантивна медицина</p>
+                    <p>{% trans 'Превантивна медицина' %}</p>
                 </div>
                 <div class="services-card">
                     <i class="fa-solid fa-mask-face"></i>
-                    <p>Хирургия</p>
+                    <p>{% trans 'Хирургия' %}</p>
                 </div>
                 <div class="services-card">
                     <i class="fa-solid fa-eye"></i>
-                    <p>Офталмология</p>
+                    <p>{% trans 'Офталмология' %}</p>
                 </div>
                 <div class="services-card">
                     <i class="fa-solid fa-microscope"></i>
-                    <p>Микробиология</p>
+                    <p>{% trans 'Микробиология' %}</p>
                 </div>
                 <div class="services-card">
                     <i class="fa fa-scissors"></i>
-                    <p>Груминг</p>
+                    <p>{% trans 'Груминг' %}</p>
                 </div>
             </div>
-            <a class="button-link button-dark" href="{% url 'services-dashboard' %}">Услуги</a>
+            <a class="button-link button-dark" href="{% url 'services-dashboard' %}">{% trans 'Услуги' %}</a>
         </div>
     </div>
     <div class="main-element-dark">
         <div class="site-container main-container">
-            <h2>Нашите четириноги приятели в акция!</h2>
+            <h2>{% trans 'Нашите четириноги приятели в акция!' %}</h2>
             <p>
-                Разгледайте нашата галерия, за да видите щастливите моменти на нашите пациенти и резултатите от грижите, 
-                които предоставяме. От игриви кучета до доволни котки – всеки любимец е част от нашето семейство. 
-                Вдъхновете се от техните истории!
+                {% blocktrans %}
+                    Разгледайте нашата галерия, за да видите щастливите моменти на нашите пациенти и резултатите от грижите, 
+                    които предоставяме. От игриви кучета до доволни котки – всеки любимец е част от нашето семейство. 
+                    Вдъхновете се от техните истории!
+                {% endblocktrans %}
             </p>
             <a class="mini-gallery-link" href="{% url 'gallery' %}">
                 <!-- Latest 7 images preview -->
                 <!-- Copyright (c) 2023 Alvaro Montoro (https://codepen.io/alvaromontoro/pen/ZERmQYd) MIT License -->
                 <div class="mini-gallery">
-                    {% for image in minigallery_images %}
-                        <img src="{{ image.image.url }}" alt="">
-                    {% endfor %}
+                    {% if minigallery_images.count < 7 %}
+                        <img src="{% static 'images/fallback1.jpg' %}" alt="">
+                        <img src="{% static 'images/fallback2.jpg' %}" alt="">
+                        <img src="{% static 'images/fallback3.jpg' %}" alt="">
+                        <img src="{% static 'images/fallback4.jpg' %}" alt="">
+                        <img src="{% static 'images/fallback5.jpg' %}" alt="">
+                        <img src="{% static 'images/fallback6.jpg' %}" alt="">
+                        <img src="{% static 'images/fallback7.jpg' %}" alt="">
+                    {% else %}
+                        {% for image in minigallery_images %}
+                            <img src="{{ image.image.url }}" alt="">
+                        {% endfor %}
+                    {% endif %}
+                    
                 </div>
             </a>         
         </div>
     </div>
     <div class="main-element-light">
         <div class="site-container main-container">
-            <h2>Контакти</h2>
+            <h2>{% trans 'Контакти' %}</h2>
             <div class="contacts-container">
                 <a href="#"><i class="fa-brands fa-facebook"></i></a>
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#"><i class="fa-brands fa-viber"></i></a>
-                <a href="{% url 'contacts' %}" class="button-link button-dark">Виж повече...</a>
+                <a href="{% url 'contacts' %}" class="button-link button-dark">{% trans 'Виж повече...' %}</a>
             </div>
         </div>
     </div>

@@ -171,6 +171,16 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.category .button-services-li {
+    margin-top: 0.5rem;
+    background-color: #e7f3df;
+    transition: 0.1s ease-in;
+}
+
+.category .button-services-li:hover {
+    background-color: #d7dfb0;
+}
+
 .category a {
     flex: 1;
     display: block;

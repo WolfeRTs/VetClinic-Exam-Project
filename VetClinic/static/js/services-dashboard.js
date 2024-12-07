@@ -8,7 +8,7 @@ articleContainer.addEventListener('click', (e) => {
     if (!button) return;
 
     if (dataId) {
-        fetch(`/services/api/services/fragment/${dataId}/`)
+        fetch(`/api/services/fragment/${dataId}/`)
         .then(response => response.json())
         .then(data => {
             const article = document.querySelector(`[data-id="${dataId}"]`).parentElement;

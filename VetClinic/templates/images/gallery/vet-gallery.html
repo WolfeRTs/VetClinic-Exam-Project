@@ -8,14 +8,14 @@
             <div class="gallery-settings">
                 <label for="category-select" class="gallery-label">{% trans 'Изберете категория:' %}</label>
                 <select id="category-select" name="category" class="custom-input">
-                    <option value="all" {% if selected_category == 'all' %}selected{% endif %}>All Categories</option>
+                    <option value="all" {% if selected_category == 'all' %}selected{% endif %}>{% trans 'Всички' %}</option>
                     {% for category in categories %}
-                        <option value="{{ category.1 }}" {% if selected_category == category.1 %}selected{% endif %}>
+                        <option value="{{ category.0 }}" {% if selected_category == category.0 %}selected{% endif %}>
                             {{ category.1 }}
                         </option>
                     {% endfor %}
                 </select>
-                <button type="submit" class="gallery-button">Filter</button>
+                <button type="submit" class="gallery-button">{% trans 'Филтрирай' %}</button>
             </div>
             <a href="{% url 'image-add' %}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="50" height="50">
@@ -28,50 +28,58 @@
             </a>
         </form>
         
+        <h2>
+            {% if selected_category == 'all' %}
+                {% trans 'Всички изображения' %}
+            {% else %}
+                {% for value, title in categories %}
+                    {% if value == selected_category %}
+                        {{ title }}
+                    {% endif %}
+                {% endfor %}        
+            {% endif %}
+        </h2>
         
-        <h2>{% if selected_category == 'all' %}All images{% else %}{{ selected_category }}{% endif %}</h2>
-        
-        
-            {% include 'images/gallery/base-gallery.html' %}
-            <div class="pagination">
-                <span class="pagination-step-links">
-                    {% if page_obj.has_previous %}
-                        <a class="pagination-button" href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page=1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7A9B42">
-                                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
-                                <path d="M15.293 7.293 10.586 12l4.707 4.707 1.414-1.414L13.414 12l3.293-3.293-1.414-1.414z"/>
-                                <path d="m12.707 8.707-1.414-1.414L6.586 12l4.707 4.707 1.414-1.414L9.414 12l3.293-3.293z"/>
-                            </svg>
-                        </a>
-                        <a class="pagination-button" href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.previous_page_number }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7A9B42">
+        {% include 'images/gallery/base-gallery.html' %}
+        <div class="pagination">
+            <span class="pagination-step-links">
+                {% if page_obj.has_previous %}
+                    <a class="pagination-button" href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page=1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7A9B42">
+                            <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
+                            <path d="M15.293 7.293 10.586 12l4.707 4.707 1.414-1.414L13.414 12l3.293-3.293-1.414-1.414z"/>
+                            <path d="m12.707 8.707-1.414-1.414L6.586 12l4.707 4.707 1.414-1.414L9.414 12l3.293-3.293z"/>
+                        </svg>
+                    </a>
+                    <a class="pagination-button" href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.previous_page_number }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7A9B42">
                             <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
                             <path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/>
                         </svg>
-                        </a>
-                    {% endif %}
-            
-                    <span class="pagination-current">
-                        {% trans 'Страница' %} {{ page_obj.number }} {% trans 'от' %} {{ page_obj.paginator.num_pages }}
-                    </span>
-            
-                    {% if page_obj.has_next %}
-                        <a class="pagination-button" href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.next_page_number }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7A9B42">
+                    </a>
+                {% endif %}
+        
+                <span class="pagination-current">
+                    {% trans 'Страница' %} {{ page_obj.number }} {% trans 'от' %} {{ page_obj.paginator.num_pages }}
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a class="pagination-button" href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.next_page_number }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7A9B42">
                             <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
                             <path d="M9.293 8.707 12.586 12l-3.293 3.293 1.414 1.414L15.414 12l-4.707-4.707-1.414 1.414z"/>
                         </svg>
-                        </a>
-                        <a class="pagination-button" href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.paginator.num_pages }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7A9B42">
+                    </a>
+                    <a class="pagination-button" href="{% if selected_category %}?category={{ selected_category }}&{% endif %}page={{ page_obj.paginator.num_pages }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#7A9B42">
                             <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
                             <path d="M8.707 7.293 7.293 8.707 10.586 12l-3.293 3.293 1.414 1.414L13.414 12 8.707 7.293z"/>
                             <path d="M11.293 8.707 14.586 12l-3.293 3.293 1.414 1.414L17.414 12l-4.707-4.707-1.414 1.414z"/>
                         </svg>
-                        </a>
-                    {% endif %}
-                </span>
-            </div>
+                    </a>
+                {% endif %}
+            </span>
+        </div>
     </div>
     
 {% endblock %}

@@ -32,11 +32,11 @@
                 <div class="card-content">
                     <div class="info-item">
                         <h3>{% trans 'Пол:' %}</h3>
-                        <p>{% if pet.sex == 'M' %}Male{% else %}Female{% endif %}</p>
+                        <p>{% if pet.sex == 'M' %}{% trans 'Мъжки' %}{% else %}{% trans 'Женски' %}{% endif %}</p>
                     </div>
                     <div class="info-item">
                         <h3>{% trans 'Порода:' %}</h3>
-                        <p>{% if pet.breed %}{{ pet.breed }}{% else %}n/a{% endif %}</p>
+                        <p>{% if pet.breed %}{{ pet.breed }}{% else %}<i>{% trans '(непопълнено)' %}</i>{% endif %}</p>
                     </div>
                     <div class="info-item">
                         <h3>{% trans 'Собственик:' %}</h3>
@@ -48,15 +48,15 @@
                     </div>
                     <div class="info-item">
                         <h3>{% trans 'Ваксинация:' %}</h3>
-                        <p>{% if pet.status.is_vaccinated %}{{ pet.status.last_vaccinated_at|date:'d/m/Y H:i' }}{% else %}n/a{% endif %}</p>
+                        <p>{% if pet.status.is_vaccinated %}{{ pet.status.last_vaccinated_at|date:'d/m/Y H:i' }}{% else %}<i>{% trans '(непопълнено)' %}</i>{% endif %}</p>
                     </div>
                     <div class="info-item">
                         <h3>{% trans 'Вътрешно обезпаразитяване:' %}</h3>
-                        <p>{% if pet.status.last_internal_deworming %}{{ pet.status.last_internal_deworming|date:'d/m/Y H:i' }}{% else %}n/a{% endif %}</p>
+                        <p>{% if pet.status.last_internal_deworming %}{{ pet.status.last_internal_deworming|date:'d/m/Y H:i' }}{% else %}<i>{% trans '(непопълнено)' %}</i>{% endif %}</p>
                     </div>
                     <div class="info-item">
                         <h3>{% trans 'Външно обезпаразитяване:' %}</h3>
-                        <p>{% if pet.status.last_external_deworming %}{{ pet.status.last_external_deworming|date:'d/m/Y H:i' }}{% else %}n/a{% endif %}</p>
+                        <p>{% if pet.status.last_external_deworming %}{{ pet.status.last_external_deworming|date:'d/m/Y H:i' }}{% else %}<i>{% trans '(непопълнено)' %}</i>{% endif %}</p>
                     </div>
                 </div>
                 <div class="card-buttons">
@@ -70,7 +70,7 @@
                                 <path fill="#FFE352" d="m357.496 232.501 27-27 58 58-27 27z"/>
                             </g>
                         </svg>
-                        <span class="static-hint-box">{% trans 'Промени' %}</span>
+                        <span class="static-hint-box">{% trans 'Редактирай' %}</span>
                     </a>
                     {% if pet.owner.pk == request.user.pk %}
                         <a href="{% url 'pet-delete' pet.pk %}">

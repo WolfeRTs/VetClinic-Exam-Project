@@ -21,5 +21,3 @@ def add_vet_groups(sender, instance, created, **kwargs):
         instance.groups.add(vet_group)
     else:
         instance.groups.remove(vet_group)
-
-#TODO: Add a signal that populates all med records with the name of the deleted doctor pre_delete

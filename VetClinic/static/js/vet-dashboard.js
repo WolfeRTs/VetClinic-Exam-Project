@@ -44,7 +44,7 @@ function populateSearchResults(data, category) {
 
         if (categoryData.length === 0) {
             const notFound = document.createElement('p');
-            notFound.textContent = "No results found.";
+            notFound.textContent = gettext("No results found.");
             ul.appendChild(notFound);
             return;
         }
@@ -99,8 +99,8 @@ function populateSearchResults(data, category) {
         const buttonListElement = document.createElement('li');
         const buttonLink = document.createElement('a');
         buttonLink.href = urlPatterns.serviceAdd;
-        buttonLink.textContent = 'Добави';
-        buttonLink.classList.add('button-services');
+        buttonLink.textContent = gettext('Добави');
+        buttonListElement.classList.add('button-services-li');
         buttonListElement.appendChild(buttonLink);
         servicesUl.appendChild(buttonListElement);
     }
@@ -111,87 +111,9 @@ function populateSearchResults(data, category) {
         const buttonListElement = document.createElement('li');
         const buttonLink = document.createElement('a');
         buttonLink.href = urlPatterns.medicineAdd;
-        buttonLink.classList.add('button-services');
-        buttonLink.textContent = 'Добави';
+        buttonLink.textContent = gettext('Добави');
+        buttonListElement.classList.add('button-services-li');
         buttonListElement.appendChild(buttonLink);
         medicinesUl.appendChild(buttonListElement);
     }
 }
-
-
-// function populateSearchResults(data, category) {
-//     clearSearchResults();
-//
-//     // Filter based on selected category
-//     if (category === 'all' || category === 'pets') {
-//         const petsUl = document.getElementById('pets').querySelector('ul');
-//         petsCategory.style.display = 'block';
-//         if (data.pets.length === 0) {
-//             const notFound = document.createElement('p');
-//             notFound.textContent = "No results found.";
-//             petsUl.appendChild(notFound);
-//         }
-//         data.pets.forEach(pet => {
-//             const item = document.createElement('li');
-//             const link = document.createElement('a')
-//             link.href = urlPatterns.pet.replace('{id}', pet.id);
-//             item.textContent = `${pet.name} (Owner: ${pet['owner__profile__first_name']})`;
-//             link.appendChild(item);
-//             petsUl.appendChild(link);
-//         });
-//     }
-//
-//     if (category === 'all' || category === 'profiles') {
-//         const profilesUl = document.getElementById('profiles').querySelector('ul');
-//         profilesCategory.style.display = 'block';
-//         if (data.profiles.length === 0) {
-//             const notFound = document.createElement('p');
-//             notFound.textContent = "No results found.";
-//             profilesUl.appendChild(notFound);
-//         }
-//         data.profiles.forEach(profile => {
-//             const item = document.createElement('li');
-//             const link = document.createElement('a')
-//             link.href = urlPatterns.profile.replace('{id}', profile['user__id']);
-//             item.textContent = `${profile['first_name']} (${profile['user__email']})`;
-//             link.appendChild(item);
-//             profilesUl.appendChild(link);
-//         });
-//     }
-//
-//     if (category === 'all' || category === 'services') {
-//         const servicesUl = document.getElementById('services').querySelector('ul');
-//         servicesCategory.style.display = 'block';
-//         if (data.services.length === 0) {
-//             const notFound = document.createElement('p');
-//             notFound.textContent = "No results found.";
-//             servicesUl.appendChild(notFound);
-//         }
-//         data.services.forEach(service => {
-//             const item = document.createElement('li');
-//             const link = document.createElement('a')
-//             link.href = urlPatterns.service.replace('{id}', service.id);
-//             item.textContent = `${service.name} - ${service.description}`;
-//             link.appendChild(item);
-//             servicesUl.appendChild(link);
-//         });
-//     }
-//
-//     if (category === 'all' || category === 'medicines') {
-//         const medicinesUl = document.getElementById('medicines').querySelector('ul');
-//         medicinesCategory.style.display = 'block';
-//         if (data.medicines.length === 0) {
-//             const notFound = document.createElement('p');
-//             notFound.textContent = "No results found.";
-//             medicinesUl.appendChild(notFound);
-//         }
-//         data.medicines.forEach(medicine => {
-//             const item = document.createElement('li');
-//             const link = document.createElement('a')
-//             link.href = urlPatterns.medicine.replace('{id}', medicine.id);
-//             item.textContent = `${medicine.name} (Dosages: ${medicine.dosages})`;
-//             link.appendChild(item);
-//             medicinesUl.appendChild(link);
-//         });
-//     }
-// }

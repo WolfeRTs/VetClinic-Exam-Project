@@ -46,12 +46,13 @@
             
                 <div class="form-buttons-container">
                     <button class="form-button">
-                        {% trans 'Редактиране' %}
+                        {% trans 'Редактирай' %}
                     </button>
                     <button id="delete-medicine-button" class="form-button">
-                        {% trans 'Изтриване' %}
+                        {% trans 'Изтрий' %}
                     </button>
                 </div>
+                <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
             
             </form>
         </div>
@@ -85,7 +86,7 @@
         deleteConfirm.addEventListener('click', () => {
             const medicineId = {{ medicine.pk }};
             
-            fetch(`/services/api/medicines/${medicineId}/`, {
+            fetch(`/api/medicines/${medicineId}/`, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRFToken': '{{ csrf_token }}',

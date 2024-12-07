@@ -30,9 +30,10 @@
                     {{ form.date_of_birth|add_class:"custom-input" }}
                 </div>
                 
-                <button type="submit" class="form-button">
-                    {% trans 'Изтриване' %}
-                </button>
+                <div class="form-buttons-container">
+                    <button type="submit" class="form-button">{% trans 'Изтрий' %}</button>
+                    <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
+                </div>
             </form>
         </div>
     </div>

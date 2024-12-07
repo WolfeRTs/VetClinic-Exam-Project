@@ -6,5 +6,6 @@ register = template.Library()
 
 @register.filter
 def placeholder(field, text):
-    field.field.widget.attrs['placeholder'] = _(text)
+    translated_text = _(text)
+    field.field.widget.attrs['placeholder'] = translated_text
     return field

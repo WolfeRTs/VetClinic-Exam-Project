@@ -8,5 +8,4 @@ urlpatterns = [
     path('doctors/', DoctorsView.as_view(), name='doctors'),
     path('contacts/', ContactsView.as_view(), name='contacts'),
     path('vet-dashboard/', VetDashboardView.as_view(), name='vet-dashboard'),
-    path('api/search/', search_view, name='search'),
 ]

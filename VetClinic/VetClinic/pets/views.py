@@ -157,11 +157,9 @@ class MedicalReportAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         form.doctor = self.request.user
         form.save()
 
-        # Get service and medicine IDs from POST data
-        services_data = self.request.POST.get('services', '[]')  # Default to empty list if not provided
-        medicines_data = self.request.POST.get('medicines', '[]')  # Optional
+        services_data = self.request.POST.get('services', '[]')
+        medicines_data = self.request.POST.get('medicines', '[]')
 
-        # Parse the JSON strings into Python lists
         if services_data:
             service_ids = json.loads(services_data)
         else:
@@ -171,7 +169,6 @@ class MedicalReportAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         else:
             medicine_ids = []
 
-        # Link the services and medicines to the medical report
         services = Service.objects.filter(id__in=service_ids)
         medicines = Medicine.objects.filter(id__in=medicine_ids)
 
@@ -205,33 +202,33 @@ class MedicalReportEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
 
     def form_valid(self, form):
         report = form.save(commit=False)
-        # Safely parse services data
+
         try:
             services_data = json.loads(self.request.POST.get('services', '[]'))
         except json.JSONDecodeError:
             services_data = []
 
-        # Safely parse medicines data
+
         try:
             medicines_data = json.loads(self.request.POST.get('medicines', '[]'))
         except json.JSONDecodeError:
             medicines_data = []
 
-        # Extract IDs from submitted data
+
         submitted_service_ids = {service['id'] for service in services_data}
         submitted_medicine_ids = {medicine['id'] for medicine in medicines_data}
 
-        # Get existing IDs from the report
+
         existing_service_ids = set(report.services.values_list('id', flat=True))
         existing_medicine_ids = set(report.medicines.values_list('id', flat=True))
 
-        # Update services only if there's a difference
+
         if submitted_service_ids != existing_service_ids:
             report.services.clear()
             for service_id in submitted_service_ids:
                 report.services.add(service_id)
 
-        # Update medicines only if there's a difference
+
         if submitted_medicine_ids != existing_medicine_ids:
             report.medicines.clear()
             for medicine_id in submitted_medicine_ids:
@@ -243,9 +240,8 @@ class MedicalReportEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        # Retrieve the related services and medicines for the report
-        context['services'] = list(self.object.services.values('id', 'name'))  # Adjust field names as per your model
-        context['medicines'] = list(self.object.medicines.values('id', 'name'))  # Adjust field names as per your model
+        context['services'] = list(self.object.services.values('id', 'name'))
+        context['medicines'] = list(self.object.medicines.values('id', 'name'))
 
         return context
 

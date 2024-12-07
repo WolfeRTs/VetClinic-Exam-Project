@@ -45,7 +45,7 @@ class ServiceCategoriesDashboardView(ListView):
     context_object_name = 'categories'
 
     def get_queryset(self):
-        return ServiceCategory.objects.filter(category_services__isnull=False).distinct()
+        return ServiceCategory.objects.filter(category_services__isnull=False).distinct().order_by('id')
 
 
 class ServicesByCategoryAPIView(APIView):

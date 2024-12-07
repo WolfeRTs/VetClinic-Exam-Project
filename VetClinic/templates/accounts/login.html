@@ -38,6 +38,12 @@
                 <button type="submit" class="form-button">
                     {% trans 'Влизане' %}
                 </button>
+                <p class="register-redirect">{% trans 'Нямате регистрация? Направете я ' %}
+                    <a href="{% url 'register' %}">
+                        {% trans 'тук' %}
+                    </a>
+                    !
+                </p>
             </form>
         </div>
     </div>

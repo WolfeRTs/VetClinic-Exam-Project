@@ -10,24 +10,83 @@
             <h2>{% trans 'Добавяне на нова услуга' %}</h2>
             <form class="custom-form" action="" method="post">
                 {% csrf_token %}
-                <div class="input-container">
-                    <label for="name_service_add" class="custom-label">{% trans 'Име на услуга' %}</label>
-                    {{ form.name|add_class:"custom-input"|placeholder:"Въведете име на услуга" }}
-                    {% if form.name.errors %}
-                        {% for error in form.name.errors %}
-                            <p class="error-text">{{ error }}</p>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div class="input-container">
-                    <label for="description_service_add" class="custom-label">{% trans 'Описание' %}</label>
-                    {{ form.description|add_class:"custom-input"|placeholder:"Въведете описание" }}
-                    {% if form.description.errors %}
-                        {% for error in form.description.errors %}
-                            <p class="error-text">{{ error }}</p>
-                        {% endfor %}
-                    {% endif %}
-                </div>
+                
+                {% if request.LANGUAGE_CODE == 'bg' %}
+                    <div class="input-container">
+                        <label for="name_service_add" class="custom-label">{% trans 'Име на услуга на български' %}</label>
+                        {{ form.name|add_class:"custom-input"|placeholder:"Въведете име на услуга на български" }}
+                        {% if form.name.errors %}
+                            {% for error in form.name.errors %}
+                                <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="input-container">
+                        <label for="name_service_add" class="custom-label">{% trans 'Име на услуга на английски' %}</label>
+                        {{ form.name_en|add_class:"custom-input"|placeholder:"Въведете име на услуга на английски" }}
+                        {% if form.name_en.errors %}
+                            {% for error in form.name_en.errors %}
+                                <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="input-container">
+                        <label for="description_service_add" class="custom-label">{% trans 'Описание на български' %}</label>
+                        {{ form.description|add_class:"custom-input"|placeholder:"Въведете описание на български" }}
+                        {% if form.description.errors %}
+                            {% for error in form.description.errors %}
+                                <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="input-container">
+                        <label for="description_service_add" class="custom-label">{% trans 'Описание на английски' %}</label>
+                        {{ form.description_en|add_class:"custom-input"|placeholder:"Въведете описание на английски" }}
+                        {% if form.description_en.errors %}
+                            {% for error in form.description_en.errors %}
+                                <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="input-container">
+                        <label for="name_service_add" class="custom-label">{% trans 'Име на услуга на английски' %}</label>
+                        {{ form.name|add_class:"custom-input"|placeholder:"Въведете име на услуга на английски" }}
+                        {% if form.name.errors %}
+                            {% for error in form.name_en.errors %}
+                                <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="input-container">
+                        <label for="name_service_add" class="custom-label">{% trans 'Име на услуга на български' %}</label>
+                        {{ form.name_bg|add_class:"custom-input"|placeholder:"Въведете име на услуга на български" }}
+                        {% if form.name_bg.errors %}
+                            {% for error in form.name_bg.errors %}
+                                <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="input-container">
+                        <label for="description_service_add" class="custom-label">{% trans 'Описание на английски' %}</label>
+                        {{ form.description|add_class:"custom-input"|placeholder:"Въведете описание на английски" }}
+                        {% if form.description.errors %}
+                            {% for error in form.description.errors %}
+                                <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="input-container">
+                        <label for="description_service_add" class="custom-label">{% trans 'Описание на български' %}</label>
+                        {{ form.description_bg|add_class:"custom-input"|placeholder:"Въведете описание на български" }}
+                        {% if form.description_bg.errors %}
+                            {% for error in form.description_bg.errors %}
+                                <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+                
                 <div class="input-container">
                     <label for="category_service_add" class="custom-label">{% trans 'Категория' %}</label>
                     {{ form.category|add_class:"custom-input" }}
@@ -44,9 +103,10 @@
                     {% endfor %}
                 </div>
                 
-                <button class="form-button">
-                    {% trans 'Добавяне' %}
-                </button>
+                <div class="form-buttons-container">
+                    <button type="submit" class="form-button">{% trans 'Добави' %}</button>
+                    <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
+                </div>
             </form>
         </div>
     </div>

@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% load widget_tweaks %}
+{% load custom_placeholder %}
 
 {% block content %}
     
@@ -12,7 +13,7 @@
                 {% csrf_token %}
                 <div class="input-container">
                     <label for="title_report_add" class="custom-label">{% trans 'Заглавие' %}</label>
-                    {{ form.title|add_class:"custom-input" }}
+                    {{ form.title|add_class:"custom-input"|placeholder:"Въведете заглавие" }}
                     {% if form.title.errors %}
                         {% for error in form.title.errors %}
                             <p class="error-text">{{ error }}</p>
@@ -21,7 +22,7 @@
                 </div>
                 <div class="input-container">
                     <label for="description_report_add" class="custom-label">{% trans 'Описание' %}</label>
-                    {{ form.description|add_class:"custom-input" }}
+                    {{ form.description|add_class:"custom-input"|placeholder:"Въведете описание" }}
                     {% if form.description.errors %}
                         {% for error in form.description.errors %}
                             <p class="error-text">{{ error }}</p>
@@ -30,7 +31,7 @@
                 </div>
                 <div class="input-container">
                     <label for="instructions_report_add" class="custom-label">{% trans 'Инструкции' %}</label>
-                    {{ form.instructions|add_class:"custom-input" }}
+                    {{ form.instructions|add_class:"custom-input"|placeholder:"Въведете инструкции за приемане на лекарства" }}
                     {% if form.instructions.errors %}
                         {% for error in form.instructions.errors %}
                             <p class="error-text">{{ error }}</p>
@@ -43,13 +44,13 @@
                         <p class="error-text">{{ error }}</p>
                     {% endfor %}
                 </div>
-                <label for="services-edit-input">Services:</label>
+                <label class="custom-label" for="services-edit-input">{% trans 'Услуги:' %}</label>
                 <input id='services-edit-input' name='services' class='tagify--custom-dropdown'>
-                <label for="medicines-edit-input">Medicines:</label>
+                <label class="custom-label" for="medicines-edit-input">{% trans 'Лекарства:' %}</label>
                 <input id='medicines-edit-input' name='medicines' class='tagify--custom-dropdown'>
                 
                 <div class="form-buttons-container">
-                    <button class="form-button">{% trans 'Редактиране' %}</button>
+                    <button class="form-button">{% trans 'Редактирай' %}</button>
                     <button type="button" class="form-button" onclick="window.history.back()">{% trans 'Назад' %}</button>
                 </div>
             </form>
@@ -57,12 +58,11 @@
     </div>
     
     <script>
-        // Services prepopulation
         var servicesInput = document.querySelector('#services-edit-input');
-        var servicesData = {{ services|safe }};  // JSON data from the context
+        var servicesData = {{ services|safe }};
         var servicesTagify = new Tagify(servicesInput, {
-            whitelist: [], // Optional if you have autocomplete
-            enforceWhitelist: true, // Allow adding custom tags
+            whitelist: [],
+            enforceWhitelist: true,
             editTags: false,
             dropdown: {
                 enabled: 0,
@@ -70,7 +70,7 @@
 
         });
         
-        fetch('/services/api/services/')
+        fetch('/api/services/')
             .then(response => response.json())
             .then(data => {
                 servicesTagify.settings.whitelist = data.map(service => ({
@@ -82,11 +82,11 @@
             })
             .catch(error => console.error('Error fetching data:', error));
         
-        // Medicines prepopulation
+
         var medicinesInput = document.querySelector('#medicines-edit-input');
-        var medicinesData = {{ medicines|safe }};  // JSON data from the context
+        var medicinesData = {{ medicines|safe }};
         var medicinesTagify = new Tagify(medicinesInput, {
-            whitelist: [], // Optional if you have autocomplete
+            whitelist: [],
             enforceWhitelist: true,
             editTags: false,
             dropdown: {
@@ -94,7 +94,7 @@
             }
         });
         
-        fetch('/services/api/medicines/')
+        fetch('/api/medicines/')
             .then(response => response.json())
             .then(data => {
                 medicinesTagify.settings.whitelist = data.map(medicine => ({

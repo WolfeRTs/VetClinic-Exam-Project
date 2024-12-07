@@ -121,3 +121,31 @@
     border-top: 1px dashed black;
     margin-top: 1rem;
 }
+
+.register-redirect {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.register-redirect a {
+    color: var(--green-medium);
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+}
+
+.register-redirect a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--green-medium);
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+}
+
+.register-redirect a:hover::after {
+    width: 100%;
+}
