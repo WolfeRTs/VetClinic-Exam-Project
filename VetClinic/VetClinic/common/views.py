@@ -3,8 +3,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponseForbidden
 from django.views.generic import TemplateView
+from django.utils.translation import gettext_lazy as _
 
-from VetClinic.accounts.models import Profile, CustomUser
+from VetClinic.accounts.models import CustomUser
 from VetClinic.images.models import Image
 from VetClinic.pets.models import Pet
 from VetClinic.services.models import Service, Medicine
@@ -44,7 +45,7 @@ def search_view(request):
     if (not request.user.is_authenticated
         or not (request.user.is_staff or request.user.groups.filter(name='Veterinarian').exists())
     ):
-        return HttpResponseForbidden("You do not have permission to access this view.")
+        return HttpResponseForbidden(_("You do not have permission to access this view."))
 
     query = request.GET.get('q', '')
     category = request.GET.get('category', 'all')

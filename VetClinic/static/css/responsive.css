@@ -1,1 +1,49 @@
-/* TODO: Under 1300px */
+@media (max-width: 1270px) {
+
+    .header-container {
+        justify-content: space-between;
+    }
+
+    .nav-container {
+        display: none;
+        justify-self: flex-end;
+        background-color: var(--green-light);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        z-index: 1000;
+        border: 2px solid var(--green-dark);
+    }
+
+    .nav-container.active {
+        display: flex;
+    }
+
+    .nav-container ul {
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    .nav-container ul li {
+        font-size: 2em;
+    }
+
+    .header-buttons-container .menu-toggle {
+        display: flex;
+    }
+
+    .about-us-container h2 {
+        font-size: 3em;
+    }
+
+    .doctors-page-container .doctor-card {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+
+    .doctor-card .doctor-card-img-container {
+        align-self: center;
+    }
+
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div class="site-container">
+        <div class="error-container">
+            <div class="error-img-container">
+                <img src="{% static 'images/404dog.png' %}" alt="">
+            </div>
+            <div class="error-message">
+                <h2>404</h2>
+                <p>{% trans 'Страницата не беше намерена!' %}</p>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

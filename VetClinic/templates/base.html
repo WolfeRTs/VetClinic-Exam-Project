@@ -36,11 +36,11 @@
                 <div class="nav-container header-container-element">
                     <nav>
                         <ul>
-                            <li><a href="{% url 'about-us' %}" class="{% if request.path == '/about-us/' %}active{% endif %}">{% trans 'За Нас' %}</a></li>
-                            <li><a href="{% url 'doctors' %}" class="{% if request.path == '/doctors/' %}active{% endif %}">{% trans 'Лекари' %}</a></li>
-                            <li><a href="{% url 'services-dashboard' %}" class="{% if request.path == '/services/' %}active{% endif %}">{% trans 'Услуги' %}</a></li>
-                            <li><a href="{% url 'gallery' %}" class="{% if request.path == '/images/gallery/' %}active{% endif %}">{% trans 'Галерия' %}</a></li>
-                            <li><a href="{% url 'contacts' %}" class="{% if request.path == '/contacts/' %}active{% endif %}">{% trans 'Контакти' %}</a></li>
+                            <li><a href="{% url 'about-us' %}" class="{% if request.path == '/bg/about-us/' or request.path == '/en/about-us/' %}active{% endif %}">{% trans 'За Нас' %}</a></li>
+                            <li><a href="{% url 'doctors' %}" class="{% if request.path == '/bg/doctors/' or request.path == '/en/doctors/' %}active{% endif %}">{% trans 'Лекари' %}</a></li>
+                            <li><a href="{% url 'services-dashboard' %}" class="{% if request.path == '/bg/services/' or request.path == '/en/services/' %}active{% endif %}">{% trans 'Услуги' %}</a></li>
+                            <li><a href="{% url 'gallery' %}" class="{% if request.path == '/bg/images/gallery/' or request.path == '/en/images/gallery/' %}active{% endif %}">{% trans 'Галерия' %}</a></li>
+                            <li><a href="{% url 'contacts' %}" class="{% if request.path == '/bg/contacts/' or request.path == '/en/contacts/' %}active{% endif %}">{% trans 'Контакти' %}</a></li>
                             {% if request.user.is_vet or request.user.is_staff %}
                                 <li><a href="{% url 'vet-dashboard' %}" class="{% if request.path == '/vet-dashboard/' %}active{% endif %}">{% trans 'ВетКонтрол' %}</a></li>
                             {% endif %}
@@ -113,7 +113,11 @@
                             </div>
                         </form>
                     {% endif %}
-                    
+                    <button class="menu-toggle" aria-label="Toggle navigation">
+                        <svg data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="50" height="50">
+                            <path d="M97.092 36.078H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 61.889H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 87.7H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </header>
@@ -137,6 +141,17 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navContainer = document.querySelector(".nav-container");
+        
+            menuToggle.addEventListener("click", function () {
+                navContainer.classList.toggle("active");
+            });
+        });
+    </script>
     
 </body>
 </html>

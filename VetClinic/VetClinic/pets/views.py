@@ -7,6 +7,7 @@ from django.views.generic import DetailView, CreateView, UpdateView, DeleteView,
 
 from VetClinic.accounts.models import CustomUser
 from VetClinic.permissions import is_vet
+from VetClinic.pets.choices import PetSpeciesChoices
 from VetClinic.pets.forms import PetAddForm, PetEditForm, PetDeleteForm, MedicalReportAddForm, MedicalReportEditForm, \
     MedicalReportDeleteForm
 from VetClinic.pets.models import Pet, MedicalReport, PetStatus
@@ -21,6 +22,7 @@ class PetDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['last_report'] = self.object.medical_reports.all().order_by('-date_added').first()
+        context['species'] = PetSpeciesChoices.choices
         return context
 
     def test_func(self):

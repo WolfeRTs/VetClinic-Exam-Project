@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    
+    <div class="site-container">
+        <div class="error-container">
+            <div class="error-img-container">
+                <img src="{% static 'images/403dog.png' %}" alt="">
+            </div>
+            <div class="error-message">
+                <h2>403</h2>
+                <p>{% trans 'Нямате достъп до тази страница!' %}</p>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -26,7 +26,13 @@
                     </div>
                     <div class="card-name">
                         <h2>{{ pet.name }}</h2>
-                        <p>{{ pet.species }}</p>
+                        <p>
+                            {% for specie in species %}
+                                {% if pet.species == specie.0 %}
+                                     {{ specie.1 }}
+                                {% endif %}
+                            {% endfor %} 
+                        </p>
                     </div>
                 </div>
                 <div class="card-content">

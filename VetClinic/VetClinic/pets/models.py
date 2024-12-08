@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from VetClinic.pets.choices import PetSexChoices
+from VetClinic.pets.choices import PetSexChoices, PetSpeciesChoices
 from VetClinic.validators import CapitalFirstLetterValidator
 
 UserModel = get_user_model()
@@ -20,6 +20,8 @@ class Pet(models.Model):
     species = models.CharField(
         _('species'),
         max_length=50,
+        choices=PetSpeciesChoices.choices,
+        default=PetSpeciesChoices.OTHER
     )
 
     breed = models.CharField(

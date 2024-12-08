@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-07 17:32+0200\n"
+"POT-Creation-Date: 2024-12-08 17:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,6 +110,10 @@ msgstr ""
 "Въведете валидно потребителско име, използвайки само малки и главни букви, "
 "цифри и/или ./-/_"
 
+#: .\VetClinic\common\views.py:48
+msgid "You do not have permission to access this view."
+msgstr "Нямате достъп до този ресурс."
+
 #: .\VetClinic\images\choices.py:6
 msgid "Carousel"
 msgstr "Каросел"
@@ -118,7 +122,7 @@ msgstr "Каросел"
 msgid "Gallery"
 msgstr "Галерия"
 
-#: .\VetClinic\images\choices.py:8
+#: .\VetClinic\images\choices.py:8 .\VetClinic\pets\choices.py:17
 msgid "Other"
 msgstr "Други"
 
@@ -147,6 +151,30 @@ msgstr "Мъжки"
 msgid "Female"
 msgstr "Женски"
 
+#: .\VetClinic\pets\choices.py:11
+msgid "Dog"
+msgstr "Куче"
+
+#: .\VetClinic\pets\choices.py:12
+msgid "Cat"
+msgstr "Котка"
+
+#: .\VetClinic\pets\choices.py:13
+msgid "Rabbit"
+msgstr "Заек"
+
+#: .\VetClinic\pets\choices.py:14
+msgid "Rodent"
+msgstr "Гризач"
+
+#: .\VetClinic\pets\choices.py:15
+msgid "Bird"
+msgstr "Птица"
+
+#: .\VetClinic\pets\choices.py:16
+msgid "Reptile"
+msgstr "Влечуго"
+
 #: .\VetClinic\pets\models.py:13 .\VetClinic\services\models.py:7
 #: .\VetClinic\services\models.py:25
 msgid "name"
@@ -156,71 +184,71 @@ msgstr "име"
 msgid "species"
 msgstr "вид"
 
-#: .\VetClinic\pets\models.py:26
+#: .\VetClinic\pets\models.py:28
 msgid "breed"
 msgstr "порода"
 
-#: .\VetClinic\pets\models.py:33
+#: .\VetClinic\pets\models.py:35
 msgid "sex"
 msgstr "пол"
 
-#: .\VetClinic\pets\models.py:39
+#: .\VetClinic\pets\models.py:41
 msgid "date of birth"
 msgstr "дата на раждане"
 
-#: .\VetClinic\pets\models.py:43
+#: .\VetClinic\pets\models.py:45
 msgid "owner"
 msgstr "собственик"
 
-#: .\VetClinic\pets\models.py:50 .\VetClinic\pets\models.py:112
+#: .\VetClinic\pets\models.py:52 .\VetClinic\pets\models.py:114
 msgid "date added"
 msgstr "дата на добавяне"
 
-#: .\VetClinic\pets\models.py:60 .\VetClinic\pets\models.py:138
+#: .\VetClinic\pets\models.py:62 .\VetClinic\pets\models.py:140
 msgid "pet"
 msgstr "любимец"
 
-#: .\VetClinic\pets\models.py:68
+#: .\VetClinic\pets\models.py:70
 msgid "neutered"
 msgstr "кастрация"
 
-#: .\VetClinic\pets\models.py:73
+#: .\VetClinic\pets\models.py:75
 msgid "vaccinated"
 msgstr "ваксинация"
 
-#: .\VetClinic\pets\models.py:78
+#: .\VetClinic\pets\models.py:80
 msgid "last vaccination date"
 msgstr "дата на последна ваксинация"
 
-#: .\VetClinic\pets\models.py:84
+#: .\VetClinic\pets\models.py:86
 msgid "last external deworming"
 msgstr "последно вътрешно обезпаразитяване"
 
-#: .\VetClinic\pets\models.py:90
+#: .\VetClinic\pets\models.py:92
 msgid "last internal deworming"
 msgstr "последно външно обезпаразитяване"
 
-#: .\VetClinic\pets\models.py:99
+#: .\VetClinic\pets\models.py:101
 msgid "title"
 msgstr "заглавие"
 
-#: .\VetClinic\pets\models.py:104 .\VetClinic\services\models.py:13
+#: .\VetClinic\pets\models.py:106 .\VetClinic\services\models.py:13
 msgid "description"
 msgstr "описание"
 
-#: .\VetClinic\pets\models.py:108
+#: .\VetClinic\pets\models.py:110
 msgid "instructions"
 msgstr "инструкции"
 
-#: .\VetClinic\pets\models.py:117
+#: .\VetClinic\pets\models.py:119
 msgid "date updated"
 msgstr "дата на добавяне"
 
-#: .\VetClinic\pets\models.py:122
+#: .\VetClinic\pets\models.py:124
 msgid "doctor"
 msgstr "лекар"
 
-#: .\VetClinic\pets\models.py:131
+#: .\VetClinic\pets\models.py:133
 msgid "doctor name"
 msgstr "име на лекар"
 
@@ -248,6 +276,14 @@ msgstr "Английски"
 msgid "Name should start with a capital letter!"
 msgstr "Името трябва да започва с главна буква!"
 
+#: .\templates\403.html:14
+msgid "Нямате достъп до тази страница!"
+msgstr ""
+
+#: .\templates\404.html:14
+msgid "Страницата не беше намерена!"
+msgstr ""
+
 #: .\templates\accounts\login.html:10
 msgid "Добре дошли!"
 msgstr ""
@@ -264,7 +300,7 @@ msgstr ""
 msgid "Парола"
 msgstr ""
 
-#: .\templates\accounts\login.html:39 .\templates\base.html:100
+#: .\templates\accounts\login.html:39 .\templates\base.html:90
 msgid "Влизане"
 msgstr ""
 
@@ -283,7 +319,7 @@ msgstr ""
 #: .\templates\accounts\profile-delete.html:12
 #: .\templates\images\image-delete.html:12
 #: .\templates\pets\medical-reports\report-delete.html:44
-#: .\templates\pets\pet\pet-details.html:47
+#: .\templates\pets\pet\pet-details.html:53
 #: .\templates\services\medicine\medicine-edit.html:65
 #: .\templates\services\service\service-edit.html:125
 msgid "Да"
@@ -299,7 +335,7 @@ msgstr ""
 #: .\templates\pets\pet\pet-add.html:122
 #: .\templates\pets\pet\pet-delete.html:35
 #: .\templates\pets\pet\pet-edit.html:122
-#: .\templates\services\medicine\medicine-add.html:49
+#: .\templates\services\medicine\medicine-add.html:79
 #: .\templates\services\medicine\medicine-edit.html:55
 #: .\templates\services\service\service-add.html:108
 #: .\templates\services\service\service-edit.html:115
@@ -313,10 +349,10 @@ msgstr ""
 #: .\templates\accounts\profile-details.html:67
 #: .\templates\accounts\profile-details.html:71
 #: .\templates\accounts\profile-details.html:75
-#: .\templates\pets\pet\pet-details.html:39
-#: .\templates\pets\pet\pet-details.html:51
-#: .\templates\pets\pet\pet-details.html:55
-#: .\templates\pets\pet\pet-details.html:59
+#: .\templates\pets\pet\pet-details.html:45
+#: .\templates\pets\pet\pet-details.html:57
+#: .\templates\pets\pet\pet-details.html:61
+#: .\templates\pets\pet\pet-details.html:65
 msgid "(непопълнено)"
 msgstr ""
 
@@ -334,7 +370,7 @@ msgstr ""
 #: .\templates\images\image-edit.html:28
 #: .\templates\pets\medical-reports\report-details.html:59
 #: .\templates\pets\medical-reports\report-edit.html:53
-#: .\templates\pets\pet\pet-details.html:73
+#: .\templates\pets\pet\pet-details.html:79
 #: .\templates\pets\pet\pet-edit.html:121
 #: .\templates\services\medicine\medicine-edit.html:49
 #: .\templates\services\service\service-edit.html:109
@@ -345,7 +381,7 @@ msgstr ""
 #: .\templates\images\image-details.html:64
 #: .\templates\pets\medical-reports\report-details.html:73
 #: .\templates\pets\pet\pet-delete.html:34
-#: .\templates\pets\pet\pet-details.html:88
+#: .\templates\pets\pet\pet-details.html:94
 #: .\templates\services\medicine\medicine-edit.html:52
 #: .\templates\services\service\service-edit.html:112
 msgid "Изтрий"
@@ -359,7 +395,7 @@ msgstr ""
 
 #: .\templates\accounts\profile-details.html:132
 #: .\templates\pets\medical-reports\report-dashboard.html:34
-#: .\templates\pets\pet\pet-details.html:105
+#: .\templates\pets\pet\pet-details.html:111
 msgid "Детайли"
 msgstr ""
 
@@ -407,7 +443,7 @@ msgstr ""
 msgid "Повторете паролата"
 msgstr ""
 
-#: .\templates\accounts\register.html:61 .\templates\base.html:90
+#: .\templates\accounts\register.html:61 .\templates\base.html:80
 msgid "Регистрация"
 msgstr ""
 
@@ -445,15 +481,15 @@ msgstr ""
 msgid "Английски"
 msgstr ""
 
-#: .\templates\base.html:109
+#: .\templates\base.html:99
 msgid "Профил"
 msgstr ""
 
-#: .\templates\base.html:121
+#: .\templates\base.html:111
 msgid "Изход"
 msgstr ""
 
-#: .\templates\base.html:145
+#: .\templates\base.html:139
 msgid "ул. Васил Стефанов 13"
 msgstr ""
 
@@ -817,7 +853,7 @@ msgstr ""
 #: .\templates\images\image-add.html:37
 #: .\templates\pets\medical-reports\report-add.html:53
 #: .\templates\pets\pet\pet-add.html:121
-#: .\templates\services\medicine\medicine-add.html:48
+#: .\templates\services\medicine\medicine-add.html:78
 #: .\templates\services\service\service-add.html:107
 msgid "Добави"
 msgstr ""
@@ -844,7 +880,6 @@ msgstr ""
 #: .\templates\pets\medical-reports\report-delete.html:17
 #: .\templates\pets\medical-reports\report-details.html:36
 #: .\templates\pets\medical-reports\report-edit.html:24
-#: .\templates\services\medicine\medicine-add.html:23
 #: .\templates\services\medicine\medicine-edit.html:23
 msgid "Описание"
 msgstr ""
@@ -856,22 +891,31 @@ msgstr ""
 msgid "Инструкции"
 msgstr ""
 
+#: .\templates\pets\medical-reports\report-add.html:47
+#: .\templates\pets\medical-reports\report-edit.html:47
+msgid "Услуги:"
+msgstr ""
+
+#: .\templates\pets\medical-reports\report-add.html:49
+msgid "Лекарствени продукти:"
+msgstr ""
+
 #: .\templates\pets\medical-reports\report-dashboard.html:7
 msgid "Прегледи"
 msgstr ""
 
 #: .\templates\pets\medical-reports\report-dashboard.html:18
-#: .\templates\pets\pet\pet-details.html:120
+#: .\templates\pets\pet\pet-details.html:126
 msgid "Добави преглед"
 msgstr ""
 
 #: .\templates\pets\medical-reports\report-dashboard.html:28
-#: .\templates\pets\pet\pet-details.html:99
+#: .\templates\pets\pet\pet-details.html:105
 msgid "Описание:"
 msgstr ""
 
 #: .\templates\pets\medical-reports\report-dashboard.html:30
-#: .\templates\pets\pet\pet-details.html:101
+#: .\templates\pets\pet\pet-details.html:107
 msgid "Инструкции:"
 msgstr ""
 
@@ -903,10 +947,6 @@ msgstr ""
 
 #: .\templates\pets\medical-reports\report-edit.html:11
 msgid "Редактиране на преглед"
-msgstr ""
-
-#: .\templates\pets\medical-reports\report-edit.html:47
-msgid "Услуги:"
 msgstr ""
 
 #: .\templates\pets\medical-reports\report-edit.html:49
@@ -943,13 +983,13 @@ msgid "Дата на раждане"
 msgstr ""
 
 #: .\templates\pets\pet\pet-add.html:63
-#: .\templates\pets\pet\pet-details.html:46
+#: .\templates\pets\pet\pet-details.html:52
 #: .\templates\pets\pet\pet-edit.html:63
 msgid "Кастрация:"
 msgstr ""
 
 #: .\templates\pets\pet\pet-add.html:74
-#: .\templates\pets\pet\pet-details.html:50
+#: .\templates\pets\pet\pet-details.html:56
 #: .\templates\pets\pet\pet-edit.html:74
 msgid "Ваксинация:"
 msgstr ""
@@ -970,45 +1010,45 @@ msgstr ""
 msgid "Изтриване на любимец"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:34
+#: .\templates\pets\pet\pet-details.html:40
 msgid "Пол:"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:35
+#: .\templates\pets\pet\pet-details.html:41
 msgid "Мъжки"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:35
+#: .\templates\pets\pet\pet-details.html:41
 msgid "Женски"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:38
+#: .\templates\pets\pet\pet-details.html:44
 msgid "Порода:"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:42
+#: .\templates\pets\pet\pet-details.html:48
 msgid "Собственик:"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:47
+#: .\templates\pets\pet\pet-details.html:53
 #: .\templates\services\medicine\medicine-edit.html:66
 #: .\templates\services\service\service-edit.html:126
 msgid "Не"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:54
+#: .\templates\pets\pet\pet-details.html:60
 msgid "Вътрешно обезпаразитяване:"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:58
+#: .\templates\pets\pet\pet-details.html:64
 msgid "Външно обезпаразитяване:"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:96
+#: .\templates\pets\pet\pet-details.html:102
 msgid "Последен преглед"
 msgstr ""
 
-#: .\templates\pets\pet\pet-details.html:106
+#: .\templates\pets\pet\pet-details.html:112
 msgid "Още..."
 msgstr ""
 
@@ -1025,7 +1065,25 @@ msgstr ""
 msgid "Име на продукт"
 msgstr ""
 
-#: .\templates\services\medicine\medicine-add.html:32
+#: .\templates\services\medicine\medicine-add.html:24
+#: .\templates\services\medicine\medicine-add.html:52
+#: .\templates\services\service\service-add.html:34
+#: .\templates\services\service\service-add.html:80
+#: .\templates\services\service\service-edit.html:34
+#: .\templates\services\service\service-edit.html:80
+msgid "Описание на български"
+msgstr ""
+
+#: .\templates\services\medicine\medicine-add.html:33
+#: .\templates\services\medicine\medicine-add.html:43
+#: .\templates\services\service\service-add.html:43
+#: .\templates\services\service\service-add.html:71
+#: .\templates\services\service\service-edit.html:43
+#: .\templates\services\service\service-edit.html:71
+msgid "Описание на английски"
+msgstr ""
+
+#: .\templates\services\medicine\medicine-add.html:62
 #: .\templates\services\medicine\medicine-edit.html:32
 msgid "Дози на използване"
 msgstr ""
@@ -1054,20 +1112,6 @@ msgstr ""
 #: .\templates\services\service\service-edit.html:25
 #: .\templates\services\service\service-edit.html:53
 msgid "Име на услуга на английски"
-msgstr ""
-
-#: .\templates\services\service\service-add.html:34
-#: .\templates\services\service\service-add.html:80
-#: .\templates\services\service\service-edit.html:34
-#: .\templates\services\service\service-edit.html:80
-msgid "Описание на български"
-msgstr ""
-
-#: .\templates\services\service\service-add.html:43
-#: .\templates\services\service\service-add.html:71
-#: .\templates\services\service\service-edit.html:43
-#: .\templates\services\service\service-edit.html:71
-msgid "Описание на английски"
 msgstr ""
 
 #: .\templates\services\service\service-edit.html:10

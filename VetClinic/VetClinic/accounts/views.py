@@ -1,11 +1,9 @@
-from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
-from django.utils.translation import gettext_lazy as _
 
 from VetClinic.accounts.forms import CustomUserCreationForm, CustomUserLoginForm, ProfileEditForm
 from VetClinic.accounts.models import Profile
