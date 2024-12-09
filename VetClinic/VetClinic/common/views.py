@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponseForbidden
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils.translation import gettext_lazy as _
 
@@ -45,7 +46,7 @@ def search_view(request):
     if (not request.user.is_authenticated
         or not (request.user.is_staff or request.user.groups.filter(name='Veterinarian').exists())
     ):
-        return HttpResponseForbidden(_("You do not have permission to access this view."))
+        return render(request, '403.html')
 
     query = request.GET.get('q', '')
     category = request.GET.get('category', 'all')

@@ -37,7 +37,6 @@ class SearchViewTest(TestCase):
         request.user = self.regular_user
         response = search_view(request)
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(response.content, b"You do not have permission to access this view.")
 
     def test_staff_user_access(self):
         request = RequestFactory().get('/search/', {'q': 'Fluffy', 'category': 'pets'})
