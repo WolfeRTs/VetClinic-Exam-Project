@@ -31,6 +31,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
 
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='', cast=Csv())
 
 # Application definition
 MY_APPS = [
@@ -178,4 +179,4 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'bg'
 MODELTRANSLATION_PREPOPULATE = True
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'VetClinic.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', config('DJANGO_SETTINGS_MODULE'))
