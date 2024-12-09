@@ -130,7 +130,7 @@ LANGUAGES = [
 
 LANGUAGE_CODE = 'bg'
 
-TIME_ZONE = 'Europe/Bucharest'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

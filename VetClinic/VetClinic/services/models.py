@@ -7,9 +7,6 @@ class BaseService(models.Model):
         _('name'),
         max_length=100,
         unique=True,
-        error_messages={
-            'unique': _("A service with that name already exists."),
-        }
     )
 
     description = models.TextField(
@@ -28,9 +25,6 @@ class ServiceCategory(models.Model):
         _('name'),
         max_length=100,
         unique=True,
-        error_messages={
-            'unique': _("A category with that name already exists."),
-        }
     )
 
     def __str__(self):
