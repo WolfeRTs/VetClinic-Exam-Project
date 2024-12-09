@@ -15,9 +15,10 @@ def create_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=UserModel)
 def add_vet_groups(sender, instance, created, **kwargs):
-    vet_group = Group.objects.get(name='Veterinarian')
+    if not instance.is_superuser:
+        vet_group = Group.objects.get(name='Veterinarian')
 
-    if instance.is_vet:
-        instance.groups.add(vet_group)
-    else:
-        instance.groups.remove(vet_group)
+        if instance.is_vet:
+            instance.groups.add(vet_group)
+        else:
+            instance.groups.remove(vet_group)
