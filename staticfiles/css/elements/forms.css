@@ -1,0 +1,151 @@
+.form-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 35rem;
+    border-radius: 0.7rem;
+    border: 2px solid var(--green-dark);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+    background-color: whitesmoke;
+    padding: 2rem 2.5rem;
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+}
+
+.form-card h2 {
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.form-card .subtitle {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-form textarea {
+    resize: none;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.custom-label {
+    font-weight: 600;
+    margin-top: 0.7rem;
+}
+
+.custom-input {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+}
+
+.custom-input:focus {
+    outline-color: var(--green-medium);
+}
+
+.custom-input .error {
+    outline-color: #da2929;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.custom-checkbox label {
+    font-weight: 600;
+}
+
+.form-buttons-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-button {
+    text-decoration: none;
+    font-weight: 600;
+    align-self: center;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    color: var(--green-light);
+    background-color: var(--green-medium);
+    transition: ease 0.3s;
+    margin-top: 2rem;
+}
+
+.form-button:hover {
+    background-color: var(--green-dark);
+    cursor: pointer;
+}
+
+.form-help-text {
+    font-size: 0.9em;
+    font-style: italic;
+    color: black;
+    opacity: 0.6;
+    margin: 1rem 0;
+}
+
+.form-help-text li {
+    list-style-type: none;
+}
+
+.error-text {
+    color: #da2929;
+    margin-bottom: 0.7rem;
+}
+
+.pet-status-form {
+    border-top: 1px dashed black;
+    margin-top: 1rem;
+}
+
+.register-redirect {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.register-redirect a {
+    color: var(--green-medium);
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+}
+
+.register-redirect a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--green-medium);
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+}
+
+.register-redirect a:hover::after {
+    width: 100%;
+}

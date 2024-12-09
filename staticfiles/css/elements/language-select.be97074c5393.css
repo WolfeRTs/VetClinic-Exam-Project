@@ -1,0 +1,68 @@
+/* Container for the dropdown */
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+    transition: 0.3s ease;
+    align-self: center;
+    justify-self: center;
+}
+
+/* Button that triggers the dropdown */
+.lang-dropdown-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Dropdown content container */
+.lang-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--green-light);
+    border: 2px solid var(--green-dark);
+    border-radius: 5px;
+    min-width: 120px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 5px;
+    flex-direction: column;
+}
+
+/* Option styling within the dropdown */
+.lang-dropdown-option {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--green-dark);
+}
+
+.lang-dropdown-option:hover {
+    background-color: var(--green-dark);
+    color: var(--green-light);
+    border-radius: 0.7rem;
+}
+
+.lang-dropdown-option span {
+    font-weight: bold;
+}
+
+.lang-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+/* Show dropdown content on hover */
+.language-dropdown:hover .lang-dropdown-content {
+    display: flex;
+}

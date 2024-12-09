@@ -1,0 +1,27 @@
+.pagination-step-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 1rem;
+}
+
+.pagination-current {
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.pagination-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-button svg {
+    transition: ease 0.3s;
+}
+
+.pagination-button svg:hover {
+    fill: var(--green-dark)
+}

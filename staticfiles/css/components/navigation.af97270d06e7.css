@@ -1,0 +1,33 @@
+.nav-container {
+    display: flex;
+}
+
+.nav-container ul {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.nav-container ul li {
+    list-style: none outside;
+}
+
+.nav-container a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--green-dark);
+    padding: 0.5rem 1.0rem;
+    border-radius: 0.7rem;
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+.nav-container a:hover,
+.nav-container a:focus,
+.nav-container a.active {
+    background-color: var(--green-dark);
+    color: var(--green-light);
+    border-radius: 0.7rem;
+}

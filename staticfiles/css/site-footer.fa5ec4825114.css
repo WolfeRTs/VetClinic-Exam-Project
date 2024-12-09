@@ -1,0 +1,27 @@
+.site-footer {
+    background-color: var(--green-dark);
+    padding: 2em;
+    color: var(--green-light);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-contacts {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.copyright > span {
+    font-style: italic;
+}
+
+

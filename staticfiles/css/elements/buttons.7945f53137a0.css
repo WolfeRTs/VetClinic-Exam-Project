@@ -1,0 +1,27 @@
+.button-link {
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    margin: 1rem 0;
+    border-radius: 1.2rem;
+    padding: 1rem 1.5rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.button-link:hover {
+    transform: scale(1.1);
+}
+
+
+.button-light {
+    color: var(--green-dark);
+    background-color: var(--green-light);
+}
+
+.button-dark {
+    color: var(--green-light);
+    background-color: var(--green-dark);
+}

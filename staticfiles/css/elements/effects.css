@@ -1,0 +1,19 @@
+.expandable {
+
+}
+
+.static-hint-box {
+    font-size: 0.7em;
+    text-decoration: none;
+    color: black;
+    background-color: lightyellow;
+    border: 1px solid black;
+    padding: 0.5rem;
+    position: absolute;
+    bottom: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}

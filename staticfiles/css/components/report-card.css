@@ -1,0 +1,190 @@
+.reports-container {
+    background-color: whitesmoke;
+    border-radius: 2rem;
+    border: 2px solid var(--green-dark);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 3rem;
+}
+
+.reports-container .report-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.reports-add-report {
+    position: relative;
+}
+
+.reports-add-report > a:hover .static-hint-box {
+    opacity: 1;
+    visibility: visible;
+}
+
+.reports-container .report-cards .report-note {
+    width: 20rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 30rem;
+    border-radius: 0.7rem;
+    border: 2px solid var(--green-dark);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+    background-color: whitesmoke;
+    padding: 2rem 2.5rem;
+}
+
+.report-container a {
+    position: relative;
+}
+
+.report-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.report-card h2, h3 {
+    line-height: 1.2em;
+}
+
+.report-card h3 {
+    margin-top: 1.5rem;
+}
+
+.report-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.service-tags,
+.medicine-tags {
+    display: flex;
+    gap: 1rem;
+}
+
+.item-tag {
+    border-radius: 3rem;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.service-color {
+    background-color: #9EC853;
+}
+
+.medicine-color {
+    background-color: lightblue;
+}
+
+.report-doctor {
+    margin-top: 2rem;
+}
+
+.report-doctor p {
+    font-weight: 600;
+}
+
+.report-doctor span {
+    font-weight: 500;
+    font-style: italic;
+}
+
+.report-description {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-bottom: 1px dashed slategray;
+    border-top: 1px dashed slategray;
+}
+
+.report-instructions {
+    padding: 1rem;
+    border-bottom: 1px dashed slategray;
+}
+
+.report-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.report-buttons a:hover .static-hint-box {
+    opacity: 1;
+    visibility: visible;
+}
+
+.report-dates {
+    margin-top: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.report-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background: #fff8dc;
+    border: 2px solid #ffeb3b;
+    border-radius: 5px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    transform: rotate(-1deg);
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-note:hover {
+    transform: rotate(0deg) scale(1.05); /* Straighten and enlarge slightly on hover */
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.3); /* Emphasized shadow */
+}
+
+.report-note::before {
+    content: '';
+    position: absolute;
+    top: -0.5rem;
+    left: 50%;
+    width: 2rem;
+    height: 0.7rem;
+    background: #d3d3d3; /* Simulate tape */
+    border-radius: 5px;
+    transform: translateX(-50%);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Tape shadow */
+}
+
+.report-note h3, h4 {
+    text-align: center;
+    margin: 0 0 0.5rem;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.report-note p {
+    text-align: center;
+    margin: 0.3rem 0;
+    line-height: 1.4;
+    color: #555;
+}

@@ -1,0 +1,28 @@
+.error-container {
+    margin: 5rem 2rem;
+    padding: 3rem;
+    justify-self: center;
+    display: flex;
+    gap: 2rem;
+    background-color: whitesmoke;
+    border-radius: 0.7rem;
+    border: 2px solid var(--green-dark);
+}
+
+.error-container .error-img-container {
+    max-width: 20rem;
+}
+
+.error-container .error-message {
+    text-align: center;
+    color: var(--green-dark);
+}
+
+.error-container .error-message h2 {
+    font-size: 10em;
+}
+
+.error-container .error-message p {
+    font-weight: bold;
+    font-size: 2em;
+}
