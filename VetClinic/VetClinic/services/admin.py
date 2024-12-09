@@ -19,7 +19,7 @@ class ServiceAdmin(admin.ModelAdmin):
     filter_horizontal = ('reports',)
     fieldsets = (
         (None, {
-            'fields': ('name', 'description', 'category', 'reports'),
+            'fields': ('name', 'name_bg', 'name_en', 'description', 'description_bg', 'description_en', 'category',),
         }),
     )
 
@@ -32,6 +32,6 @@ class MedicineAdmin(admin.ModelAdmin):
     filter_horizontal = ('reports',)
     fieldsets = (
         (None, {
-            'fields': ('name', 'description', 'dosages',),
+            'fields': ('name', 'description', 'description_bg', 'description_en', 'dosages',),
         }),
     )
