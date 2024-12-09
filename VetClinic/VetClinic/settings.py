@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from django.urls import reverse_lazy
@@ -165,3 +165,5 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'bg'
 MODELTRANSLATION_PREPOPULATE = True
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'VetClinic.settings')

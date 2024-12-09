@@ -1,11 +1,21 @@
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'VetClinic.settings')
+
+import django
+django.setup()
+
+
 from django.contrib.auth.models import Group, Permission
 
 from VetClinic.services.models import ServiceCategory, Service, Medicine
 
 
 def populate_groups_and_permissions():
-    manager_group = Group.objects.create(name='Manager')
-    vet_group = Group.objects.create(name='Vet')
+    manager_group, _ = Group.objects.get_or_create(name='Manager')
+    vet_group, _ = Group.objects.get_or_create(name='Vet')
+
+    print(manager_group)
+    print(vet_group)
 
     manager_permissions = Permission.objects.filter(codename__in=[
         'change_customuser', 'delete_customuser', 'view_customuser',
@@ -15,19 +25,17 @@ def populate_groups_and_permissions():
         'add_medicine', 'change_medicine', 'view_medicine', 'delete_medicine',
         'add_service', 'change_service', 'view_service', 'delete_service',
         'add_servicecategory', 'change_servicecategory', 'view_servicecategory', 'delete_servicecategory',
-    ])
-    manager_group.permissions.add(manager_permissions)
+    ]).values_list('id', flat=True)
+    for perm_id in manager_permissions:
+        manager_group.permissions.add(perm_id)
 
     vet_permissions = Permission.objects.filter(codename__in=[
         'add_medicalreport', 'change_medicalreport', 'view_medicalreport', 'delete_medicalreport',
         'add_medicine', 'change_medicine', 'view_medicine', 'delete_medicine',
         'add_service', 'change_service', 'view_service', 'delete_service',
-    ])
-    vet_group.permissions.add(vet_permissions)
-
-    manager_group.save()
-    vet_group.save()
-
+    ]).values_list('id', flat=True)
+    for perm_id in vet_permissions:
+        vet_group.permissions.add(perm_id)
 
 
 def populate_categories_services_and_medicines():
@@ -44,7 +52,7 @@ def populate_categories_services_and_medicines():
     created_categories = {}
     for category, category_en in categories.items():
         ServiceCategory.objects.get_or_create(name=category, name_bg=category, name_en=category_en)
-        category_saved = ServiceCategory.objects.get_or_create(
+        category_saved, _ = ServiceCategory.objects.get_or_create(
             name=category,
             defaults={'name_bg': category, 'name_en': category_en}
         )
