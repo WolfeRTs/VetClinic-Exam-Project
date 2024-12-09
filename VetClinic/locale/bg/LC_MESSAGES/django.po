@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-08 17:25+0200\n"
+"POT-Creation-Date: 2024-12-09 16:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,7 +134,7 @@ msgstr "изображение"
 msgid "date uploaded"
 msgstr "дата на добавяне"
 
-#: .\VetClinic\images\models.py:25 .\VetClinic\services\models.py:39
+#: .\VetClinic\images\models.py:25 .\VetClinic\services\models.py:45
 msgid "category"
 msgstr "категория"
 
@@ -176,7 +176,7 @@ msgid "Reptile"
 msgstr "Влечуго"
 
 #: .\VetClinic\pets\models.py:13 .\VetClinic\services\models.py:7
-#: .\VetClinic\services\models.py:25
+#: .\VetClinic\services\models.py:28
 msgid "name"
 msgstr "име"
 
@@ -232,7 +232,7 @@ msgstr "последно външно обезпаразитяване"
 msgid "title"
 msgstr "заглавие"
 
-#: .\VetClinic\pets\models.py:106 .\VetClinic\services\models.py:13
+#: .\VetClinic\pets\models.py:106 .\VetClinic\services\models.py:16
 msgid "description"
 msgstr "описание"
 
@@ -252,15 +252,23 @@ msgstr "лекар"
 msgid "doctor name"
 msgstr "име на лекар"
 
-#: .\VetClinic\services\models.py:34
+#: .\VetClinic\services\models.py:11
+msgid "A service with that name already exists."
+msgstr "Услуга/Продукт, с това име, вече съществува!"
+
+#: .\VetClinic\services\models.py:32
+msgid "A category with that name already exists."
+msgstr "Категория, с това име, вече съществува!"
+
+#: .\VetClinic\services\models.py:40
 msgid "Service categories"
 msgstr ""
 
-#: .\VetClinic\services\models.py:48 .\VetClinic\services\models.py:60
+#: .\VetClinic\services\models.py:54 .\VetClinic\services\models.py:66
 msgid "reports"
 msgstr "прегледи"
 
-#: .\VetClinic\services\models.py:56
+#: .\VetClinic\services\models.py:62
 msgid "dosages"
 msgstr "дози"
 
