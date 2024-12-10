@@ -1,24 +1,19 @@
 import os
-
-from VetClinic.images.models import Image
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'VetClinic.settings')
-
 import django
+from decouple import config
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', config('DJANGO_SETTINGS_MODULE'))
+
 django.setup()
 
-
 from django.contrib.auth.models import Group, Permission
-
+from VetClinic.images.models import Image
 from VetClinic.services.models import ServiceCategory, Service, Medicine
 
 
 def populate_groups_and_permissions():
     manager_group, _ = Group.objects.get_or_create(name='Manager')
     vet_group, _ = Group.objects.get_or_create(name='Vet')
-
-    print(manager_group)
-    print(vet_group)
 
     manager_permissions = Permission.objects.filter(codename__in=[
         'change_customuser', 'delete_customuser', 'view_customuser',
@@ -61,6 +56,7 @@ def populate_categories_services_and_medicines():
         )
         created_categories[category] = category_saved
 
+    existing_services = Service.objects.values_list('name', flat=True)
     services = [
         {
             'name': 'Годишен преглед', 'name_bg': 'Годишен преглед', 'name_en': 'Annual Check-Up',
@@ -205,7 +201,7 @@ def populate_categories_services_and_medicines():
     ]
 
     service_instances = [
-        Service(
+        Service.objects.get_or_create(
             name=service['name'],
             category=created_categories[service['category']],
             name_bg=service['name_bg'],
@@ -214,154 +210,177 @@ def populate_categories_services_and_medicines():
             description_bg=service['description_bg'], description_en=service['description_en'],
         )
         for service in services
+        if service['name'] not in existing_services
     ]
-    Service.objects.bulk_create(service_instances)
 
-    medicine_instances = [
-        Medicine(
-            name='Amoxicillin',
-            description='Антибиотик за лечение на бактериални инфекции',
-            description_bg='Антибиотик за лечение на бактериални инфекции',
-            description_en='Antibiotic for treating bacterial infections',
-            dosages='10-20 mg/kg',
-        ),
-        Medicine(
-            name='Meloxicam',
-            description='Нестероидно противовъзпалително лекарство за облекчаване на болката',
-            description_bg='Нестероидно противовъзпалително лекарство за облекчаване на болката',
-            description_en='Non-steroidal anti-inflammatory drug (NSAID) for pain relief',
-            dosages='10-20 mg/kg',
-        ),
-        Medicine(
-            name='Metronidazole',
-            description='Лечение на стомашно-чревни инфекции и протозойни заболявания',
-            description_bg='Лечение на стомашно-чревни инфекции и протозойни заболявания',
-            description_en='Treatment for gastrointestinal infections and protozoal diseases',
-            dosages='10-25 mg/kg',
-        ),
-        Medicine(
-            name='Enrofloxacin (Baytril)',
-            description='Широкоспектърен антибиотик за лечение на бактериални инфекции при домашни любимци',
-            description_bg='Широкоспектърен антибиотик за лечение на бактериални инфекции при домашни любимци',
-            description_en='Broad-spectrum antibiotic for bacterial infections in pets',
-            dosages='5–20 mg/kg',
-        ),
-        Medicine(
-            name='Carprofen (Rimadyl)',
-            description='Облекчава болката при артрит или след операции',
-            description_bg='Облекчава болката при артрит или след операции',
-            description_en='Pain management for arthritis or surgery recovery',
-            dosages='2–4 mg/kg',
-        ),
-        Medicine(
-            name='Praziquantel (Droncit)',
-            description='Лекарство за лечение на тении',
-            description_bg='Лекарство за лечение на тении',
-            description_en='Dewormer for tapeworms',
-            dosages='5–10 mg/kg',
-        ),
-        Medicine(
-            name='Tobramycin Eye Drops',
-            description='Антибиотик за бактериални очни инфекции',
-            description_bg='Антибиотик за бактериални очни инфекции',
-            description_en='Antibiotic for bacterial eye infections',
-            dosages='1–2 drops',
-        ),
-        Medicine(
-            name='Rabies Vaccine',
-            description='Ваксина против бяс',
-            description_bg='Ваксина против бяс',
-            description_en='Prevents rabies in pets',
-            dosages='1 ml',
-        ),
+    existing_medicines = Medicine.objects.values_list('name', flat=True)
+    medicines = [
+        {
+            'name':'Amoxicillin',
+            'description':'Антибиотик за лечение на бактериални инфекции',
+            'description_bg':'Антибиотик за лечение на бактериални инфекции',
+            'description_en':'Antibiotic for treating bacterial infections',
+            'dosages':'10-20 mg/kg',
+        },
+        {
+            'name':'Meloxicam',
+            'description':'Нестероидно противовъзпалително лекарство за облекчаване на болката',
+            'description_bg':'Нестероидно противовъзпалително лекарство за облекчаване на болката',
+            'description_en':'Non-steroidal anti-inflammatory drug (NSAID) for pain relief',
+            'dosages':'10-20 mg/kg',
+        },
+        {
+            'name':'Metronidazole',
+            'description':'Лечение на стомашно-чревни инфекции и протозойни заболявания',
+            'description_bg':'Лечение на стомашно-чревни инфекции и протозойни заболявания',
+            'description_en':'Treatment for gastrointestinal infections and protozoal diseases',
+            'dosages':'10-25 mg/kg',
+        },
+        {
+            'name':'Enrofloxacin (Baytril)',
+            'description':'Широкоспектърен антибиотик за лечение на бактериални инфекции при домашни любимци',
+            'description_bg':'Широкоспектърен антибиотик за лечение на бактериални инфекции при домашни любимци',
+            'description_en':'Broad-spectrum antibiotic for bacterial infections in pets',
+            'dosages':'5–20 mg/kg',
+        },
+        {
+            'name':'Carprofen (Rimadyl)',
+            'description':'Облекчава болката при артрит или след операции',
+            'description_bg':'Облекчава болката при артрит или след операции',
+            'description_en':'Pain management for arthritis or surgery recovery',
+            'dosages':'2–4 mg/kg',
+        },
+        {
+            'name':'Praziquantel (Droncit)',
+            'description':'Лекарство за лечение на тении',
+            'description_bg':'Лекарство за лечение на тении',
+            'description_en':'Dewormer for tapeworms',
+            'dosages':'5–10 mg/kg',
+        },
+        {
+            'name':'Tobramycin Eye Drops',
+            'description':'Антибиотик за бактериални очни инфекции',
+            'description_bg':'Антибиотик за бактериални очни инфекции',
+            'description_en':'Antibiotic for bacterial eye infections',
+            'dosages':'1–2 drops',
+        },
+        {
+            'name':'Rabies Vaccine',
+            'description':'Ваксина против бяс',
+            'description_bg':'Ваксина против бяс',
+            'description_en':'Prevents rabies in pets',
+            'dosages':'1 ml',
+        },
     ]
-    Medicine.objects.bulk_create(medicine_instances)
+    medicine_instances = [
+        Medicine.objects.get_or_create(
+            name=medicine['name'],
+            defaults={
+                'description': medicine['description'],
+                'description_bg': medicine['description_bg'],
+                'description_en': medicine['description_en'],
+                'dosages': medicine['dosages'],
+            }
+        )
+        for medicine in medicines
+        if medicine['name'] not in existing_medicines
+    ]
 
 
 def populate_images():
-    image_instances = [
-        Image(
-            image='images/slide1.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide2.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide3.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide4.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide5.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide6.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide7.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide8.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide9.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/slide10.jpg',
-            category='Carousel',
-        ),
-        Image(
-            image='images/gallery1.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery2.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery3.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery4.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery5.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery6.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery7.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery8.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery9.jpg',
-            category='Gallery',
-        ),
-        Image(
-            image='images/gallery10.jpg',
-            category='Gallery',
-        )
+    existing_images = Image.objects.values_list('image', flat=True)
+    images = [
+        {
+            'image':'images/slide1.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide2.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide3.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide4.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide5.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide6.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide7.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide8.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide9.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/slide10.jpg',
+            'category':'Carousel',
+        },
+        {
+            'image':'images/gallery1.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery2.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery3.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery4.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery5.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery6.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery7.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery8.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery9.jpg',
+            'category':'Gallery',
+        },
+        {
+            'image':'images/gallery10.jpg',
+            'category':'Gallery',
+        }
     ]
-    Medicine.objects.bulk_create(image_instances)
+
+    image_instances = [
+        Image.objects.get_or_create(
+            image=img['image'],
+            category=img['category'],
+        )
+        for img in images
+    ]
+    images_to_create = [img for img, _ in image_instances if img.image not in existing_images]
+    Image.objects.bulk_create(images_to_create)
 
 
 populate_groups_and_permissions()
