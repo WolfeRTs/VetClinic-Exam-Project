@@ -1,4 +1,7 @@
 import os
+
+from VetClinic.images.models import Image
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'VetClinic.settings')
 
 import django
@@ -274,5 +277,93 @@ def populate_categories_services_and_medicines():
     ]
     Medicine.objects.bulk_create(medicine_instances)
 
+
+def populate_images():
+    image_instances = [
+        Image(
+            image='images/slide1.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide2.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide3.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide4.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide5.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide6.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide7.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide8.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide9.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/slide10.jpg',
+            category='Carousel',
+        ),
+        Image(
+            image='images/gallery1.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery2.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery3.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery4.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery5.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery6.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery7.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery8.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery9.jpg',
+            category='Gallery',
+        ),
+        Image(
+            image='images/gallery10.jpg',
+            category='Gallery',
+        )
+    ]
+    Medicine.objects.bulk_create(image_instances)
+
+
 populate_groups_and_permissions()
 populate_categories_services_and_medicines()
+populate_images()

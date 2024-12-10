@@ -1,10 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
-from django.http import JsonResponse, HttpResponseForbidden
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.utils.translation import gettext_lazy as _
 
 from VetClinic.accounts.models import CustomUser
 from VetClinic.images.models import Image

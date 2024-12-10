@@ -16,10 +16,9 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = ('category',)
     search_fields = ('name', 'description', 'category__name')
     ordering = ('name',)
-    filter_horizontal = ('reports',)
     fieldsets = (
         (None, {
-            'fields': ('name', 'description', 'category', 'reports'),
+            'fields': ('name', 'name_bg', 'name_en', 'description', 'description_bg', 'description_en', 'category',),
         }),
     )
 
@@ -29,9 +28,8 @@ class MedicineAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'description', 'dosages',)
     search_fields = ('name', 'description', 'dosages')
     ordering = ('name',)
-    filter_horizontal = ('reports',)
     fieldsets = (
         (None, {
-            'fields': ('name', 'description', 'dosages',),
+            'fields': ('name', 'description', 'description_bg', 'description_en', 'dosages',),
         }),
     )

@@ -1,7 +1,6 @@
 from django.urls import path, include
 
-from VetClinic.services.views import ServiceListCreateView, ServiceDetailView, MedicineListCreateView, \
-    MedicineDetailView, ServiceCategoriesDashboardView, ServicesByCategoryAPIView, ServiceCreateView, ServiceEditView, \
+from VetClinic.services.views import ServiceCategoriesDashboardView, ServiceCreateView, ServiceEditView, \
     MedicineCreateView, MedicineEditView
 
 urlpatterns = [

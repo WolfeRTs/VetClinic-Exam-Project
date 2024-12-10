@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-08 17:25+0200\n"
+"POT-Creation-Date: 2024-12-10 12:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,10 +106,6 @@ msgid ""
 "and ./-/_ characters!"
 msgstr ""
 
-#: .\VetClinic\common\views.py:48
-msgid "You do not have permission to access this view."
-msgstr ""
-
 #: .\VetClinic\images\choices.py:6
 msgid "Carousel"
 msgstr ""
@@ -130,7 +126,7 @@ msgstr ""
 msgid "date uploaded"
 msgstr ""
 
-#: .\VetClinic\images\models.py:25 .\VetClinic\services\models.py:39
+#: .\VetClinic\images\models.py:25 .\VetClinic\services\models.py:45
 msgid "category"
 msgstr ""
 
@@ -172,7 +168,7 @@ msgid "Reptile"
 msgstr ""
 
 #: .\VetClinic\pets\models.py:13 .\VetClinic\services\models.py:7
-#: .\VetClinic\services\models.py:25
+#: .\VetClinic\services\models.py:28
 msgid "name"
 msgstr ""
 
@@ -228,7 +224,7 @@ msgstr ""
 msgid "title"
 msgstr ""
 
-#: .\VetClinic\pets\models.py:106 .\VetClinic\services\models.py:13
+#: .\VetClinic\pets\models.py:106 .\VetClinic\services\models.py:16
 msgid "description"
 msgstr ""
 
@@ -248,23 +244,31 @@ msgstr ""
 msgid "doctor name"
 msgstr ""
 
-#: .\VetClinic\services\models.py:34
+#: .\VetClinic\services\models.py:11
+msgid "A service with that name already exists."
+msgstr ""
+
+#: .\VetClinic\services\models.py:32
+msgid "A category with that name already exists."
+msgstr ""
+
+#: .\VetClinic\services\models.py:40
 msgid "Service categories"
 msgstr ""
 
-#: .\VetClinic\services\models.py:48 .\VetClinic\services\models.py:60
+#: .\VetClinic\services\models.py:54 .\VetClinic\services\models.py:66
 msgid "reports"
 msgstr ""
 
-#: .\VetClinic\services\models.py:56
+#: .\VetClinic\services\models.py:62
 msgid "dosages"
 msgstr ""
 
-#: .\VetClinic\settings.py:127
+#: .\VetClinic\settings.py:131
 msgid "Bulgarian"
 msgstr ""
 
-#: .\VetClinic\settings.py:128
+#: .\VetClinic\settings.py:132
 msgid "English"
 msgstr ""
 
@@ -274,11 +278,11 @@ msgstr ""
 
 #: .\templates\403.html:14
 msgid "Нямате достъп до тази страница!"
-msgstr ""
+msgstr "You don't have access to this page!"
 
 #: .\templates\404.html:14
 msgid "Страницата не беше намерена!"
-msgstr ""
+msgstr "Page not found!"
 
 #: .\templates\accounts\login.html:10
 msgid "Добре дошли!"

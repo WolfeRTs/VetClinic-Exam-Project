@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from rest_framework.decorators import api_view
+from django.views.generic import ListView, CreateView, UpdateView
 
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated
@@ -8,9 +7,8 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse_lazy
 from rest_framework.views import APIView
 
-from VetClinic.permissions import IsVetUserOrStaff, IsStaff
-from VetClinic.services.forms import ServiceAddForm, ServiceEditForm, MedicineAddForm, MedicineEditForm, \
-    ServiceDeleteForm
+from VetClinic.permissions import IsVetUserOrStaff
+from VetClinic.services.forms import ServiceAddForm, ServiceEditForm, MedicineAddForm, MedicineEditForm
 from VetClinic.services.models import Service, Medicine, ServiceCategory
 from VetClinic.services.serializers import ServiceSerializer, MedicineSerializer
 
